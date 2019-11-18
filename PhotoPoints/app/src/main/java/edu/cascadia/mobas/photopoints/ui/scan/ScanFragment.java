@@ -1,4 +1,4 @@
-package edu.cascadia.mobas.photopoints.ui.home;
+package edu.cascadia.mobas.photopoints.ui.scan;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,22 +14,26 @@ import androidx.lifecycle.ViewModelProviders;
 
 import edu.cascadia.mobas.photopoints.R;
 
-public class HomeFragment extends Fragment {
+public class ScanFragment extends Fragment {
 
-    private HomeViewModel homeViewModel;
+    private ScanViewModel mScanViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        mScanViewModel =
+                ViewModelProviders.of(this).get(ScanViewModel.class);
+
+        View root = inflater.inflate(R.layout.fragment_scan, container, false);
+
         final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(this, new Observer<String>() {
+
+        mScanViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
             }
         });
+
         return root;
     }
 }
