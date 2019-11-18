@@ -17,7 +17,7 @@ import edu.cascadia.mobas.photopoints.R;
 
 public class SignUpFragment extends Fragment {
 
-    private TextView mTextView;
+    private TextView mTextViewDateOrBirth;
     private int mYear;
     private int mMonth;
     private int mDayOfMonth;
@@ -30,11 +30,12 @@ public class SignUpFragment extends Fragment {
 
         Calendar cal = Calendar.getInstance();
         mYear = cal.get(Calendar.YEAR);
-        mMonth = cal.get(Calendar.MONTH);
+        mMonth = setMonth(cal.get(Calendar.MONTH));
         mDayOfMonth = cal.get(Calendar.DAY_OF_MONTH);
 
-        mTextView = root.findViewById(R.id.text_dateOfBirth);
-        mTextView.setText(mMonth + "-" + mDayOfMonth + "-" + mYear);
+        mTextViewDateOrBirth = root.findViewById(R.id.text_dateOfBirth);
+
+        setDateOfBirth();
 
         root.findViewById(R.id.button_change).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,10 +62,22 @@ public class SignUpFragment extends Fragment {
 
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            mTextView.setText(month + "-" + dayOfMonth + "-" + year);
-        }
+            mYear = year;
+            mMonth = month;
+            mDayOfMonth = dayOfMonth;
 
+            setDateOfBirth();
+        }
     };
+
+    private void setDateOfBirth(){
+        mTextViewDateOrBirth.setText(String.format(getString(R.string.dateFormat), mDayOfMonth, mMonth, mYear));
+    }
+
+    //Months, funny enough... Start at 0.
+    private int setMonth(int month){
+        return month + 1;
+    }
 
     private void signUp(View v){
         //Hard-coded for now to go to Scan page.

@@ -21,6 +21,7 @@
     <string name="sign_up">Sign Up</string>
     <string name="reenter_password">Re-enter password</string>
     <string name="change">Change</string>
+    <string name="dateFormat">%1$d.%2$d.%3$d</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

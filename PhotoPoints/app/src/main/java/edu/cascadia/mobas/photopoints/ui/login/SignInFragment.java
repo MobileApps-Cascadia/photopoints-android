@@ -26,8 +26,6 @@ public class SignInFragment extends Fragment {
 
     private TextInputEditText mEditText_email;
     private TextInputEditText mEditText_password;
-    private MaterialButton mButton_signin;
-    private TextView mTextView_signUp;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -37,17 +35,15 @@ public class SignInFragment extends Fragment {
 
         mEditText_email = root.findViewById(R.id.text_email);
         mEditText_password = root.findViewById(R.id.text_password);
-        mButton_signin = root.findViewById(R.id.button_login);
-        mTextView_signUp = root.findViewById(R.id.text_signup);
 
-        mButton_signin.setOnClickListener(new View.OnClickListener(){
+        root.findViewById(R.id.button_login).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 signIn(v);
             }
         });
 
-        mTextView_signUp.setOnClickListener(new View.OnClickListener(){
+        root.findViewById(R.id.text_signup).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 signUp(v);
@@ -60,6 +56,9 @@ public class SignInFragment extends Fragment {
     private void signIn(View v){
 
         //For now, we hardcode a continue.
+        String email = mEditText_email.getText().toString();
+        String password = mEditText_password.getText().toString();
+
         NavController nav = Navigation.findNavController(v);
         Bundle bundle = new Bundle();
         bundle.putBoolean("Registered", true);
