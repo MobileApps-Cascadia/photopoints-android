@@ -10,6 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -35,5 +36,12 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the top menu action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+
+        return Navigation.findNavController(this, R.id.nav_host_fragment).navigateUp()
+                || super.onSupportNavigateUp();
     }
 }
