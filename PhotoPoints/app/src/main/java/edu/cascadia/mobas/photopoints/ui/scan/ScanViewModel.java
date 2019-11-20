@@ -1,16 +1,16 @@
-package edu.cascadia.mobas.photopoints.ui.home;
+package edu.cascadia.mobas.photopoints.ui.scan;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class ScanViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public ScanViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is Scan fragment");
     }
 
     public LiveData<String> getText() {
