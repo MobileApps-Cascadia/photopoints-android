@@ -1,5 +1,7 @@
 package edu.cascadia.mobas.photopoints.model;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class PhotoPoint {
 
     public enum PhotoPointType{
@@ -49,5 +51,9 @@ public class PhotoPoint {
 
     public void setPhotoPointType(PhotoPointType photoPointType) {
         this.mPhotoPointType = photoPointType;
+    }
+
+    public LatLng getLatLng(){
+        return new LatLng(mLatitude, mLongitude);
     }
 }
