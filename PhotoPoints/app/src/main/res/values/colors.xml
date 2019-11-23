@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="fragmentBackground">#ffffff</color>
+    <color name="mapsPath">#F9E4B7</color>
 </resources>
