@@ -45,7 +45,7 @@ public class PermissionManager {
     }
 
     public static void setPermissions(PermissionType type, boolean permissionReceived) {
-        permissions.put(PermissionType.FineLocation, permissionReceived);
+        permissions.put(type, permissionReceived);
     }
 
     public static boolean permissionGranted(PermissionType type){
