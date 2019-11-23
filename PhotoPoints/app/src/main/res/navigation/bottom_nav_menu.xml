@@ -4,13 +4,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_nav_menu"
-    app:startDestination="@+id/navigation_scan">
+    app:startDestination="@+id/navigation_photopoints">
 
     <fragment
         android:id="@+id/navigation_scan"
         android:name="edu.cascadia.mobas.photopoints.ui.scan.ScanFragment"
         android:label="@string/menu_scan"
-        tools:layout="@layout/fragment_scan" />
+        tools:layout="@layout/fragment_scan" >
+
+        <action
+            android:id="@+id/action_navigation_scan_to_navigation_signin2"
+            app:destination="@id/navigation_signin"
+            app:popUpTo="@+id/navigation_photopoints" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_photopoints"
@@ -23,5 +30,22 @@
         android:name="edu.cascadia.mobas.photopoints.ui.map.MapFragment"
         android:label="@string/menu_map"
         tools:layout="@layout/fragment_map" />
+
+    <fragment
+        android:id="@+id/navigation_signin"
+        android:name="edu.cascadia.mobas.photopoints.ui.login.SignInFragment"
+        android:label="Sign In"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/action_navigation_signin_to_navigation_signup2"
+            app:destination="@id/navigation_signup"
+            app:popUpTo="@+id/navigation_signin" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_signup"
+        android:name="edu.cascadia.mobas.photopoints.ui.login.SignUpFragment"
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_sign_up"/>
 
 </navigation>
