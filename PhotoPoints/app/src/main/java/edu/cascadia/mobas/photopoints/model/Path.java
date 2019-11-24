@@ -1,15 +1,18 @@
 package edu.cascadia.mobas.photopoints.model;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import java.util.ArrayList;
+import java.util.List;
 import com.google.android.gms.maps.model.Dash;
 import com.google.android.gms.maps.model.Gap;
 import com.google.android.gms.maps.model.JointType;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.PatternItem;
 import com.google.android.gms.maps.model.PolylineOptions;
-import java.util.ArrayList;
-import java.util.List;
-import static edu.cascadia.mobas.photopoints.R.color.*;
+
 import edu.cascadia.mobas.photopoints.R;
 
 public class Path {
@@ -21,97 +24,73 @@ public class Path {
         MINOR_TRAIL         // 3 - path is a "hidden" trail, does not resemble a trail (required for some photopoints)
     }
 
-    private ArrayList<GeoCoordinate> mGeo;
-    private PathType mPathType = PathType.UNKNOWN_TYPE;
-    private String mLabel = "";
-    private int lineColor=0;
+    private ArrayList<GeoCoordinate> mGeo;    // sequential list of coordinates
+    private PathType mPathType;               // enumerated path type
+    private String mLabel = "";               // label for path
 
     // Constructor chain
+    // Path(String pathId, String label, List<GeoCoordinates> geos, PathType type)
 
-    public Path() {
-        mGeo = new ArrayList<GeoCoordinate>();
-    }
+    public Path() { mGeo = new ArrayList<GeoCoordinate>(); mPathType = PathType.UNKNOWN_TYPE; }
 
-    public Path(PathType type) {
-        this();
-        mPathType = type;
-    }
+    public Path(PathType type) { this(); mPathType = type; }
 
-    public Path(String label) {
-        this();
-        mLabel = label;
-    }
+    public Path(@NonNull String label) {  this(); mLabel = label; }
 
-    public Path(@NonNull List<GeoCoordinate> geos) {
-        this();
-        mGeo.addAll(geos);
-    }
+    public Path(@NonNull List<GeoCoordinate> geos) { this(); mGeo.addAll(geos); }
 
-    public Path(String label, PathType type) {
-        this(type);
-        mLabel = label;
-    }
+    public Path(@NonNull String label, PathType type) { this(type); mLabel = label; }
 
-    public Path(@NonNull List<GeoCoordinate> geos, PathType type) {
-        this(geos);
-        mPathType = type;
-    }
+    public Path(@NonNull List<GeoCoordinate> geos, PathType type) { this(geos); mPathType = type; }
 
-    public Path(String label, @NonNull List<GeoCoordinate> geos, PathType type) {
+    public Path(@NonNull String label, @NonNull List<GeoCoordinate> geos, PathType type) {
         this(geos, type);
         mLabel = label;
     }
+
 
     // extends path with a single coordinate
     public void addToPath(@NonNull GeoCoordinate geo) {
         if (geo.isValid()) mGeo.add(geo);
     }
 
+
     // Adds a list of GeoCoordinates to the path
     public void addToPath(@NonNull List<GeoCoordinate> geos) {
-
         mGeo.addAll(geos);
     }
+
 
     // Return Path as ArrayList of LatLng items
     public List<LatLng> getLatLngList() {
         ArrayList<LatLng> latLngList = new ArrayList<>();
         for (GeoCoordinate geo : mGeo) {
-            latLngList.add(new LatLng(geo.getLatitude(), geo.getLongitude()));
+            latLngList.add(new LatLng(geo.latitude(), geo.longitude()));
         }
         return latLngList;
     }
 
-    // Returns a copy of the Geocoordinates List
+
+    // Returns a reference of the Geocoordinates List
     public List<GeoCoordinate> getGeoCoordinates() {
-        ArrayList<GeoCoordinate> geoList = new ArrayList<GeoCoordinate>();
-        for (GeoCoordinate geo : mGeo) {
-            geoList.add(new GeoCoordinate(geo.getLatitude(), geo.getLongitude()));
-        }
-        return geoList;
+        return mGeo;
     }
+
 
     // Return integer color value for path display on map
-    private int getLineColor() {
+    private int getLineColor(Context context) {
         int color;
         switch (this.mPathType) {
-            /*
-            case CREEK: color = 11197183; break;
-            case TRAIL: color = 16773807; break;
-            case MINOR_TRAIL: color = 16773807; break;
-            default: color = 16773807;
-*/
-
-            case CREEK: color = edu.cascadia.mobas.photopoints.R.color.ColorPathCreek; break;
-            case TRAIL: color = edu.cascadia.mobas.photopoints.R.color.ColorPathTrail; break;
-            case MINOR_TRAIL: color = edu.cascadia.mobas.photopoints.R.color.ColorPathMinorTrail; break;
-            default: color = edu.cascadia.mobas.photopoints.R.color.ColorPathDefault; break;
+            case CREEK: color = ContextCompat.getColor(context, R.color.ColorPathCreek); break;
+            case TRAIL: color = ContextCompat.getColor(context, R.color.ColorPathTrail); break;
+            case MINOR_TRAIL: color = ContextCompat.getColor(context, R.color.ColorPathMinorTrail); break;
+            default: color = ContextCompat.getColor(context, R.color.ColorPathDefault); break;
         }
-        //return color;
-        return -400201;   // no context available to access any information in res, always black
+        return color;
     }
 
-    // Return line pattern for for path display on map
+
+    // Return a line pattern for for path display on map
     private List<PatternItem> getLinePattern() {
         switch(this.mPathType) {
             case MINOR_TRAIL:
@@ -123,12 +102,14 @@ public class Path {
         }
     }
 
+
     // returns path as Google Maps polyline
-    public PolylineOptions getPolylineOptions () {
+    public PolylineOptions getPolylineOptions (Context context) {
         return new PolylineOptions()
                 .addAll(getLatLngList())
                 .jointType(JointType.ROUND)
-                .color(getLineColor())
-                .pattern(getLinePattern());
+                .pattern(getLinePattern())
+                .color(getLineColor(context)
+                );
     }
 }
