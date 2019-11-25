@@ -18,6 +18,10 @@ public class UserRepository {
     }
 
     private User map(DBUser dbUser){
+        if (dbUser == null){
+            return null;
+        }
+
         return new User(dbUser.getFirstName(), dbUser.getLastName(), dbUser.getDateOfBirth(), dbUser.getEmailAddress());
     }
 }
