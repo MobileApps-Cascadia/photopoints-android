@@ -11,7 +11,7 @@ import edu.cascadia.mobas.photopoints.model.Plant;
 
 public final class SampleData {
     public static void addSamplePlants(Map<String, Plant> repo, String plantIDs) {
-        String [] id = plantIDs.split(",");
+        String [] id = plantIDs.replaceAll(" ", "").split(",");
         for (int i = 1; i < id.length; i++) {
             switch (id[i]) {
                 case "plant001": repo.put("plant001", new Plant("point001", "D. firii", "Douglas Fir", "The douglas fir is an evergreen.")); break;
@@ -29,7 +29,7 @@ public final class SampleData {
 
 
     public static void addSamplePhotoPoints(List<PhotoPoint> repo, String photoPointIDs) {
-     String [] id = photoPointIDs.split(",");
+     String [] id = photoPointIDs.replaceAll(" ","").split(",");
          for (int i = 1; i < id.length; i++) {
             switch (id[i]) {
                 case "point001": repo.add(new PhotoPoint("point001", 47.776013, -122.192043, PhotoPoint.PhotoPointType.Plant)); break;
@@ -49,7 +49,7 @@ public final class SampleData {
 
 
     public static void addSamplePaths(Map<String, Path> repo, String pathIDs) {
-        String [] id = pathIDs.split(",");
+        String [] id = pathIDs.replaceAll(" ", "").split(",");
         for (int i = 1; i < id.length; i++) {
             switch (id[i]) {
                 case "path001": repo.put("path001", new Path("path001", geoPath1(), Path.PathType.TRAIL)); break;
