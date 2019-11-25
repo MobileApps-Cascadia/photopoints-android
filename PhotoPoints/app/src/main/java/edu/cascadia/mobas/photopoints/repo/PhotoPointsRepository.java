@@ -40,19 +40,10 @@ public class PhotoPointsRepository implements Repository<PhotoPoint> {
 
     //TODO: Add data to database and replace getAll() by this method.
     public List<PhotoPoint> getAllFromDB() {
-
-        try{
-
-            return map(PhotoPointsDatabase.getAppDatabase(mContext).photoPointDao().getPhotoPoints());
-        }
-        catch(Exception ex){
-            int l = 1;
-        }
-
-        return null;
-
+        return map(PhotoPointsDatabase.getAppDatabase(mContext).photoPointDao().getPhotoPoints());
     }
 
+    //TODO: Investigate mapper libraries that can help us remove this boilerplate code.
     //Mapper to return a list of PhotoPoints mapped from the DBModel.
     private List<PhotoPoint> map(List<DBPhotoPoint> dbPoints) {
 
