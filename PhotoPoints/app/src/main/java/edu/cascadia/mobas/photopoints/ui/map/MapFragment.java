@@ -2,6 +2,7 @@ package edu.cascadia.mobas.photopoints.ui.map;
 
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +25,10 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import java.lang.ref.WeakReference;
+import java.util.List;
+
 import edu.cascadia.mobas.photopoints.R;
 import edu.cascadia.mobas.photopoints.model.PhotoPoint;
 import edu.cascadia.mobas.photopoints.repo.PhotoPointsRepository;
@@ -70,6 +75,9 @@ public class MapFragment extends Fragment {
         });
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+
+        //Example of how the task is called.
+        new PhotoPointAsyncTask(this).execute();
 
         return root;
     }
@@ -205,6 +213,26 @@ public class MapFragment extends Fragment {
                     mLocationPermissionGranted = true;
                 }
             }
+        }
+    }
+
+    //Example for how the AsyncTask should be implemented.
+    public static class PhotoPointAsyncTask extends AsyncTask<PhotoPoint, Void, List<PhotoPoint>>{
+
+        WeakReference<Fragment> mFragment;
+
+        public PhotoPointAsyncTask(Fragment frag){
+            mFragment = new WeakReference<>(frag);
+        }
+
+        @Override
+        protected void onPostExecute(List<PhotoPoint> photoPoint) {
+            super.onPostExecute(photoPoint);
+        }
+
+        @Override
+        protected List<PhotoPoint> doInBackground(PhotoPoint... PhotoPoint) {
+            return new PhotoPointsRepository().getAll(mFragment.get().getContext());
         }
     }
 }

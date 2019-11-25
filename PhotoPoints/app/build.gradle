@@ -36,4 +36,8 @@ dependencies {
     //Google maps play services
     implementation "com.google.android.gms:play-services-maps:$rootProject.ext.playServicesVersion"
     implementation "com.google.android.gms:play-services-location:$rootProject.ext.playServicesVersion"
+
+    //Room Version
+    implementation "androidx.room:room-runtime:$rootProject.ext.roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$rootProject.ext.roomVersion"
 }
