@@ -7,8 +7,14 @@ import edu.cascadia.mobas.photopoints.model.User;
 
 public class UserRepository {
 
-    public User getCurrentUser(Context context) {
-        return map(PhotoPointsDatabase.getAppDatabase(context).userDao().getCurrentUser());
+    private Context mContext;
+
+    public UserRepository(Context context){
+        mContext = context;
+    }
+
+    public User getCurrentUser() {
+        return map(PhotoPointsDatabase.getAppDatabase(mContext).userDao().getCurrentUser());
     }
 
     private User map(DBUser dbUser){

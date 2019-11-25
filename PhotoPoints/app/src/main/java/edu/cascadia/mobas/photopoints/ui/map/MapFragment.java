@@ -35,7 +35,7 @@ import edu.cascadia.mobas.photopoints.repo.PhotoPointsRepository;
 
 public class MapFragment extends Fragment {
 
-    PhotoPointsRepository repo = new PhotoPointsRepository();
+    private PhotoPointsRepository repo;
     private String TAG = "PHOTOPOINTS_MAP";
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private boolean mLocationPermissionGranted;
@@ -49,6 +49,7 @@ public class MapFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_map, container, false);
+        repo = new PhotoPointsRepository(getContext());
 
         getLocationPermission();
 
@@ -232,7 +233,8 @@ public class MapFragment extends Fragment {
 
         @Override
         protected List<PhotoPoint> doInBackground(PhotoPoint... PhotoPoint) {
-            return new PhotoPointsRepository().getAll(mFragment.get().getContext());
+            //TODO: Change call to getAll once we have data in database.
+            return new PhotoPointsRepository(mFragment.get().getContext()).getAllFromDB();
         }
     }
 }

@@ -23,6 +23,12 @@ public class PhotoPointsRepository implements Repository<PhotoPoint> {
         add(new PhotoPoint("Plant0009", 47.775886, -122.192635, PhotoPoint.PhotoPointType.Plant));
     }};
 
+    private Context mContext;
+
+    public PhotoPointsRepository(Context context){
+        mContext = context;
+    }
+
     @Override
     public List<PhotoPoint> getAll() {
         return mPhotoPoints;
@@ -32,11 +38,12 @@ public class PhotoPointsRepository implements Repository<PhotoPoint> {
         return mPhotoPoints.size();
     }
 
-    public List<PhotoPoint> getAll(Context context) {
+    //TODO: Add data to database and replace getAll() by this method.
+    public List<PhotoPoint> getAllFromDB() {
 
         try{
 
-            return map(PhotoPointsDatabase.getAppDatabase(context).photoPointDao().getPhotoPoints());
+            return map(PhotoPointsDatabase.getAppDatabase(mContext).photoPointDao().getPhotoPoints());
         }
         catch(Exception ex){
             int l = 1;
