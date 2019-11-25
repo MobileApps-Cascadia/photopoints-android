@@ -20,7 +20,7 @@ public final class SampleData {
                 case "plant004": repo.put("plant004", new Plant("point004", "T. longicauditus", "Common Triops", "This plant has three eyes, lives in vernal pools, and is a voracious predator")); break;
                 case "plant005": repo.put("plant005", new Plant("point005", "M. bookpro", "Pricy Codethingy", "This plant is commonly found around creative types. A larger variant was recently discovered")); break;
                 case "plant006": repo.put("plant006", new Plant("plant006", "F. domesticus", "Cleo", "This plant likes overheat my computer by sitting on it")); break;
-                case "plant007": repo.put("plant007", new Plant( "plant007", "J. sparrow", "Pirate Jack", "This plant sails the seven seas")); break;
+                case "plant007": repo.put("plant007", new Plant("plant007", "J. sparrow", "Pirate Jack", "This plant sails the seven seas")); break;
                 case "plant008": repo.put("plant008", new Plant("plant008", "R. pi", "Raspberry Pi", "This plant packs a lot of power into a small space")); break;
                 case "plant009": repo.put("plant000", new Plant("plant009", "P. twoxl", "Pixel2XL", "This plant is rooted")); break;
             }
@@ -28,7 +28,7 @@ public final class SampleData {
     }
 
 
-    public static void addSamplePlants(List<PhotoPoint> repo, String photoPointIDs) {
+    public static void addSamplePhotoPoints(List<PhotoPoint> repo, String photoPointIDs) {
      String [] id = photoPointIDs.split(",");
          for (int i = 1; i < id.length; i++) {
             switch (id[i]) {
@@ -63,7 +63,7 @@ public final class SampleData {
     }
 
 
-    
+
 
 
 
