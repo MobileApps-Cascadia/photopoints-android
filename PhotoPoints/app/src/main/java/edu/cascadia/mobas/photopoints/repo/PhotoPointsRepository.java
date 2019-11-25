@@ -7,12 +7,12 @@ import edu.cascadia.mobas.photopoints.model.PhotoPoint;
 
 public class PhotoPointsRepository implements Repository<PhotoPoint> {
 
-
+    // repository data store
     private static List<PhotoPoint> mPhotoPoints = new ArrayList<>();
 
 
     // constructors
-    PhotoPointsRepository() {
+    public PhotoPointsRepository() {
         // Add a selection of sample data to the repo
         SampleData.addSamplePhotoPoints(
                 mPhotoPoints,
