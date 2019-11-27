@@ -36,4 +36,7 @@ dependencies {
     //Google maps play services
     implementation "com.google.android.gms:play-services-maps:$rootProject.ext.playServicesVersion"
     implementation "com.google.android.gms:play-services-location:$rootProject.ext.playServicesVersion"
+
+    //Google vision. Used for barcode scanner.
+    implementation "com.google.android.gms:play-services-vision:$rootProject.ext.googleVisionVersion"
 }

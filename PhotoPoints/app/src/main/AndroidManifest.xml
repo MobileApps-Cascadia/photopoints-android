@@ -4,6 +4,8 @@
 
     <!-- Asks the user for location permissions-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- Asks the user for camera permissions-->
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
