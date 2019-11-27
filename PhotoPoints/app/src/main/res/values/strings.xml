@@ -1,4 +1,5 @@
 <resources>
+    <!-- Application -->
     <string name="app_name">PhotoPoints</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,10 +8,12 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Menu Tabs-->
     <string name="menu_scan">Scan</string>
     <string name="menu_photopoints">PhotoPoints</string>
     <string name="menu_map">Map</string>
 
+    <!-- User Account -->
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="first_name">First name</string>
