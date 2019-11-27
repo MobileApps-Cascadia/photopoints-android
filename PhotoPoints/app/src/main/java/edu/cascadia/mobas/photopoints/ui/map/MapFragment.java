@@ -24,13 +24,22 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import java.util.List;
+
 import edu.cascadia.mobas.photopoints.R;
+import edu.cascadia.mobas.photopoints.model.Path;
 import edu.cascadia.mobas.photopoints.model.PhotoPoint;
+import edu.cascadia.mobas.photopoints.repo.PathsRepository;
 import edu.cascadia.mobas.photopoints.repo.PhotoPointsRepository;
+
+
 
 public class MapFragment extends Fragment {
 
-    PhotoPointsRepository repo = new PhotoPointsRepository();
+    PhotoPointsRepository repoPhotoPoints = new PhotoPointsRepository();
+    PathsRepository repoPaths = new PathsRepository();
+
     private String TAG = "PHOTOPOINTS_MAP";
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private boolean mLocationPermissionGranted;
@@ -63,7 +72,7 @@ public class MapFragment extends Fragment {
                 if(googleMap== null){
                     return;
                 }
-
+                googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
                 updateLocationUI(googleMap);
                 setMapMarkersAndPaths(googleMap);
             }
@@ -136,40 +145,23 @@ public class MapFragment extends Fragment {
     *In the end, it zooms in on the North Creek Forest.
      */
     private void setMapMarkersAndPaths(GoogleMap map){
+
         try {
             //Create options with dot icon.
             MarkerOptions options = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.mipmap.dot));
 
-            //The line that is drawn between points to create a "path"
-            //Store the latlongs of the points
-            LatLng[] latLongs = new LatLng[repo.count()];
 
-            int counter = 0;
-            for(PhotoPoint point : repo.getAll()){
-                latLongs[counter] = point.getLatLng();
-                counter++;
+            // Place markers for all the PhotoPoints on the map
+            for(PhotoPoint point : repoPhotoPoints.getAll()){
+                map.addMarker(options.position(point.getLatLng()));
             }
 
-            //Create the options with these latlons.
-            PolylineOptions lineOptions = new PolylineOptions()
-                    .clickable(false)
-                    .add(latLongs)
-                    //Set the color to beige.
-                    .color(ContextCompat.getColor(getContext(), R.color.mapsPath));
-
-            //Add the poly lines.
-            map.addPolyline(lineOptions);
-
-            //map these latlons
-            for(int i = 0; i < latLongs.length; i++){
-                map.addMarker(options.position(latLongs[i]));
+            // Draw all the paths on the map
+            List<Path> paths = repoPaths.getAll();
+            for (Path p : paths) {
+                map.addPolyline(p.getPolylineOptions(getContext()));
             }
-
-            //Add an additional marker to connect the final point to the second point in the array to create a circle.
-            map.addMarker(options.position(latLongs[1]));
-
-            //Zoom in on area.
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLongs[0], 15.8f));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(47.77509422, -122.19170793), 18.8f));
         }
         catch(Exception ex){
             Log.d(TAG, ex.getMessage());
@@ -208,3 +200,34 @@ public class MapFragment extends Fragment {
         }
     }
 }
+
+
+
+            /*  ORIGINAL CODE
+
+            //Create the options with these latlons.
+            PolylineOptions lineOptions = new PolylineOptions()
+                    .clickable(false)
+                    .add(latLongs)
+                    //Set the color to beige.
+                    .color(ContextCompat.getColor(getContext(), R.color.ColorPathDefault));
+
+            //Add the poly lines.
+            map.addPolyline(lineOptions);
+
+            //map these latlons
+            for(int i = 0; i < latLongs.length; i++){
+                map.addMarker(options.position(latLongs[i]));
+            }
+
+            //Add an additional marker to connect the final point to the second point in the array to create a circle.
+            map.addMarker(options.position(latLongs[1]));
+
+
+
+
+
+            //Zoom in on area.
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLongs[0], 15.8f));
+
+        */

@@ -4,5 +4,12 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="fragmentBackground">#ffffff</color>
-    <color name="mapsPath">#F9E4B7</color>
+
+
+    <!-- PATH COLORS -->
+    <color name="ColorPathDefault">#F9E4B7</color>
+    <color name="ColorPathTrail">#fff2af</color>
+    <color name="ColorPathMinorTrail">#fff2af</color>
+    <color name="ColorPathCreek">#aadaff</color>
+
 </resources>
