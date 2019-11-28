@@ -8,7 +8,7 @@ import java.util.List;
 // Information class for a species of plant
 
 public class Plant {
-    private String mPlantId;           // Identifier for plant species
+    private int mPlantId;           // Identifier for plant species
     private String mSpecies;           // Name of species (ex Mangocatus longii)
     private String mDescription;       // Full description of species
     private List<String> mCommonNames; // List of common names for plant.  First added is main.
@@ -20,7 +20,7 @@ public class Plant {
     private Plant() {}
 
     // Minimum constructor requires plantId and species
-    public Plant(@NonNull String plantId, @NonNull String species) {
+    public Plant(@NonNull int plantId, @NonNull String species) {
         mPlantId = plantId;
         mSpecies = species;
         mDescription = "";   // null safety
@@ -28,18 +28,19 @@ public class Plant {
         mImageURIs = new ArrayList<String>();
     }
 
-    public Plant(@NonNull String plantId, @NonNull String species, String commonName) {
+    public Plant(@NonNull int plantId, @NonNull String species, String commonName) {
         this(plantId, species);
         mCommonNames.add(commonName);
     }
 
-    public Plant(@NonNull String plantId, @NonNull String species, String commonName, String description) {
+    public Plant(@NonNull int plantId, @NonNull String species, String commonName, String description) {
         this(plantId, species, commonName);
         mDescription = description;
     }
 
+    //<editor-fold desc="Getters and Setters">
     // Unique identifier for this plant
-    public String getPlantId() {
+    public int getPlantId() {
         return mPlantId;
     }
 
@@ -119,4 +120,5 @@ public class Plant {
             mImageURIs.add(0, uri);
         }
     }
+    //</editor-fold>
 }
