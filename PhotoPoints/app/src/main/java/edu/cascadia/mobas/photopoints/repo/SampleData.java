@@ -32,15 +32,15 @@ public final class SampleData {
      String [] id = photoPointIDs.replaceAll(" ","").split(",");
          for (int i = 1; i < id.length; i++) {
             switch (id[i]) {
-                case "point001": repo.add(new PhotoPoint("point001", 47.776013, -122.192043, PhotoPoint.PhotoPointType.Plant)); break;
-                case "point002": repo.add(new PhotoPoint("point002", 47.775886, -122.192635, PhotoPoint.PhotoPointType.Plant)); break;
-                case "point003": repo.add(new PhotoPoint("point003", 47.776013, -122.193909, PhotoPoint.PhotoPointType.Plant)); break;
-                case "point004": repo.add(new PhotoPoint("point004", 47.775241, -122.195866, PhotoPoint.PhotoPointType.Plant)); break;
-                case "point005": repo.add(new PhotoPoint("point005", 47.774999, -122.195243, PhotoPoint.PhotoPointType.Plant)); break;
-                case "point006": repo.add(new PhotoPoint("point006", 47.774484, -122.195694, PhotoPoint.PhotoPointType.Plant)); break;
-                case "point007": repo.add(new PhotoPoint("point007", 47.773701, -122.194359, PhotoPoint.PhotoPointType.Plant)); break;
-                case "point008": repo.add(new PhotoPoint("point008", 47.774150, -122.192456, PhotoPoint.PhotoPointType.Plant)); break;
-                case "point009": repo.add(new PhotoPoint("point009", 47.775886, -122.192635, PhotoPoint.PhotoPointType.Plant)); break;
+                case "point001": repo.add(new PhotoPoint("point001", 47.776013, -122.192043, PhotoPoint.PhotoPointType.Plant, "point001")); break;
+                case "point002": repo.add(new PhotoPoint("point002", 47.775886, -122.192635, PhotoPoint.PhotoPointType.Plant, "point002")); break;
+                case "point003": repo.add(new PhotoPoint("point003", 47.776013, -122.193909, PhotoPoint.PhotoPointType.Plant, "point003")); break;
+                case "point004": repo.add(new PhotoPoint("point004", 47.775241, -122.195866, PhotoPoint.PhotoPointType.Plant, "point004")); break;
+                case "point005": repo.add(new PhotoPoint("point005", 47.774999, -122.195243, PhotoPoint.PhotoPointType.Plant, "point005")); break;
+                case "point006": repo.add(new PhotoPoint("point006", 47.774484, -122.195694, PhotoPoint.PhotoPointType.Plant, "point006")); break;
+                case "point007": repo.add(new PhotoPoint("point007", 47.773701, -122.194359, PhotoPoint.PhotoPointType.Plant, "point007")); break;
+                case "point008": repo.add(new PhotoPoint("point008", 47.774150, -122.192456, PhotoPoint.PhotoPointType.Plant, "point008")); break;
+                case "point009": repo.add(new PhotoPoint("point009", 47.775886, -122.192635, PhotoPoint.PhotoPointType.Plant, "point009")); break;
             }
         }
     }
