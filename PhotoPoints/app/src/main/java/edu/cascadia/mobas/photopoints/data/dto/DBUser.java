@@ -9,7 +9,11 @@ import java.util.Date;
 @Entity (tableName = "Users")
 public class DBUser {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo (name="UserID")
+    @NonNull
+    private int UserID;
+
     @ColumnInfo(name = "EmailAddress")
     @NonNull
     private String EmailAddress;
@@ -30,6 +34,10 @@ public class DBUser {
     public String getFirstName() {
         return FirstName;
     }
+
+    public int getUserID() { return UserID; }
+
+    public void setUserID(int userID) { UserID = userID; }
 
     public String getLastName() {
         return LastName;
