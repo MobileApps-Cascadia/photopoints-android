@@ -14,11 +14,11 @@ public interface PlantDao {
     List<DBPlant> getPlants();
 
     @Insert
-    void insert(DBPlant user);
+    void insert(DBPlant plant);
 
     @Delete
-    void delete(DBPlant user);
+    void delete(DBPlant plant);
 
     @Update
-    void update(DBPlant user);
+    void update(DBPlant plant);
 }
