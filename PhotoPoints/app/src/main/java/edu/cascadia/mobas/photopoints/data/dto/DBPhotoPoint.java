@@ -8,10 +8,13 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "PhotoPoints")
 public class DBPhotoPoint {
 
-    @PrimaryKey ()
-    @NonNull
+    @PrimaryKey (autoGenerate = true)
     @ColumnInfo(name ="PhotoPointID")
-    private String PhotoPointID;
+    @NonNull
+    private int PhotoPointID;
+
+    @ColumnInfo(name = "QRCode")
+    private String QRCode;
 
     @ColumnInfo(name ="Latitude")
     private Double Latitude;
@@ -22,7 +25,7 @@ public class DBPhotoPoint {
     @ColumnInfo(name = "PhotoPointType")
     private int PhotoPointType;
 
-    public String getPhotoPointID() {
+    public int getPhotoPointID() {
         return PhotoPointID;
     }
 
@@ -38,7 +41,11 @@ public class DBPhotoPoint {
         return PhotoPointType;
     }
 
-    public void setPhotoPointID(String photoPointID) {
+    public String getQRCode() { return QRCode; }
+
+    public void setQRCode(String QRCode) { this.QRCode = QRCode; }
+
+    public void setPhotoPointID(int photoPointID) {
         PhotoPointID = photoPointID;
     }
 

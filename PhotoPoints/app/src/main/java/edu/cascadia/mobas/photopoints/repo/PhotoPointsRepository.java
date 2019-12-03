@@ -4,7 +4,6 @@ import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import edu.cascadia.mobas.photopoints.data.PhotoPointsDatabase;
 import edu.cascadia.mobas.photopoints.data.dto.DBPhotoPoint;
 import edu.cascadia.mobas.photopoints.model.PhotoPoint;
@@ -17,12 +16,10 @@ public class PhotoPointsRepository implements Repository<PhotoPoint> {
 
     // constructors
     public PhotoPointsRepository() {
-        // Add a selection of sample data to the repo
-        SampleData.addSamplePhotoPoints(
-                mPhotoPoints,
-                "point001,point002,point003,point004,point005,point006,"
-                + "point007,point008,point009"
-        );
+        //Check if the list is empty. If so, add dummy data.
+        if(mPhotoPoints.size() == 0){
+            SampleData.addSamplePhotoPoints(mPhotoPoints);
+        }
     }
 
     private Context mContext;
@@ -52,7 +49,7 @@ public class PhotoPointsRepository implements Repository<PhotoPoint> {
         List<PhotoPoint> points = new ArrayList<>();
 
         for(DBPhotoPoint point : dbPoints){
-            points.add(new PhotoPoint(point.getPhotoPointID(), point.getLatitude(), point.getLongitude(), point.getPhotoPointType()));
+            points.add(new PhotoPoint(point.getPhotoPointID(), point.getLatitude(), point.getLongitude(), point.getQRCode(), point.getPhotoPointType()));
         }
 
         return points;

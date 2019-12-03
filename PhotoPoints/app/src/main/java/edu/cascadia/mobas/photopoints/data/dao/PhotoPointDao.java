@@ -12,7 +12,7 @@ import edu.cascadia.mobas.photopoints.data.dto.DBPhotoPoint;
 @Dao
 public interface PhotoPointDao {
 
-    @Query("Select PhotoPointID, PhotoPointType, Latitude, Longitude FROM PhotoPoints")
+    @Query("Select PhotoPointID, PhotoPointType, Latitude, Longitude, QRCode FROM PhotoPoints")
     List<DBPhotoPoint> getPhotoPoints();
 
     @Insert

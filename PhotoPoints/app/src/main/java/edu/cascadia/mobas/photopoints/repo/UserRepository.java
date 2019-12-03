@@ -22,6 +22,6 @@ public class UserRepository {
             return null;
         }
 
-        return new User(dbUser.getFirstName(), dbUser.getLastName(), dbUser.getDateOfBirth(), dbUser.getEmailAddress());
+        return new User(dbUser.getUserID(), dbUser.getFirstName(), dbUser.getLastName(), dbUser.getDateOfBirth(), dbUser.getEmailAddress());
     }
 }

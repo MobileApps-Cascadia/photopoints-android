@@ -9,28 +9,40 @@ public class PhotoPoint {
         Plant  //1
     }
 
-    private String mPhotoPointID;
+    private int mPhotoPointID;
     private Double mLatitude;
     private Double mLongitude;
     private PhotoPointType mPhotoPointType;
     private String mQRCode;
 
-    public PhotoPoint(String photoPointID, Double latitude, Double longitude){
+    public PhotoPoint(int photoPointID, Double latitude, Double longitude){
         this.mPhotoPointID = photoPointID;
         this.mLatitude = latitude;
         this.mLongitude = longitude;
     }
 
-    public PhotoPoint(String photoPointID, Double latitude, Double longitude, PhotoPointType mPhotoPointType, String qrCode) {
-        this(photoPointID, latitude, longitude, mPhotoPointType);
-        mQRCode = qrCode;
+    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode){
+        this(photoPointID, latitude, longitude);
+        this.mQRCode = qrCode;
     }
 
-    public String getPhotoPointID() {
+    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode, PhotoPointType mPhotoPointType) {
+        this(photoPointID, latitude, longitude, qrCode);
+        this.mPhotoPointType = mPhotoPointType;
+    }
+
+    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode, int photoPointType) {
+        this(photoPointID, latitude, longitude, qrCode);
+        this.mPhotoPointType = PhotoPointType.values()[photoPointType];
+    }
+
+    //<editor-fold desc="Getters and setters">
+
+    public int getPhotoPointID() {
         return mPhotoPointID;
     }
 
-    public void setPhotoPointID(String photoPointID) {
+    public void setPhotoPointID(int photoPointID) {
         this.mPhotoPointID = photoPointID;
     }
 
@@ -46,7 +58,7 @@ public class PhotoPoint {
         return mLongitude;
     }
 
-    public void setmLongitude(Double longitude) {
+    public void setLongitude(Double longitude) {
         this.mLongitude = longitude;
     }
 
@@ -54,18 +66,21 @@ public class PhotoPoint {
         return mPhotoPointType;
     }
 
-    public PhotoPoint(String photoPointID, Double latitude, Double longitude, PhotoPointType photoPointType) {
-        this(photoPointID, latitude, longitude);
+    public void setPhotoPointType(PhotoPointType photoPointType) {
         this.mPhotoPointType = photoPointType;
     }
 
-    public PhotoPoint(String photoPointID, Double latitude, Double longitude, int photoPointType) {
-        this(photoPointID, latitude, longitude);
-        this.mPhotoPointType = PhotoPointType.values()[photoPointType];
+    public String getQRCode() {
+        return mQRCode;
+    }
+
+    public void setQRCode(String QRCode) {
+        this.mQRCode = QRCode;
     }
 
     public LatLng getLatLng(){
         return new LatLng(mLatitude, mLongitude);
     }
 
+    //</editor-fold>
 }

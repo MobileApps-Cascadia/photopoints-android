@@ -10,39 +10,28 @@ import edu.cascadia.mobas.photopoints.model.PhotoPoint;
 import edu.cascadia.mobas.photopoints.model.Plant;
 
 public final class SampleData {
-    public static void addSamplePlants(Map<String, Plant> repo, String plantIDs) {
-        String [] id = plantIDs.replaceAll(" ", "").split(",");
-        for (int i = 1; i < id.length; i++) {
-            switch (id[i]) {
-                case "plant001": repo.put("plant001", new Plant("point001", "D. firii", "Douglas Fir", "The douglas fir is an evergreen.")); break;
-                case "plant002": repo.put("plant002", new Plant("point002", "O. berii", "Snowberry", "This plant is shrubby")); break;
-                case "plant003": repo.put("plant003", new Plant("point003", "J. leno", "Lenochin", "This plant isn't as funny as it sounds"));break;
-                case "plant004": repo.put("plant004", new Plant("point004", "T. longicauditus", "Common Triops", "This plant has three eyes, lives in vernal pools, and is a voracious predator")); break;
-                case "plant005": repo.put("plant005", new Plant("point005", "M. bookpro", "Pricy Codethingy", "This plant is commonly found around creative types. A larger variant was recently discovered")); break;
-                case "plant006": repo.put("plant006", new Plant("plant006", "F. domesticus", "Cleo", "This plant likes overheat my computer by sitting on it")); break;
-                case "plant007": repo.put("plant007", new Plant("plant007", "J. sparrow", "Pirate Jack", "This plant sails the seven seas")); break;
-                case "plant008": repo.put("plant008", new Plant("plant008", "R. pi", "Raspberry Pi", "This plant packs a lot of power into a small space")); break;
-                case "plant009": repo.put("plant000", new Plant("plant009", "P. twoxl", "Pixel2XL", "This plant is rooted")); break;
-            }
-        }
+    public static void addSamplePlants(Map<Integer, Plant> repo) {
+        repo.put(1, new Plant(1, "D. firii", "Douglas Fir", "The douglas fir is an evergreen."));
+        repo.put(2, new Plant(2, "O. berii", "Snowberry", "This plant is shrubby"));
+        repo.put(3, new Plant(3, "J. leno", "Lenochin", "This plant isn't as funny as it sounds"));
+        repo.put(4, new Plant(4, "T. longicauditus", "Common Triops", "This plant has three eyes, lives in vernal pools, and is a voracious predator"));
+        repo.put(5, new Plant(5, "M. bookpro", "Pricy Codethingy", "This plant is commonly found around creative types. A larger variant was recently discovered"));
+        repo.put(6, new Plant(6, "F. domesticus", "Cleo", "This plant likes overheat my computer by sitting on it"));
+        repo.put(7, new Plant(7, "J. sparrow", "Pirate Jack", "This plant sails the seven seas"));
+        repo.put(8, new Plant(8, "R. pi", "Raspberry Pi", "This plant packs a lot of power into a small space"));
+        repo.put(9, new Plant(9, "P. twoxl", "Pixel2XL", "This plant is rooted"));
     }
 
-
-    public static void addSamplePhotoPoints(List<PhotoPoint> repo, String photoPointIDs) {
-     String [] id = photoPointIDs.replaceAll(" ","").split(",");
-         for (int i = 1; i < id.length; i++) {
-            switch (id[i]) {
-                case "point001": repo.add(new PhotoPoint("point001", 47.776013, -122.192043, PhotoPoint.PhotoPointType.Plant, "point001")); break;
-                case "point002": repo.add(new PhotoPoint("point002", 47.775886, -122.192635, PhotoPoint.PhotoPointType.Plant, "point002")); break;
-                case "point003": repo.add(new PhotoPoint("point003", 47.776013, -122.193909, PhotoPoint.PhotoPointType.Plant, "point003")); break;
-                case "point004": repo.add(new PhotoPoint("point004", 47.775241, -122.195866, PhotoPoint.PhotoPointType.Plant, "point004")); break;
-                case "point005": repo.add(new PhotoPoint("point005", 47.774999, -122.195243, PhotoPoint.PhotoPointType.Plant, "point005")); break;
-                case "point006": repo.add(new PhotoPoint("point006", 47.774484, -122.195694, PhotoPoint.PhotoPointType.Plant, "point006")); break;
-                case "point007": repo.add(new PhotoPoint("point007", 47.773701, -122.194359, PhotoPoint.PhotoPointType.Plant, "point007")); break;
-                case "point008": repo.add(new PhotoPoint("point008", 47.774150, -122.192456, PhotoPoint.PhotoPointType.Plant, "point008")); break;
-                case "point009": repo.add(new PhotoPoint("point009", 47.775886, -122.192635, PhotoPoint.PhotoPointType.Plant, "point009")); break;
-            }
-        }
+    public static void addSamplePhotoPoints(List<PhotoPoint> repo) {
+        repo.add(new PhotoPoint(1, 47.776013, -122.192043, "point001", PhotoPoint.PhotoPointType.Plant));
+        repo.add(new PhotoPoint(2, 47.775886, -122.192635, "point002", PhotoPoint.PhotoPointType.Plant));
+        repo.add(new PhotoPoint(3, 47.776013, -122.193909, "point003", PhotoPoint.PhotoPointType.Plant));
+        repo.add(new PhotoPoint(4, 47.775241, -122.195866, "point004", PhotoPoint.PhotoPointType.Plant));
+        repo.add(new PhotoPoint(5, 47.774999, -122.195243, "point005", PhotoPoint.PhotoPointType.Plant));
+        repo.add(new PhotoPoint(6, 47.774484, -122.195694, "point006", PhotoPoint.PhotoPointType.Plant));
+        repo.add(new PhotoPoint(7, 47.773701, -122.194359, "point007", PhotoPoint.PhotoPointType.Plant));
+        repo.add(new PhotoPoint(8, 47.774150, -122.192456, "point008", PhotoPoint.PhotoPointType.Plant));
+        repo.add(new PhotoPoint(9, 47.775886, -122.192635, "point009", PhotoPoint.PhotoPointType.Plant));
     }
 
 
@@ -274,7 +263,6 @@ public final class SampleData {
             }
         };
     }
-
     private static ArrayList<GeoCoordinate> geoPath3() {
         return new ArrayList<GeoCoordinate>() {
             {
@@ -338,7 +326,6 @@ public final class SampleData {
             }
         };
     }
-
     private static ArrayList<GeoCoordinate> geoPath4() {
         return new ArrayList<GeoCoordinate>() {
             {

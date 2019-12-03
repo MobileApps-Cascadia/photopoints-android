@@ -12,7 +12,7 @@ import edu.cascadia.mobas.photopoints.data.dto.DBUser;
 public interface UserDao {
 
     //We should only ever store one user, which is the user of the app.
-    @Query("Select FirstName, LastName, DateOfBirth, EmailAddress From Users LIMIT 1")
+    @Query("Select UserID, FirstName, LastName, DateOfBirth, EmailAddress From Users LIMIT 1")
     DBUser getCurrentUser();
 
     @Insert
