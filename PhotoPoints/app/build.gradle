@@ -40,4 +40,7 @@ dependencies {
     //Room Version
     implementation "androidx.room:room-runtime:$rootProject.ext.roomVersion"
     annotationProcessor "androidx.room:room-compiler:$rootProject.ext.roomVersion"
+
+    //Google vision. Used for barcode scanner.
+    implementation "com.google.android.gms:play-services-vision:$rootProject.ext.googleVisionVersion"
 }
