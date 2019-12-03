@@ -14,46 +14,24 @@ public class PhotoPoint {
     private Double mLongitude;
     private PhotoPointType mPhotoPointType;
 
-    public PhotoPoint(String photoPointID, Double latitude, Double longitude, PhotoPointType mPhotoPointType) {
+    public PhotoPoint(String photoPointID, Double latitude, Double longitude){
         this.mPhotoPointID = photoPointID;
         this.mLatitude = latitude;
         this.mLongitude = longitude;
-        this.mPhotoPointType = mPhotoPointType;
     }
 
-    public String getPhotoPointID() {
-        return mPhotoPointID;
-    }
-
-    public void setPhotoPointID(String photoPointID) {
-        this.mPhotoPointID = photoPointID;
-    }
-
-    public Double getLatitude() {
-        return mLatitude;
-    }
-
-    public void setLatitude(Double latitude) {
-        this.mLatitude = latitude;
-    }
-
-    public Double getLongitude() {
-        return mLongitude;
-    }
-
-    public void setmLongitude(Double longitude) {
-        this.mLongitude = longitude;
-    }
-
-    public PhotoPointType getPhotoPointType() {
-        return mPhotoPointType;
-    }
-
-    public void setPhotoPointType(PhotoPointType photoPointType) {
+    public PhotoPoint(String photoPointID, Double latitude, Double longitude, PhotoPointType photoPointType) {
+        this(photoPointID, latitude, longitude);
         this.mPhotoPointType = photoPointType;
+    }
+
+    public PhotoPoint(String photoPointID, Double latitude, Double longitude, int photoPointType) {
+        this(photoPointID, latitude, longitude);
+        this.mPhotoPointType = PhotoPointType.values()[photoPointType];
     }
 
     public LatLng getLatLng(){
         return new LatLng(mLatitude, mLongitude);
     }
+
 }
