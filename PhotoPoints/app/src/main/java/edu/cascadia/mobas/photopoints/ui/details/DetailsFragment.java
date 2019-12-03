@@ -29,7 +29,7 @@ public class DetailsFragment extends Fragment {
 
 
 
-        //Plant test = new Plant(text1, text2){
+        ///Plant test = new Plant(text1, text2){
 
         //};
 
