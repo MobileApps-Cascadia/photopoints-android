@@ -6,14 +6,16 @@ import androidx.lifecycle.ViewModel;
 
 public class ScanViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
+    private MutableLiveData<String> scannedValue;
 
-    public ScanViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is Scan fragment");
+    public MutableLiveData<String> getScannedValue() {
+        if (scannedValue == null) {
+            scannedValue = new MutableLiveData<String>();
+        }
+        return scannedValue;
     }
 
     public LiveData<String> getText() {
-        return mText;
+        return scannedValue;
     }
 }
