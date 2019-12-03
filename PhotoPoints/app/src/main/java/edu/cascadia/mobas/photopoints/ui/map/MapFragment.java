@@ -2,6 +2,7 @@ package edu.cascadia.mobas.photopoints.ui.map;
 
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,19 +22,15 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-
+import java.lang.ref.WeakReference;
 import java.util.List;
-
 import edu.cascadia.mobas.photopoints.R;
 import edu.cascadia.mobas.photopoints.model.Path;
 import edu.cascadia.mobas.photopoints.model.PhotoPoint;
 import edu.cascadia.mobas.photopoints.repo.PathsRepository;
 import edu.cascadia.mobas.photopoints.repo.PhotoPointsRepository;
-
-
 
 public class MapFragment extends Fragment {
 
@@ -53,6 +50,7 @@ public class MapFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_map, container, false);
+        repoPhotoPoints = new PhotoPointsRepository(getContext());
 
         getLocationPermission();
 
@@ -79,6 +77,9 @@ public class MapFragment extends Fragment {
         });
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+
+        //Example of how the task is called.
+        new PhotoPointAsyncTask(this).execute();
 
         return root;
     }
@@ -199,35 +200,25 @@ public class MapFragment extends Fragment {
             }
         }
     }
+
+    //Example for how the AsyncTask should be implemented.
+    public static class PhotoPointAsyncTask extends AsyncTask<PhotoPoint, Void, List<PhotoPoint>>{
+
+        WeakReference<Fragment> mFragment;
+
+        public PhotoPointAsyncTask(Fragment frag){
+            mFragment = new WeakReference<>(frag);
+        }
+
+        @Override
+        protected void onPostExecute(List<PhotoPoint> photoPoint) {
+            super.onPostExecute(photoPoint);
+        }
+
+        @Override
+        protected List<PhotoPoint> doInBackground(PhotoPoint... PhotoPoint) {
+            //TODO: Change call to getAll once we have data in database.
+            return new PhotoPointsRepository(mFragment.get().getContext()).getAllFromDB();
+        }
+    }
 }
-
-
-
-            /*  ORIGINAL CODE
-
-            //Create the options with these latlons.
-            PolylineOptions lineOptions = new PolylineOptions()
-                    .clickable(false)
-                    .add(latLongs)
-                    //Set the color to beige.
-                    .color(ContextCompat.getColor(getContext(), R.color.ColorPathDefault));
-
-            //Add the poly lines.
-            map.addPolyline(lineOptions);
-
-            //map these latlons
-            for(int i = 0; i < latLongs.length; i++){
-                map.addMarker(options.position(latLongs[i]));
-            }
-
-            //Add an additional marker to connect the final point to the second point in the array to create a circle.
-            map.addMarker(options.position(latLongs[1]));
-
-
-
-
-
-            //Zoom in on area.
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLongs[0], 15.8f));
-
-        */

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                    android:layout_marginBottom="25dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/text_photoPointName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="placeholder_PhotoPointName"
+                        android:textSize="22sp" />
+
+                    <TextView
+                        android:id="@+id/text_surveyData"
+                        style="@style/TextViewNormal"
+                        android:text="@string/survey_data" />
+
+                    <LinearLayout
+                        android:id="@+id/layout_surveyDetails"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="placeholder_sampleData" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/text_focusOn"
+                        style="@style/TextViewNormal"
+                        android:text="@string/picture_focus" />
+
+                    <LinearLayout
+                        android:id="@+id/layout_focusOn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="placeholder_sampleData" />
+
+                    </LinearLayout>
+
+                </LinearLayoutCompat>
+
+            </ScrollView>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_takePicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_margin="16dp"
+                app:srcCompat="@mipmap/add_photo"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_uploadData"
+                android:layout_width="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:srcCompat="@mipmap/cloud_upload"/>
+
+        </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

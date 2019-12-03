@@ -17,7 +17,18 @@
             app:destination="@id/navigation_signin"
             app:popUpTo="@+id/navigation_photopoints" />
 
+        <action
+            android:id="@+id/action_navigation_scan_to_navigation_uploadPhotoPointData"
+            app:destination="@id/navigation_uploadPhotoPointData"
+            app:popUpTo="@+id/navigation_photopoints"/>
+
     </fragment>
+
+    <fragment
+        android:id="@+id/navigation_uploadPhotoPointData"
+        android:name="edu.cascadia.mobas.photopoints.ui.upload.UploadPhotoPointDataFragment"
+        android:label="@string/menu_photopoints"
+        tools:layout="@layout/fragment_upload_photo_point_data" />
 
     <fragment
         android:id="@+id/navigation_photopoints"

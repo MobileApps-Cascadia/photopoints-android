@@ -15,36 +15,4 @@ public class User {
         this.mDateOfBirth = dateOfBirth;
         this.mEmailAddress = emailAddress;
     }
-
-    public String getFirstName() {
-        return mFirstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.mFirstName = firstName;
-    }
-
-    public String getLastName() {
-        return mLastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.mLastName = lastName;
-    }
-
-    public Date getDateOfBirth() {
-        return mDateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.mDateOfBirth = dateOfBirth;
-    }
-
-    public String getEmailAddress() {
-        return mEmailAddress;
-    }
-
-    public void setmEmailAddress(String emailAddress) {
-        this.mEmailAddress = emailAddress;
-    }
 }
