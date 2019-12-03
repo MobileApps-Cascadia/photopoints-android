@@ -17,6 +17,7 @@ buildscript {
         //https://developers.google.com/android/guides/setup
         playServicesVersion = '17.0.0'
         googleVisionVersion = '19.0.0'
+        roomVersion = '2.2.2'
     }
 }
 
