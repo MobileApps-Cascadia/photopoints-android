@@ -29,4 +29,10 @@
     <!-- Upload data -->
     <string name="survey_data">Survey Data</string>
     <string name="picture_focus">When taking pictures, focus on:</string>
+
+    <!-- Barcode Scanner -->
+    <string name="please_scan_qr_code">Please scan the QR Code.</string>
+    <string name="scan_result">Result: %s</string>
+    <string name="camera_start_error">Camera could not start. Please grant camera permissions.</string>
+
 </resources>

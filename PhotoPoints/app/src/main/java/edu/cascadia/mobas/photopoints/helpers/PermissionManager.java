@@ -2,6 +2,9 @@ package edu.cascadia.mobas.photopoints.helpers;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+
+import androidx.core.content.ContextCompat;
+
 import java.util.HashMap;
 
 /*
@@ -15,8 +18,6 @@ public class PermissionManager {
         FineLocation,   //0
         Camera   //1
     }
-
-    private Context context;
 
     private static HashMap<PermissionType, Boolean> permissions = new HashMap<>();
 
@@ -44,11 +45,21 @@ public class PermissionManager {
         }
     }
 
+    //Checks the permission in the app context.
+    //The user can change this while using the app so this should always be called on the creation of the activity.
+    public static boolean checkPermission(Context context, String permission, PermissionType permissionType){
+        boolean permissionGranted = ContextCompat.checkSelfPermission(context,permission) == PackageManager.PERMISSION_GRANTED;
+        setPermissions(permissionType, permissionGranted);
+        return permissionGranted;
+    }
+
+    //Sets the permission.
     public static void setPermissions(PermissionType type, boolean permissionReceived) {
         permissions.put(type, permissionReceived);
     }
 
-    public static boolean permissionGranted(PermissionType type){
+    //Returns the permissionresult for the user.
+    public static boolean permissionIsGranted(PermissionType type){
         return permissions.get(type);
     }
 }
