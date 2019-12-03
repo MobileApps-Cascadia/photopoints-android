@@ -17,10 +17,9 @@ import edu.cascadia.mobas.photopoints.R;
 import edu.cascadia.mobas.photopoints.model.Plant;
 
 public class DetailsFragment extends Fragment {
-    String text1;
-    String text2;
 
-    //Plant information fragment. TODO: use plant object to dynamically change text so we don't have to do that all by hand like plebs
+
+    //Plant information fragment. to do: use plant object to dynamically change text so we don't have to do that all by hand like plebs
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -30,9 +29,9 @@ public class DetailsFragment extends Fragment {
 
 
 
-        Plant test = new Plant(text1, text2){
+        //Plant test = new Plant(text1, text2){
 
-        };
+        //};
 
 
         return root;
