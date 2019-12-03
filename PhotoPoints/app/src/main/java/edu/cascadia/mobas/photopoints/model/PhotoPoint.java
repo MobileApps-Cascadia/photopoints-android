@@ -13,11 +13,45 @@ public class PhotoPoint {
     private Double mLatitude;
     private Double mLongitude;
     private PhotoPointType mPhotoPointType;
+    private String mQRCode;
 
     public PhotoPoint(String photoPointID, Double latitude, Double longitude){
         this.mPhotoPointID = photoPointID;
         this.mLatitude = latitude;
         this.mLongitude = longitude;
+    }
+
+    public PhotoPoint(String photoPointID, Double latitude, Double longitude, PhotoPointType mPhotoPointType, String qrCode) {
+        this(photoPointID, latitude, longitude, mPhotoPointType);
+        mQRCode = qrCode;
+    }
+
+    public String getPhotoPointID() {
+        return mPhotoPointID;
+    }
+
+    public void setPhotoPointID(String photoPointID) {
+        this.mPhotoPointID = photoPointID;
+    }
+
+    public Double getLatitude() {
+        return mLatitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.mLatitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return mLongitude;
+    }
+
+    public void setmLongitude(Double longitude) {
+        this.mLongitude = longitude;
+    }
+
+    public PhotoPointType getPhotoPointType() {
+        return mPhotoPointType;
     }
 
     public PhotoPoint(String photoPointID, Double latitude, Double longitude, PhotoPointType photoPointType) {
