@@ -16,8 +16,8 @@
         android:theme="@style/AppTheme">
         <!-- This lets maps know the version of Play Services that this app was compiled with.-->
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-        <!-- This adds the key and value of the google API for maps. This is my personal key so we should look at replacing this eventually-->
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCyiBxrBCJYCqZwgUBT0O0B7tC_7FqLc68"/>
+        <!-- This adds the key and value of the google API for maps.-->
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyAn-kN-Cn_xc4KEU07BxNELtFmRWS_9nTk8"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
