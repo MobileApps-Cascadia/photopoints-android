@@ -13,11 +13,6 @@
         tools:layout="@layout/fragment_scan" >
 
         <action
-            android:id="@+id/action_navigation_scan_to_navigation_signin2"
-            app:destination="@id/navigation_signin"
-            app:popUpTo="@+id/navigation_photopoints" />
-
-        <action
             android:id="@+id/action_navigation_scan_to_navigation_uploadPhotoPointData"
             app:destination="@id/navigation_uploadPhotoPointData"
             app:popUpTo="@+id/navigation_photopoints"/>

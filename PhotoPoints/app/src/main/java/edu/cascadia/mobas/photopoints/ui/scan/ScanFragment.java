@@ -16,8 +16,9 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
@@ -29,9 +30,6 @@ import edu.cascadia.mobas.photopoints.repo.PhotoPointsRepository;
 import edu.cascadia.mobas.photopoints.ui.upload.UploadPhotoPointDataFragment;
 
 public class ScanFragment extends Fragment {
-
-    //TODO: This will have to change to an authentication model. But for the primary prototyping purposes, this is semi-hardcoded.
-    private boolean mUserIsRegistered;
 
     private SurfaceView mSurfaceScanner;
     private TextView mTextScanResult;
@@ -55,24 +53,12 @@ public class ScanFragment extends Fragment {
         mSurfaceScanner = root.findViewById(R.id.surface_scanner);
         mTextScanResult = root.findViewById(R.id.text_scanResult);
 
-        //TODO: Cache user and check that property.
-        Bundle args = getArguments();
-        if (args != null){
-            mUserIsRegistered = args.getBoolean("Registered");
-        }
-
         return root;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        if(!mUserIsRegistered){
-            NavController nav = Navigation.findNavController(view);
-            nav.navigate(R.id.action_navigation_scan_to_navigation_signin2);
-            return;
-        }
 
         //Check if the user has granted permission to use the camera.
         //If we have permission, we start the camera. If not, we request permission.
