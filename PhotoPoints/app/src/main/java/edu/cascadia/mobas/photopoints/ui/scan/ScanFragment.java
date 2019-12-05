@@ -16,8 +16,6 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import com.google.android.gms.vision.CameraSource;
@@ -27,6 +25,8 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 import java.lang.ref.WeakReference;
 import edu.cascadia.mobas.photopoints.R;
 import edu.cascadia.mobas.photopoints.helpers.PermissionManager;
+import edu.cascadia.mobas.photopoints.repo.PhotoPointsRepository;
+import edu.cascadia.mobas.photopoints.ui.upload.UploadPhotoPointDataFragment;
 
 public class ScanFragment extends Fragment {
 
@@ -36,35 +36,24 @@ public class ScanFragment extends Fragment {
     private SurfaceView mSurfaceScanner;
     private TextView mTextScanResult;
     private CameraSource mCameraSource;
-    private ScanViewModel mScanViewModel;
 
-    private final String SCANNER_TAG = "SCANNER";
+    private static final String TAG = "SCANNER";
+
+    /*Another sucky part, so I am open to suggestions. This boolean is used to check if the scanner found a real QR Code and managed to navigate.
+    * This was my work-around to the issue of the AsyncTask being triggered multiple times (Scanner keeps on scanning even after having identified a QR Code).
+    * Because the scanner was triggered multiple times, the controller tried to navigate multiple times.
+    * Every task that passes after the first task would crash, because the controller would not exist anymore.
+    * */
+    private static Boolean mNavigated;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_scan, container, false);
+        mNavigated = false;
 
         mSurfaceScanner = root.findViewById(R.id.surface_scanner);
         mTextScanResult = root.findViewById(R.id.text_scanResult);
-
-        //Set the initial result to an empty string.
-        mTextScanResult.setText(String.format(getString(R.string.scan_result), ""));
-
-        //Set the viewmodel.
-        //I am currently working with a viewmodel to avoid passing the context I need to change the textfield.
-        mScanViewModel = ViewModelProviders.of(this).get(ScanViewModel.class);
-
-        //Create observer that updates the UI.
-        final Observer<String> resultObserver = new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable final String newValue) {
-                mTextScanResult.setText(String.format(getString(R.string.scan_result), newValue));
-            }
-        };
-
-        //Observe the scanned result and await instructions.
-        mScanViewModel.getScannedValue().observe(this, resultObserver);
 
         //TODO: Cache user and check that property.
         Bundle args = getArguments();
@@ -116,7 +105,7 @@ public class ScanFragment extends Fragment {
                     mCameraSource.start(mSurfaceScanner.getHolder());
                 }
                 catch(Exception ex){
-                    Log.d(SCANNER_TAG, ex.getMessage());
+                    Log.d(TAG, ex.getMessage());
                 }
             }
 
@@ -174,32 +163,52 @@ public class ScanFragment extends Fragment {
 
             //TODO: Navigate to the plant page instead of displaying the result.
             String displayValue = codes.valueAt(0).displayValue;
-            new ScanResultAsyncTask(mScanViewModel, displayValue).execute();
+
+            if(displayValue.equals("")){
+                return;
+            }
+
+            new ScanResultAsyncTask(getFragmentManager().getPrimaryNavigationFragment(), mTextScanResult).execute(displayValue);
         }
     }
 
     //This sets the newly scanned value to the text box.
     //TODO: Remove this bit because we will probably navigate to the plant page right after recognizing the scan result.
-    public static class ScanResultAsyncTask extends AsyncTask<String, Void, String>{
+    public static class ScanResultAsyncTask extends AsyncTask<String, Void, Integer>{
 
-        private WeakReference<ScanViewModel> mScanViewModel;
-        private String mNewScanValue;
+        private WeakReference<Fragment> mFragment;
+        private WeakReference<TextView> mTextScanResult;
 
-        public ScanResultAsyncTask(ScanViewModel model, String newScanValue){
-            mScanViewModel = new WeakReference(model);
-            mNewScanValue = newScanValue;
+        public ScanResultAsyncTask(Fragment fragment, TextView textScanResult) {
+            this.mFragment = new WeakReference<>(fragment);
+            this.mTextScanResult = new WeakReference<>(textScanResult);
         }
 
         @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
+        protected void onPostExecute(Integer photoPointID) {
+            super.onPostExecute(photoPointID);
 
-            mScanViewModel.get().getScannedValue().setValue(s);
+            if(photoPointID != 0){
+
+                if(mNavigated){
+                   return;
+                }
+
+                mNavigated = true;
+                Bundle bundle = new Bundle();
+                bundle.putInt(UploadPhotoPointDataFragment.PHOTOPOINT_ID, photoPointID);
+
+                Navigation.findNavController(mFragment.get().getView())
+                        .navigate(R.id.action_navigation_scan_to_navigation_uploadPhotoPointData, bundle);
+
+            }else{
+                mTextScanResult.get().setText(mFragment.get().getString(R.string.qr_code_not_found));
+            }
         }
 
         @Override
-        protected String doInBackground(String... strings) {
-            return mNewScanValue;
+        protected Integer doInBackground(String... strings) {
+            return new PhotoPointsRepository(mFragment.get().getContext()).getIDByQRCode(strings[0]);
         }
     }
 }

@@ -1,11 +1,15 @@
 package edu.cascadia.mobas.photopoints.data;
 
 import android.content.Context;
+
+import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
-
+import androidx.sqlite.db.SupportSQLiteDatabase;
+import java.util.concurrent.Executors;
+import edu.cascadia.mobas.photopoints.R;
 import edu.cascadia.mobas.photopoints.data.converters.TimeStampConverter;
 import edu.cascadia.mobas.photopoints.data.dao.PhotoPointDao;
 import edu.cascadia.mobas.photopoints.data.dao.PlantDao;
@@ -33,12 +37,31 @@ public abstract class PhotoPointsDatabase extends RoomDatabase {
             return mInstance;
         }
 
-        mInstance = Room.databaseBuilder(context,
-                PhotoPointsDatabase.class,
-                "photopoints-database")
-                .build();
-
+        mInstance = buildDatbase(context);
         return mInstance;
+    }
+
+    private static PhotoPointsDatabase buildDatbase(final Context context){
+        return Room.databaseBuilder(context,
+                PhotoPointsDatabase.class,
+                context.getString(R.string.app_name))
+                .addCallback(new Callback() {
+
+                    //The onCreate method is called the first time Room tries to create the database.
+                    //This means we can insert "initial data" into the database at this point.
+                    @Override
+                    public void onCreate(@NonNull SupportSQLiteDatabase db) {
+                        super.onCreate(db);
+                        Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
+                            @Override
+                            //This will run in a separate thread and add the initial data.
+                            public void run() {
+                                getAppDatabase(context).photoPointDao().insertAll(DBPhotoPoint.populateData());
+                            }
+                        });
+                    }
+                })
+                .build();
     }
 
     //Destroys the database instance.
