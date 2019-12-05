@@ -31,7 +31,7 @@ public class PlantRepository implements Repository<Plant> {
     }
 
     @Override
-    public int count() {
+    public Integer count() {
         return mPlants.size();
     }
 

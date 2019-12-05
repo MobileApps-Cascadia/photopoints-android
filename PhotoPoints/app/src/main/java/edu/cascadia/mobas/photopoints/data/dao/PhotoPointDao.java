@@ -8,12 +8,13 @@ import androidx.room.Update;
 
 import java.util.List;
 import edu.cascadia.mobas.photopoints.data.dto.DBPhotoPoint;
+import edu.cascadia.mobas.photopoints.model.PhotoPoint;
 
 @Dao
 public interface PhotoPointDao {
 
     @Query("Select PhotoPointID, PhotoPointType, Latitude, Longitude, QRCode FROM PhotoPoints")
-    List<DBPhotoPoint> getPhotoPoints();
+    List<DBPhotoPoint> getAll();
 
     @Insert
     void insert(DBPhotoPoint photoPoint);
@@ -23,4 +24,16 @@ public interface PhotoPointDao {
 
     @Update
     void update(DBPhotoPoint photoPoint);
+
+    @Insert
+    void insertAll(DBPhotoPoint... photoPoints);
+
+    @Query("Select COUNT(*) FROM PhotoPoints")
+    Integer getCount();
+
+    @Query("Select PhotoPointID FROM PhotoPoints WHERE QRCode = :qrCode")
+    Integer getIDByQRCode(String qrCode);
+
+    @Query("Select PhotoPointID, PhotoPointType, Latitude, Longitude, QRCode FROM PhotoPoints WHERE PhotoPointID = :id")
+    DBPhotoPoint getById(Integer id);
 }

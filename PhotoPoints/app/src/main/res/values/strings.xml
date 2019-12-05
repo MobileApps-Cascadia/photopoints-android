@@ -32,7 +32,10 @@
 
     <!-- Barcode Scanner -->
     <string name="please_scan_qr_code">Please scan the QR Code.</string>
-    <string name="scan_result">Result: %s</string>
     <string name="camera_start_error">Camera could not start. Please grant camera permissions.</string>
+    <string name="qr_code_not_found">QR Code could not be found.</string>
+
+    <!-- Splash -->
+    <string name="synching_data">Synching data</string>
 
 </resources>

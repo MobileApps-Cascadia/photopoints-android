@@ -25,6 +25,18 @@ public class DBPhotoPoint {
     @ColumnInfo(name = "PhotoPointType")
     private int PhotoPointType;
 
+    //Empty constructor for Room
+    public DBPhotoPoint(){
+
+    }
+
+    public DBPhotoPoint(String QRCode, Double latitude, Double longitude, int photoPointType) {
+        this.QRCode = QRCode;
+        Latitude = latitude;
+        Longitude = longitude;
+        PhotoPointType = photoPointType;
+    }
+
     public int getPhotoPointID() {
         return PhotoPointID;
     }
@@ -59,5 +71,20 @@ public class DBPhotoPoint {
 
     public void setPhotoPointType(int photoPointType) {
         PhotoPointType = photoPointType;
+    }
+
+    //Used the very first time to populate the database.
+    public static DBPhotoPoint[] populateData(){
+        return new DBPhotoPoint[]{
+            new DBPhotoPoint("point001",47.776013, -122.192043, 1),
+            new DBPhotoPoint("point002",47.775886, -122.192635, 1),
+            new DBPhotoPoint("point003",47.776013, -122.193909, 1),
+            new DBPhotoPoint("point004",47.775241, -122.195866, 1),
+            new DBPhotoPoint("point005",47.774999, -122.195243, 1),
+            new DBPhotoPoint("point006",47.774484, -122.195694, 1),
+            new DBPhotoPoint("point007",47.773701, -122.194359, 1),
+            new DBPhotoPoint("point008",47.774150, -122.192456, 1),
+            new DBPhotoPoint("point009",47.775886, -122.192635, 1)
+        };
     }
 }

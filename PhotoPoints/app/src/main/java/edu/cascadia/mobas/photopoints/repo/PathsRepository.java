@@ -33,7 +33,7 @@ public class PathsRepository implements Repository<Path> {
     }
 
     @Override
-    public int count() {
+    public Integer count() {
         return mPaths.size();
     }
 
