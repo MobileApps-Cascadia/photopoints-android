@@ -1,51 +1,63 @@
 package edu.cascadia.mobas.photopoints.repo;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 import edu.cascadia.mobas.photopoints.data.PhotoPointsDatabase;
 import edu.cascadia.mobas.photopoints.data.dto.DBPhotoPoint;
 import edu.cascadia.mobas.photopoints.model.PhotoPoint;
-
+import java.util.ArrayList;
+import java.util.List;
 public class PhotoPointsRepository implements Repository<PhotoPoint> {
 
-    // AppContext for database access
-    private Context mContext;
+    private final String TAG = "PhotoPointsRepo";
 
     // repository data store
-    private static List<PhotoPoint> mPhotoPoints = new ArrayList<>();
-
-
-    // constructors
-    public PhotoPointsRepository() {
-        //Check if the list is empty. If so, add dummy data.
-        if(mPhotoPoints.size() == 0){
-            SampleData.addSamplePhotoPoints(mPhotoPoints);
-        }
-    }
+    private Context mContext;
 
     public PhotoPointsRepository(Context context){
         mContext = context;
     }
 
-    // return a PhotoPoint from this repository by its index
-    public PhotoPoint get(int index) {
-        return mPhotoPoints.get(index);
+    @Override
+    public List<PhotoPoint> getAll() {
+        return map(PhotoPointsDatabase.getAppDatabase(mContext).photoPointDao().getAll());
     }
 
     @Override
-    public List<PhotoPoint> getAll() {
-        return mPhotoPoints;
+    public Integer count(){
+        return PhotoPointsDatabase.getAppDatabase(mContext).photoPointDao().getCount();
     }
 
-    public int count(){
-        return mPhotoPoints.size();
+    public PhotoPoint getById(Integer id){
+        try{
+            return mapSingle(PhotoPointsDatabase.getAppDatabase(mContext).photoPointDao().getById(id));
+        }
+        catch(Exception ex){
+            Log.d(TAG, ex.getMessage());
+            return null;
+        }
     }
 
-    //TODO: Add data to database and replace getAll() by this method.
-    public List<PhotoPoint> getAllFromDB() {
-        return map(PhotoPointsDatabase.getAppDatabase(mContext).photoPointDao().getPhotoPoints());
+    public Integer getIDByQRCode(String qrCode){
+        try{
+            Integer id = PhotoPointsDatabase.getAppDatabase(mContext).photoPointDao().getIDByQRCode(qrCode);
+            return id == null ? 0 : id;
+        }
+        catch(Exception ex){
+            Log.d(TAG, ex.getMessage());
+            return 0;
+        }
+    }
+
+    private PhotoPoint mapSingle(DBPhotoPoint point){
+        if(point == null){
+            return null;
+        }
+
+        return new PhotoPoint(point.getPhotoPointID(), point.getLatitude(), point.getLongitude(), point.getQRCode(), point.getPhotoPointType());
     }
 
     //TODO: Investigate mapper libraries that can help us remove this boilerplate code.

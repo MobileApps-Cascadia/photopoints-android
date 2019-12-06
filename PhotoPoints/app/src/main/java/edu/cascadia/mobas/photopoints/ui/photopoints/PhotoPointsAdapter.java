@@ -1,4 +1,6 @@
 package edu.cascadia.mobas.photopoints.ui.photopoints;
+import java.util.ArrayList;
+import java.util.List;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,14 +20,22 @@ import edu.cascadia.mobas.photopoints.repo.PlantRepository;
 
 public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.PhotoPointsViewHolder>{
 
-    private PhotoPointsRepository mPhotoPointRepo;
+    private ArrayList<PhotoPoint> mPhotoPointRepo;
     private PlantRepository mPlantRepo;
 
-
     // constructor
-    public PhotoPointsAdapter(PhotoPointsRepository photoPointsRepo, PlantRepository plantRepo){
-        mPhotoPointRepo = photoPointsRepo;
+    public PhotoPointsAdapter(PlantRepository plantRepo){
+        mPhotoPointRepo = new ArrayList<PhotoPoint>();
         mPlantRepo = plantRepo;
+        mPhotoPointRepo.add(new PhotoPoint(1, 47.776013, -122.192043, "point001", PhotoPoint.PhotoPointType.Plant, 1));
+        mPhotoPointRepo.add(new PhotoPoint(2, 47.775886, -122.192635, "point002", PhotoPoint.PhotoPointType.Plant, 2));
+        mPhotoPointRepo.add(new PhotoPoint(3, 47.776013, -122.193909, "point003", PhotoPoint.PhotoPointType.Plant,3 ));
+        mPhotoPointRepo.add(new PhotoPoint(4, 47.775241, -122.195866, "point004", PhotoPoint.PhotoPointType.Plant,4 ));
+        mPhotoPointRepo.add(new PhotoPoint(5, 47.774999, -122.195243, "point005", PhotoPoint.PhotoPointType.Plant,5 ));
+        mPhotoPointRepo.add(new PhotoPoint(6, 47.774484, -122.195694, "point006", PhotoPoint.PhotoPointType.Plant,6 ));
+        mPhotoPointRepo.add(new PhotoPoint(7, 47.773701, -122.194359, "point007", PhotoPoint.PhotoPointType.Plant,7 ));
+        mPhotoPointRepo.add(new PhotoPoint(8, 47.774150, -122.192456, "point008", PhotoPoint.PhotoPointType.Plant,8 ));
+        mPhotoPointRepo.add(new PhotoPoint(9, 47.775886, -122.192635, "point009", PhotoPoint.PhotoPointType.Plant,9 ));
     }
 
     class PhotoPointsViewHolder extends RecyclerView.ViewHolder{
@@ -60,6 +70,6 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
 
     @Override
     public int getItemCount() {
-        return mPhotoPointRepo.count();
+        return mPhotoPointRepo.size();
     }
 }

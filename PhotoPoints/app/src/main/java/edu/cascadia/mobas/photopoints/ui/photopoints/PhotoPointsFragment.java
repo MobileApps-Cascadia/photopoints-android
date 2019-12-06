@@ -15,7 +15,7 @@ import edu.cascadia.mobas.photopoints.repo.PlantRepository;
 
 public class PhotoPointsFragment extends Fragment {
 
-    PhotoPointsRepository photoPointsRepo = new PhotoPointsRepository();
+    PhotoPointsRepository photoPointsRepo = new PhotoPointsRepository(getContext());
     PlantRepository plantRepo = new PlantRepository();
 
     @Override
@@ -24,7 +24,7 @@ public class PhotoPointsFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_photopoints, container, false);
 
-        PhotoPointsAdapter adapter = new PhotoPointsAdapter(photoPointsRepo, plantRepo);
+        PhotoPointsAdapter adapter = new PhotoPointsAdapter(plantRepo);
 
         RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.cardview_photopoints);
 

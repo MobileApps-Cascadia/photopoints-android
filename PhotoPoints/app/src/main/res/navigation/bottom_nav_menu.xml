@@ -54,4 +54,10 @@
         android:label="Sign Up"
         tools:layout="@layout/fragment_sign_up"/>
 
+    <fragment
+        android:id="@+id/navigation_photoPoint_details"
+        android:name="edu.cascadia.mobas.photopoints.ui.details.DetailsFragment"
+        tools:layout="@layout/fragment_details"/>
+
+
 </navigation>

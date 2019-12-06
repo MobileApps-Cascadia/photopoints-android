@@ -34,13 +34,14 @@ import edu.cascadia.mobas.photopoints.repo.PhotoPointsRepository;
 
 public class MapFragment extends Fragment {
 
-    PhotoPointsRepository repoPhotoPoints = new PhotoPointsRepository();
+    PhotoPointsRepository repoPhotoPoints;
     PathsRepository repoPaths = new PathsRepository();
 
     private String TAG = "PHOTOPOINTS_MAP";
     private FusedLocationProviderClient mFusedLocationProviderClient;
     private boolean mLocationPermissionGranted;
     private Location mLastKnownLocation;
+    private GoogleMap map;
 
     //Used for location services
     public static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
@@ -70,16 +71,17 @@ public class MapFragment extends Fragment {
                 if(googleMap== null){
                     return;
                 }
-                googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-                updateLocationUI(googleMap);
-                setMapMarkersAndPaths(googleMap);
+
+                map = googleMap;
+                map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                updateLocationUI(map);
+                setMapMarkersAndPaths(map);
+                //Example of how the task is called.
+                new PhotoPointAsyncTask(getFragmentManager().getPrimaryNavigationFragment(), map).execute();
             }
         });
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
-
-        //Example of how the task is called.
-        new PhotoPointAsyncTask(this).execute();
 
         return root;
     }
@@ -148,15 +150,6 @@ public class MapFragment extends Fragment {
     private void setMapMarkersAndPaths(GoogleMap map){
 
         try {
-            //Create options with dot icon.
-            MarkerOptions options = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.mipmap.dot));
-
-
-            // Place markers for all the PhotoPoints on the map
-            for(PhotoPoint point : repoPhotoPoints.getAll()){
-                map.addMarker(options.position(point.getLatLng()));
-            }
-
             // Draw all the paths on the map
             List<Path> paths = repoPaths.getAll();
             for (Path p : paths) {
@@ -204,21 +197,33 @@ public class MapFragment extends Fragment {
     //Example for how the AsyncTask should be implemented.
     public static class PhotoPointAsyncTask extends AsyncTask<PhotoPoint, Void, List<PhotoPoint>>{
 
-        WeakReference<Fragment> mFragment;
+        private WeakReference<Fragment> mFragment;
+        private WeakReference<GoogleMap> mMap;
+        private PhotoPointsRepository mRepo;
 
-        public PhotoPointAsyncTask(Fragment frag){
+
+        public PhotoPointAsyncTask(Fragment frag, GoogleMap map){
             mFragment = new WeakReference<>(frag);
+            mMap = new WeakReference<>(map);
+            mRepo = new PhotoPointsRepository(mFragment.get().getContext());
         }
 
         @Override
-        protected void onPostExecute(List<PhotoPoint> photoPoint) {
-            super.onPostExecute(photoPoint);
+        protected void onPostExecute(List<PhotoPoint> photoPoints) {
+            super.onPostExecute(photoPoints);
+
+            //Create options with dot icon.
+            MarkerOptions options = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.mipmap.dot));
+
+            // Place markers for all the PhotoPoints on the map
+            for(PhotoPoint point : photoPoints){
+                mMap.get().addMarker(options.position(point.getLatLng()));
+            }
         }
 
         @Override
         protected List<PhotoPoint> doInBackground(PhotoPoint... PhotoPoint) {
-            //TODO: Change call to getAll once we have data in database.
-            return new PhotoPointsRepository(mFragment.get().getContext()).getAllFromDB();
+            return mRepo.getAll();
         }
     }
 }
