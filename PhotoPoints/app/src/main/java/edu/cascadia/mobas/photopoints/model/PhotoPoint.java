@@ -14,27 +14,27 @@ public class PhotoPoint {
     private Double mLongitude;
     private PhotoPointType mPhotoPointType;
     private String mQRCode;
+    private int mItemID;      // ID of item (plant, creek) this PhotoPoint refers to
 
-    public PhotoPoint(int photoPointID, Double latitude, Double longitude){
+
+    // provided for compatibility with existing data model
+    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode, int photoPointType) {
+        this(photoPointID, latitude, longitude, qrCode, photoPointType, 1);
+    }
+
+    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode, PhotoPointType photoPointType, int itemID) {
         this.mPhotoPointID = photoPointID;
         this.mLatitude = latitude;
         this.mLongitude = longitude;
-    }
-
-    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode){
-        this(photoPointID, latitude, longitude);
         this.mQRCode = qrCode;
+        this.mPhotoPointType = photoPointType;
+        this.mItemID = itemID;
     }
 
-    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode, PhotoPointType mPhotoPointType) {
-        this(photoPointID, latitude, longitude, qrCode);
-        this.mPhotoPointType = mPhotoPointType;
+    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode, int photoPointType, int itemID) {
+        this(photoPointID, latitude, longitude, qrCode, PhotoPointType.values()[photoPointType], itemID);
     }
 
-    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode, int photoPointType) {
-        this(photoPointID, latitude, longitude, qrCode);
-        this.mPhotoPointType = PhotoPointType.values()[photoPointType];
-    }
 
     //<editor-fold desc="Getters and setters">
 
@@ -80,6 +80,10 @@ public class PhotoPoint {
 
     public LatLng getLatLng(){
         return new LatLng(mLatitude, mLongitude);
+    }
+
+    public int getItemID() {
+        return mItemID;
     }
 
     //</editor-fold>

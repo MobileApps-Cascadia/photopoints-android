@@ -10,6 +10,9 @@ import edu.cascadia.mobas.photopoints.model.PhotoPoint;
 
 public class PhotoPointsRepository implements Repository<PhotoPoint> {
 
+    // AppContext for database access
+    private Context mContext;
+
     // repository data store
     private static List<PhotoPoint> mPhotoPoints = new ArrayList<>();
 
@@ -22,10 +25,13 @@ public class PhotoPointsRepository implements Repository<PhotoPoint> {
         }
     }
 
-    private Context mContext;
-
     public PhotoPointsRepository(Context context){
         mContext = context;
+    }
+
+    // return a PhotoPoint from this repository by its index
+    public PhotoPoint get(int index) {
+        return mPhotoPoints.get(index);
     }
 
     @Override
