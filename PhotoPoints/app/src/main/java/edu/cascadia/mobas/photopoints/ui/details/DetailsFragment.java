@@ -8,18 +8,17 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-
-import com.google.android.material.textfield.TextInputEditText;
-
 import edu.cascadia.mobas.photopoints.R;
-import edu.cascadia.mobas.photopoints.model.Plant;
+import edu.cascadia.mobas.photopoints.model.PhotoPoint;
 
 public class DetailsFragment extends Fragment {
 
+    //Key to get the argument values for item id.
+    public static final String ITEM_ID = "ItemID";
+    public static final String PHOTOPOINT_TYPE = "ItemType";
 
-    //Plant information fragment. to do: use plant object to dynamically change text so we don't have to do that all by hand like plebs
+    private int mItemID;
+    private PhotoPoint.PhotoPointType mPhotoPointType;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -27,15 +26,12 @@ public class DetailsFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_details, container, false);
 
-
-
-        ///Plant test = new Plant(text1, text2){
-
-        //};
-
+        Bundle args = getArguments();
+        if(args != null){
+            mItemID = args.getInt(ITEM_ID);
+            mPhotoPointType = PhotoPoint.PhotoPointType.values()[args.getInt(PHOTOPOINT_TYPE)];
+        }
 
         return root;
-
     }
-
 }

@@ -29,7 +29,19 @@
                         android:text="placeholder_PhotoPointName"
                         android:textSize="22sp" />
 
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_marginTop="5dp"
+                        android:id="@+id/button_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.MaterialComponents.Button"
+                        android:textAppearance="@style/Widget.MaterialComponents.Button"
+                        android:layout_gravity="start"
+                        android:textSize="16sp"
+                        android:text="@string/more_details"/>
+
                     <TextView
+                        android:layout_marginTop="5dp"
                         android:id="@+id/text_surveyData"
                         style="@style/TextViewNormal"
                         android:text="@string/survey_data" />

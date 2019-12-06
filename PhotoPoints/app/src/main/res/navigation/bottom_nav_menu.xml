@@ -15,7 +15,7 @@
         <action
             android:id="@+id/action_navigation_scan_to_navigation_uploadPhotoPointData"
             app:destination="@id/navigation_uploadPhotoPointData"
-            app:popUpTo="@+id/navigation_photopoints"/>
+            app:popUpTo="@+id/navigation_scan"/>
 
     </fragment>
 
@@ -23,7 +23,13 @@
         android:id="@+id/navigation_uploadPhotoPointData"
         android:name="edu.cascadia.mobas.photopoints.ui.upload.UploadPhotoPointDataFragment"
         android:label="@string/menu_photopoints"
-        tools:layout="@layout/fragment_upload_photo_point_data" />
+        tools:layout="@layout/fragment_upload_photo_point_data" >
+
+        <action
+            android:id="@+id/action_navigation_uploadPhotoPointData_to_navigation_photoPoint_details"
+            app:destination="@id/navigation_photoPoint_details" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_photopoints"

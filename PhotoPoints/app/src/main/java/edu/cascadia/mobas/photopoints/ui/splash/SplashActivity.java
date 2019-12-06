@@ -37,7 +37,9 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         protected Boolean doInBackground(Void... voids) {
             try{
-                PhotoPointsDatabase.getAppDatabase(mActivity.get().getApplicationContext());
+                //Call the count of photopoints to trigger a database creation.
+                //Just requesting the instance does not trigger a db creation. It needs to be a read/write operation
+                PhotoPointsDatabase.getAppDatabase(mActivity.get().getApplicationContext()).photoPointDao().getCount();
             }
             catch(Exception ex){
                 Log.d(TAG, ex.getMessage());

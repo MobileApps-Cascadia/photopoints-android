@@ -29,11 +29,13 @@
     <!-- Upload data -->
     <string name="survey_data">Survey Data</string>
     <string name="picture_focus">When taking pictures, focus on:</string>
+    <string name="more_details">More details</string>
+    <string name="try_again">Woops... Please try again...</string>
 
     <!-- Barcode Scanner -->
     <string name="please_scan_qr_code">Please scan the QR Code.</string>
     <string name="camera_start_error">Camera could not start. Please grant camera permissions.</string>
-    <string name="qr_code_not_found">QR Code could not be found.</string>
+    <string name="qr_code_not_found">PhotoPoint could not be found.</string>
 
     <!-- Splash -->
     <string name="synching_data">Synching data</string>

@@ -14,26 +14,19 @@ public class PhotoPoint {
     private Double mLongitude;
     private PhotoPointType mPhotoPointType;
     private String mQRCode;
+    private int mItemID;
 
-    public PhotoPoint(int photoPointID, Double latitude, Double longitude){
+    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode, PhotoPointType photoPointType, int itemID) {
         this.mPhotoPointID = photoPointID;
         this.mLatitude = latitude;
         this.mLongitude = longitude;
-    }
-
-    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode){
-        this(photoPointID, latitude, longitude);
         this.mQRCode = qrCode;
+        this.mPhotoPointType = photoPointType;
+        this.mItemID = itemID;
     }
 
-    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode, PhotoPointType mPhotoPointType) {
-        this(photoPointID, latitude, longitude, qrCode);
-        this.mPhotoPointType = mPhotoPointType;
-    }
-
-    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode, int photoPointType) {
-        this(photoPointID, latitude, longitude, qrCode);
-        this.mPhotoPointType = PhotoPointType.values()[photoPointType];
+    public PhotoPoint(int photoPointID, Double latitude, Double longitude, String qrCode, int photoPointType, int itemID) {
+        this(photoPointID, latitude, longitude, qrCode, PhotoPointType.values()[photoPointType], itemID);
     }
 
     //<editor-fold desc="Getters and setters">
@@ -76,6 +69,10 @@ public class PhotoPoint {
 
     public void setQRCode(String QRCode) {
         this.mQRCode = QRCode;
+    }
+
+    public int getItemID() {
+        return mItemID;
     }
 
     public LatLng getLatLng(){

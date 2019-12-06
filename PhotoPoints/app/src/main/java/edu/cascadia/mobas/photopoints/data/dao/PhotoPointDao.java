@@ -13,7 +13,9 @@ import edu.cascadia.mobas.photopoints.model.PhotoPoint;
 @Dao
 public interface PhotoPointDao {
 
-    @Query("Select PhotoPointID, PhotoPointType, Latitude, Longitude, QRCode FROM PhotoPoints")
+    final String SELECT = "Select PhotoPointID, PhotoPointType, Latitude, Longitude, QRCode, ItemID FROM PhotoPoints";
+
+    @Query(SELECT)
     List<DBPhotoPoint> getAll();
 
     @Insert
@@ -25,6 +27,9 @@ public interface PhotoPointDao {
     @Update
     void update(DBPhotoPoint photoPoint);
 
+    @Update
+    void updateAll(List<DBPhotoPoint> photoPoints);
+
     @Insert
     void insertAll(DBPhotoPoint... photoPoints);
 
@@ -34,6 +39,6 @@ public interface PhotoPointDao {
     @Query("Select PhotoPointID FROM PhotoPoints WHERE QRCode = :qrCode")
     Integer getIDByQRCode(String qrCode);
 
-    @Query("Select PhotoPointID, PhotoPointType, Latitude, Longitude, QRCode FROM PhotoPoints WHERE PhotoPointID = :id")
+    @Query(SELECT + " WHERE PhotoPointID = :id")
     DBPhotoPoint getById(Integer id);
 }

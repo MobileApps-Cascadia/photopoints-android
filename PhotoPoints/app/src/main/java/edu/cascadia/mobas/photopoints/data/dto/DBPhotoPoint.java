@@ -25,6 +25,9 @@ public class DBPhotoPoint {
     @ColumnInfo(name = "PhotoPointType")
     private int PhotoPointType;
 
+    @ColumnInfo(name = "ItemID")
+    private int ItemID;
+
     //Empty constructor for Room
     public DBPhotoPoint(){
 
@@ -36,6 +39,10 @@ public class DBPhotoPoint {
         Longitude = longitude;
         PhotoPointType = photoPointType;
     }
+
+    public int getItemID() { return ItemID; }
+
+    public void setItemID(int itemID) { ItemID = itemID; }
 
     public int getPhotoPointID() {
         return PhotoPointID;

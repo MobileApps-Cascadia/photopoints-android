@@ -56,7 +56,7 @@ public class PhotoPointsRepository implements Repository<PhotoPoint> {
             return null;
         }
 
-        return new PhotoPoint(point.getPhotoPointID(), point.getLatitude(), point.getLongitude(), point.getQRCode(), point.getPhotoPointType());
+        return new PhotoPoint(point.getPhotoPointID(), point.getLatitude(), point.getLongitude(), point.getQRCode(), point.getPhotoPointType(), point.getItemID());
     }
 
     //TODO: Investigate mapper libraries that can help us remove this boilerplate code.
