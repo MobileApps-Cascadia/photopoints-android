@@ -29,6 +29,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
     implementation 'androidx.navigation:navigation-ui:2.1.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
@@ -43,4 +44,7 @@ dependencies {
 
     //Google vision. Used for barcode scanner.
     implementation "com.google.android.gms:play-services-vision:$rootProject.ext.googleVisionVersion"
+
+
+
 }
