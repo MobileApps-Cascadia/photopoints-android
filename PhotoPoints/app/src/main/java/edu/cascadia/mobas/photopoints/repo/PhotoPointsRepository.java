@@ -67,8 +67,7 @@ public class PhotoPointsRepository implements Repository<PhotoPoint> {
         List<PhotoPoint> points = new ArrayList<>();
 
         for(DBPhotoPoint point : dbPoints){
-            points.add(new PhotoPoint(point.getPhotoPointID(), point.getLatitude(), point.getLongitude(), point.getQRCode(), point.getPhotoPointType()));
-        }
+            points.add(mapSingle(point));        }
 
         return points;
     }

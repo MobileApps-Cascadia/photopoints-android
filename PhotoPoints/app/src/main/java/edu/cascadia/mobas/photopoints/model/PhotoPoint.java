@@ -14,7 +14,7 @@ public class PhotoPoint {
     private Double mLongitude;
     private PhotoPointType mPhotoPointType;
     private String mQRCode;
-    private int mItemID;      // ID of item (plant, creek) this PhotoPoint refers to
+    private int mItemID;          // ID of item (plant, creek) this PhotoPoint refers to
 
 
     // provided for compatibility with existing data model
