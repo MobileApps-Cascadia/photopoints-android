@@ -3,4 +3,13 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="fragmentBackground">#ffffff</color>
+
+
+    <!-- PATH COLORS -->
+    <color name="ColorPathDefault">#F9E4B7</color>
+    <color name="ColorPathTrail">#fff2af</color>
+    <color name="ColorPathMinorTrail">#fff2af</color>
+    <color name="ColorPathCreek">#aadaff</color>
+
 </resources>

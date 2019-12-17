@@ -7,8 +7,8 @@ android {
         applicationId "edu.cascadia.mobas.photopoints"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -20,6 +20,7 @@ android {
 }
 
 dependencies {
+    //Default libraries
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -31,4 +32,15 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    //Google maps play services
+    implementation "com.google.android.gms:play-services-maps:$rootProject.ext.playServicesVersion"
+    implementation "com.google.android.gms:play-services-location:$rootProject.ext.playServicesVersion"
+
+    //Room Version
+    implementation "androidx.room:room-runtime:$rootProject.ext.roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$rootProject.ext.roomVersion"
+
+    //Google vision. Used for barcode scanner.
+    implementation "com.google.android.gms:play-services-vision:$rootProject.ext.googleVisionVersion"
 }

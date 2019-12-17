@@ -1,16 +1,16 @@
-package edu.cascadia.mobas.photopoints.ui.home;
+package edu.cascadia.mobas.photopoints.ui.photopoints;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class HomeViewModel extends ViewModel {
+public class PhotoPointsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public HomeViewModel() {
+    public PhotoPointsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
+        mText.setValue("This is a PhotoPoints fragment");
     }
 
     public LiveData<String> getText() {

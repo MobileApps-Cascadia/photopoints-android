@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_scan"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/text_pleaseScan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/please_scan_qr_code"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/text_scanResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp" />
+
+    <!-- Looks weird, I know... But I need this Linearlayout to re-draw the surface-scanner.
+    See ScanFragment.java (onRequestPermissionsResult) for more info.-->
+    <LinearLayout
+        android:id="@+id/layout_scannerSurface"
+        android:layout_width="match_parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginTop="50dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="50dp"
+        android:layout_height="match_parent">
+
+        <SurfaceView
+            android:id="@+id/surface_scanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
