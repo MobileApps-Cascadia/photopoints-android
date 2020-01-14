@@ -63,7 +63,7 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
 
         PhotoPoint photoPoint = mPhotoPointRepo.get(position);
         Plant plant = mPlantRepo.getById(photoPoint.getItemID());
-        viewHolder.image_photopoint_displayphoto.setImageResource(R.drawable.default_plant_photo);
+        viewHolder.image_photopoint_displayphoto.setImageResource(R.drawable.default_plant_photo_small);
         viewHolder.text_photopoint_displaytext.setText(plant.getCommonName());
         viewHolder.text_photopoint_subtext.setText(plant.getSpecies());
     }
