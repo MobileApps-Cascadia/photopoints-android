@@ -22,6 +22,21 @@ public final class SampleData {
         repo.put(9, new Plant(9, "P. twoxl", "Pixel2XL", "This plant is rooted"));
     }
 
+    public static void addSamplePhotoPoints(List<PhotoPoint> repo) {
+        repo.add(new PhotoPoint(1, 47.776013, -122.192043, "point001", PhotoPoint.PhotoPointType.Plant, 1));
+        repo.add(new PhotoPoint(2, 47.775886, -122.192635, "point002", PhotoPoint.PhotoPointType.Plant, 2));
+        repo.add(new PhotoPoint(3, 47.776013, -122.193909, "point003", PhotoPoint.PhotoPointType.Plant,3 ));
+        repo.add(new PhotoPoint(4, 47.775241, -122.195866, "point004", PhotoPoint.PhotoPointType.Plant,4 ));
+        repo.add(new PhotoPoint(5, 47.774999, -122.195243, "point005", PhotoPoint.PhotoPointType.Plant,5 ));
+        repo.add(new PhotoPoint(6, 47.774484, -122.195694, "point006", PhotoPoint.PhotoPointType.Plant,6 ));
+        repo.add(new PhotoPoint(7, 47.773701, -122.194359, "point007", PhotoPoint.PhotoPointType.Plant,7 ));
+        repo.add(new PhotoPoint(8, 47.774150, -122.192456, "point008", PhotoPoint.PhotoPointType.Plant,8 ));
+        repo.add(new PhotoPoint(9, 47.775886, -122.192635, "point009", PhotoPoint.PhotoPointType.Plant,9 ));
+    }
+
+
+
+
     public static void addSamplePaths(Map<String, Path> repo, String pathIDs) {
         String [] id = pathIDs.replaceAll(" ", "").split(",");
         for (int i = 1; i < id.length; i++) {

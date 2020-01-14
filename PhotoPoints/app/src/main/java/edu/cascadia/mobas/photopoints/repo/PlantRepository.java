@@ -11,7 +11,7 @@ public class PlantRepository implements Repository<Plant> {
 
     private static Map<Integer,Plant> mPlants = new HashMap<>();
 
-    // Add static data upon instantiation
+    // Add static data upon first instantiation
     public PlantRepository() {
 
         // initialize using sample data
@@ -26,7 +26,7 @@ public class PlantRepository implements Repository<Plant> {
     }
 
     // @Override after adding method to Interface
-    public Plant getById(String id) {
+    public Plant getById(int id) {
         return mPlants.get(id);
     }
 

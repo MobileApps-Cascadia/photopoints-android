@@ -5,9 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".ui.photopoints.PhotoPointsFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cardview_photopoints"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
 
+        />
 </FrameLayout>

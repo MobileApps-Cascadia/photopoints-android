@@ -8,7 +8,8 @@ import java.util.List;
 import edu.cascadia.mobas.photopoints.data.PhotoPointsDatabase;
 import edu.cascadia.mobas.photopoints.data.dto.DBPhotoPoint;
 import edu.cascadia.mobas.photopoints.model.PhotoPoint;
-
+import java.util.ArrayList;
+import java.util.List;
 public class PhotoPointsRepository implements Repository<PhotoPoint> {
 
     private final String TAG = "PhotoPointsRepo";
@@ -66,8 +67,7 @@ public class PhotoPointsRepository implements Repository<PhotoPoint> {
         List<PhotoPoint> points = new ArrayList<>();
 
         for(DBPhotoPoint point : dbPoints){
-            points.add(mapSingle(point));
-        }
+            points.add(mapSingle(point));        }
 
         return points;
     }
