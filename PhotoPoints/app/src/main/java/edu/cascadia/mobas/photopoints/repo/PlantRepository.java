@@ -7,7 +7,7 @@ import java.util.Map;
 
 import edu.cascadia.mobas.photopoints.model.Plant;
 
-public class PlantRepository implements Repository<Plant> {
+public class PlantRepository implements IRepository<Plant> {
 
     private static Map<Integer,Plant> mPlants = new HashMap<>();
 
