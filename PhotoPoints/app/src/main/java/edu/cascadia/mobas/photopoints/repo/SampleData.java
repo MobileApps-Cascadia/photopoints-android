@@ -11,14 +11,14 @@ import edu.cascadia.mobas.photopoints.model.Plant;
 
 public final class SampleData {
     public static void addSamplePlants(Map<Integer, Plant> repo) {
-        repo.put(1, new Plant(1,"Salix lasiandra", "Pacific willow; Yellow willow; Waxy willow", "The Straits Salish and the Halq'emeylem peeled the bark of [native willow species] in May or…"));
-        repo.put(2, new Plant(2,"Lonicera Involucrata", "Black twin berry; Bush honeysuckle; Twinberry; Bearberry honeysucle", "The shiny, black, bitter, twinned berries are not considered edible by most people. They were…"));
-        repo.put(3, new Plant(3,"Pseudotsuga menziesii", "Douglas-fir", "Douglas-fir wood and bark was thought by most of the coastal groups to be an excellent fuel…"));
-        repo.put(4, new Plant(4,"Philadelphus lewisii", "Mock-orange", "The wood is strong and hard; it never cracks or warps when properly prepared. It is most…"));
-        repo.put(5, new Plant(5,"Thuja plicata", "Western redcedar", "Redcedar has been called 'the cornerstone of northwest coast Indian culture' and the large-scale…"));
-        repo.put(6, new Plant(6,"Rosa pisocarpa", "Clustered wild rose", "Branches of all species of wild rose - along with skunk cabbage leaves, fern fronds, pine needles…"));
-        repo.put(7, new Plant(7,"Symphoricarpos albus", "Snowberry", "The white, waxy-looking berries are considered poisonous by aboriginal peoples. They are…"));
-        repo.put(8, new Plant(8,"Mahonia nervosa", "Low Oregon grape", "The tart, purple berries of both Oregon-grapes were eaten, but generally not in quantity…"));
+        repo.put(1, new Plant(1,"Salix Lasiandra", "Pacific Willow; Yellow Willow; Waxy Willow", "The Straits Salish and the Halq'emeylem peeled the bark of [native willow species] in May or…"));
+        repo.put(2, new Plant(2,"Lonicera Involucrata", "Black Twin Berry; Bush Honeysuckle; Twinberry; Bearberry Honeysucle", "The shiny, black, bitter, twinned berries are not considered edible by most people. They were…"));
+        repo.put(3, new Plant(3,"Pseudotsuga Menziesii", "Douglas-Fir", "Douglas-fir wood and bark was thought by most of the coastal groups to be an excellent fuel…"));
+        repo.put(4, new Plant(4,"Philadelphus Lewisii", "Mock-Orange", "The wood is strong and hard; it never cracks or warps when properly prepared. It is most…"));
+        repo.put(5, new Plant(5,"Thuja Plicata", "Western Redcedar", "Redcedar has been called 'the cornerstone of northwest coast Indian culture' and the large-scale…"));
+        repo.put(6, new Plant(6,"Rosa Pisocarpa", "Clustered Wild Rose", "Branches of all species of wild rose - along with skunk cabbage leaves, fern fronds, pine needles…"));
+        repo.put(7, new Plant(7,"Symphoricarpos Albus", "Snowberry", "The white, waxy-looking berries are considered poisonous by aboriginal peoples. They are…"));
+        repo.put(8, new Plant(8,"Mahonia Nervosa", "Low Oregon Grape", "The tart, purple berries of both Oregon-grapes were eaten, but generally not in quantity…"));
     }
 
     public static void addSamplePhotoPoints(List<PhotoPoint> repo) {
