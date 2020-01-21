@@ -27,15 +27,14 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
     public PhotoPointsAdapter(PlantRepository plantRepo){
         mPhotoPointRepo = new ArrayList<PhotoPoint>();
         mPlantRepo = plantRepo;
-        mPhotoPointRepo.add(new PhotoPoint(1, 47.776013, -122.192043, "point001", PhotoPoint.PhotoPointType.Plant, 1));
-        mPhotoPointRepo.add(new PhotoPoint(2, 47.775886, -122.192635, "point002", PhotoPoint.PhotoPointType.Plant, 2));
-        mPhotoPointRepo.add(new PhotoPoint(3, 47.776013, -122.193909, "point003", PhotoPoint.PhotoPointType.Plant,3 ));
-        mPhotoPointRepo.add(new PhotoPoint(4, 47.775241, -122.195866, "point004", PhotoPoint.PhotoPointType.Plant,4 ));
-        mPhotoPointRepo.add(new PhotoPoint(5, 47.774999, -122.195243, "point005", PhotoPoint.PhotoPointType.Plant,5 ));
-        mPhotoPointRepo.add(new PhotoPoint(6, 47.774484, -122.195694, "point006", PhotoPoint.PhotoPointType.Plant,6 ));
-        mPhotoPointRepo.add(new PhotoPoint(7, 47.773701, -122.194359, "point007", PhotoPoint.PhotoPointType.Plant,7 ));
-        mPhotoPointRepo.add(new PhotoPoint(8, 47.774150, -122.192456, "point008", PhotoPoint.PhotoPointType.Plant,8 ));
-        mPhotoPointRepo.add(new PhotoPoint(9, 47.775886, -122.192635, "point009", PhotoPoint.PhotoPointType.Plant,9 ));
+        mPhotoPointRepo.add(new PhotoPoint(1, 47.776013, -122.192043, "https://www.plantsmap.com/organizations/24477/plants/28097", PhotoPoint.PhotoPointType.Plant, 1));
+        mPhotoPointRepo.add(new PhotoPoint(2, 47.775886, -122.192635, "https://www.plantsmap.com/organizations/24477/plants/28069", PhotoPoint.PhotoPointType.Plant, 2));
+        mPhotoPointRepo.add(new PhotoPoint(3, 47.776013, -122.193909, "https://www.plantsmap.com/organizations/24477/plants/28092", PhotoPoint.PhotoPointType.Plant,3 ));
+        mPhotoPointRepo.add(new PhotoPoint(4, 47.775241, -122.195866, "https://www.plantsmap.com/organizations/24477/plants/28061", PhotoPoint.PhotoPointType.Plant,4 ));
+        mPhotoPointRepo.add(new PhotoPoint(5, 47.774999, -122.195243, "https://www.plantsmap.com/organizations/24477/plants/28074", PhotoPoint.PhotoPointType.Plant,5 ));
+        mPhotoPointRepo.add(new PhotoPoint(6, 47.774484, -122.195694, "https://www.plantsmap.com/organizations/24477/plants/28070", PhotoPoint.PhotoPointType.Plant,6 ));
+        mPhotoPointRepo.add(new PhotoPoint(7, 47.773701, -122.194359, "https://www.plantsmap.com/plants/28068", PhotoPoint.PhotoPointType.Plant,7 ));
+        mPhotoPointRepo.add(new PhotoPoint(8, 47.774150, -122.192456, "https://www.plantsmap.com/organizations/24477/plants/28094", PhotoPoint.PhotoPointType.Plant,8 ));
     }
 
     class PhotoPointsViewHolder extends RecyclerView.ViewHolder{

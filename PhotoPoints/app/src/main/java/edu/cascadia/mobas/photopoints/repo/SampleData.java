@@ -11,27 +11,25 @@ import edu.cascadia.mobas.photopoints.model.Plant;
 
 public final class SampleData {
     public static void addSamplePlants(Map<Integer, Plant> repo) {
-        repo.put(1, new Plant(1, "D. firii", "Douglas Fir", "The douglas fir is an evergreen."));
-        repo.put(2, new Plant(2, "O. berii", "Snowberry", "This plant is shrubby"));
-        repo.put(3, new Plant(3, "J. leno", "Lenochin", "This plant isn't as funny as it sounds"));
-        repo.put(4, new Plant(4, "T. longicauditus", "Common Triops", "This plant has three eyes, lives in vernal pools, and is a voracious predator"));
-        repo.put(5, new Plant(5, "M. bookpro", "Pricy Codethingy", "This plant is commonly found around creative types. A larger variant was recently discovered"));
-        repo.put(6, new Plant(6, "F. domesticus", "Cleo", "This plant likes overheat my computer by sitting on it"));
-        repo.put(7, new Plant(7, "J. sparrow", "Pirate Jack", "This plant sails the seven seas"));
-        repo.put(8, new Plant(8, "R. pi", "Raspberry Pi", "This plant packs a lot of power into a small space"));
-        repo.put(9, new Plant(9, "P. twoxl", "Pixel2XL", "This plant is rooted"));
+        repo.put(1, new Plant(1,"Salix lasiandra", "Pacific willow; Yellow willow; Waxy willow", "The Straits Salish and the Halq'emeylem peeled the bark of [native willow species] in May or…"));
+        repo.put(2, new Plant(2,"Lonicera Involucrata", "Black twin berry; Bush honeysuckle; Twinberry; Bearberry honeysucle", "The shiny, black, bitter, twinned berries are not considered edible by most people. They were…"));
+        repo.put(3, new Plant(3,"Pseudotsuga menziesii", "Douglas-fir", "Douglas-fir wood and bark was thought by most of the coastal groups to be an excellent fuel…"));
+        repo.put(4, new Plant(4,"Philadelphus lewisii", "Mock-orange", "The wood is strong and hard; it never cracks or warps when properly prepared. It is most…"));
+        repo.put(5, new Plant(5,"Thuja plicata", "Western redcedar", "Redcedar has been called 'the cornerstone of northwest coast Indian culture' and the large-scale…"));
+        repo.put(6, new Plant(6,"Rosa pisocarpa", "Clustered wild rose", "Branches of all species of wild rose - along with skunk cabbage leaves, fern fronds, pine needles…"));
+        repo.put(7, new Plant(7,"Symphoricarpos albus", "Snowberry", "The white, waxy-looking berries are considered poisonous by aboriginal peoples. They are…"));
+        repo.put(8, new Plant(8,"Mahonia nervosa", "Low Oregon grape", "The tart, purple berries of both Oregon-grapes were eaten, but generally not in quantity…"));
     }
 
     public static void addSamplePhotoPoints(List<PhotoPoint> repo) {
-        repo.add(new PhotoPoint(1, 47.776013, -122.192043, "point001", PhotoPoint.PhotoPointType.Plant, 1));
-        repo.add(new PhotoPoint(2, 47.775886, -122.192635, "point002", PhotoPoint.PhotoPointType.Plant, 2));
-        repo.add(new PhotoPoint(3, 47.776013, -122.193909, "point003", PhotoPoint.PhotoPointType.Plant,3 ));
-        repo.add(new PhotoPoint(4, 47.775241, -122.195866, "point004", PhotoPoint.PhotoPointType.Plant,4 ));
-        repo.add(new PhotoPoint(5, 47.774999, -122.195243, "point005", PhotoPoint.PhotoPointType.Plant,5 ));
-        repo.add(new PhotoPoint(6, 47.774484, -122.195694, "point006", PhotoPoint.PhotoPointType.Plant,6 ));
-        repo.add(new PhotoPoint(7, 47.773701, -122.194359, "point007", PhotoPoint.PhotoPointType.Plant,7 ));
-        repo.add(new PhotoPoint(8, 47.774150, -122.192456, "point008", PhotoPoint.PhotoPointType.Plant,8 ));
-        repo.add(new PhotoPoint(9, 47.775886, -122.192635, "point009", PhotoPoint.PhotoPointType.Plant,9 ));
+        repo.add(new PhotoPoint(1, 47.776013, -122.192043, "https://www.plantsmap.com/organizations/24477/plants/28097", PhotoPoint.PhotoPointType.Plant, 1));
+        repo.add(new PhotoPoint(2, 47.775886, -122.192635, "https://www.plantsmap.com/organizations/24477/plants/28069", PhotoPoint.PhotoPointType.Plant, 2));
+        repo.add(new PhotoPoint(3, 47.776013, -122.193909, "https://www.plantsmap.com/organizations/24477/plants/28092", PhotoPoint.PhotoPointType.Plant,3 ));
+        repo.add(new PhotoPoint(4, 47.775241, -122.195866, "https://www.plantsmap.com/organizations/24477/plants/28061", PhotoPoint.PhotoPointType.Plant,4 ));
+        repo.add(new PhotoPoint(5, 47.774999, -122.195243, "https://www.plantsmap.com/organizations/24477/plants/28074", PhotoPoint.PhotoPointType.Plant,5 ));
+        repo.add(new PhotoPoint(6, 47.774484, -122.195694, "https://www.plantsmap.com/organizations/24477/plants/28070", PhotoPoint.PhotoPointType.Plant,6 ));
+        repo.add(new PhotoPoint(7, 47.773701, -122.194359, "https://www.plantsmap.com/plants/28068", PhotoPoint.PhotoPointType.Plant,7 ));
+        repo.add(new PhotoPoint(8, 47.774150, -122.192456, "https://www.plantsmap.com/organizations/24477/plants/28094", PhotoPoint.PhotoPointType.Plant,8 ));
     }
 
 
