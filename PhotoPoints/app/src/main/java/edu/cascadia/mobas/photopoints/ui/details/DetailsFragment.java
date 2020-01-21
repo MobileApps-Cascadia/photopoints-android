@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,12 +27,22 @@ public class DetailsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_details, container, false);
+        Button button = root.findViewById(R.id.fab_uploadDetails);
+        Button button2 = root.findViewById(R.id.fab_takePictureDetails);
+
+        button.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+
+            }
+        });
+
+        button2.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+
+            }
+        });
 
 
-
-        ///Plant test = new Plant(text1, text2){
-
-        //};
 
 
         return root;
