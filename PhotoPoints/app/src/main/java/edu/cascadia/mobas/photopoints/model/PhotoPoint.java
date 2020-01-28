@@ -4,10 +4,12 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class PhotoPoint {
 
-    public enum PhotoPointType{
-        Creek, //0
-        Plant  //1
+    public enum PhotoPointType {
+        Unknown,
+        Plant,
+        Creek
     }
+
 
     private int mPhotoPointID;
     private Double mLatitude;
