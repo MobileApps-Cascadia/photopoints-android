@@ -10,12 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import edu.cascadia.mobas.photopoints.R;
-import edu.cascadia.mobas.photopoints.repo.PhotoPointsRepository;
+import edu.cascadia.mobas.photopoints.repo.PointItemRepository;
 import edu.cascadia.mobas.photopoints.repo.PlantRepository;
 
 public class PhotoPointsFragment extends Fragment {
 
-    PhotoPointsRepository photoPointsRepo = new PhotoPointsRepository(getContext());
+    PointItemRepository photoPointsRepo = new PointItemRepository(getContext());
     PlantRepository plantRepo = new PlantRepository();
 
     @Override
