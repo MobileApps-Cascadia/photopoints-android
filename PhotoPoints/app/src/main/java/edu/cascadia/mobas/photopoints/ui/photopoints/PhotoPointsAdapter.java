@@ -28,6 +28,7 @@ import edu.cascadia.mobas.photopoints.model.PhotoPoint;
 import edu.cascadia.mobas.photopoints.model.Plant;
 import edu.cascadia.mobas.photopoints.repo.PhotoPointsRepository;
 import edu.cascadia.mobas.photopoints.repo.PlantRepository;
+import edu.cascadia.mobas.photopoints.ui.details.DetailsFragment;
 
 
 public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.PhotoPointsViewHolder>{
@@ -55,15 +56,19 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
         TextView text_photopoint_subtext;
 
 
-
+public ClassLoader CL;
 
         public PhotoPointsViewHolder(@NonNull View itemView) {
             super(itemView);
             image_photopoint_displayphoto = (ImageView) itemView.findViewById(R.id.image_photopoint_displayphoto);
             text_photopoint_displaytext = (TextView) itemView.findViewById(R.id.text_photopoint_displaytext);
             text_photopoint_subtext = (TextView) itemView.findViewById(R.id.text_photopoint_subtext);
+            //Click listener for recycler view items
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override public void onClick(View itemView){
+                fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, new DetailsFragment());
+
+
 
 
                 }
