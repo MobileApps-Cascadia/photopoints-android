@@ -1,15 +1,27 @@
 package edu.cascadia.mobas.photopoints.ui.photopoints;
+import java.io.FileDescriptor;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import android.content.ClipData;
+import android.os.Bundle;
 import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.view.menu.MenuView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 
 import edu.cascadia.mobas.photopoints.R;
 import edu.cascadia.mobas.photopoints.model.PhotoPoint;
@@ -42,13 +54,23 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
         TextView text_photopoint_displaytext;
         TextView text_photopoint_subtext;
 
+
+
+
         public PhotoPointsViewHolder(@NonNull View itemView) {
             super(itemView);
             image_photopoint_displayphoto = (ImageView) itemView.findViewById(R.id.image_photopoint_displayphoto);
             text_photopoint_displaytext = (TextView) itemView.findViewById(R.id.text_photopoint_displaytext);
             text_photopoint_subtext = (TextView) itemView.findViewById(R.id.text_photopoint_subtext);
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override public void onClick(View itemView){
+
+
+                }
+            });
         }
     }
+
 
     @NonNull
     @Override
@@ -65,10 +87,142 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
         viewHolder.image_photopoint_displayphoto.setImageResource(R.drawable.default_plant_photo_small);
         viewHolder.text_photopoint_displaytext.setText(plant.getCommonName());
         viewHolder.text_photopoint_subtext.setText(plant.getSpecies());
+
     }
 
     @Override
     public int getItemCount() {
         return mPhotoPointRepo.size();
     }
+
+    FragmentManager fragmentManager = new FragmentManager() {
+        @NonNull
+        @Override
+        public FragmentTransaction beginTransaction() {
+            return null;
+        }
+
+        @Override
+        public boolean executePendingTransactions() {
+            return false;
+        }
+
+        @Nullable
+        @Override
+        public Fragment findFragmentById(int id) {
+            return null;
+        }
+
+        @Nullable
+        @Override
+        public Fragment findFragmentByTag(@Nullable String tag) {
+            return null;
+        }
+
+        @Override
+        public void popBackStack() {
+
+        }
+
+        @Override
+        public boolean popBackStackImmediate() {
+            return false;
+        }
+
+        @Override
+        public void popBackStack(@Nullable String name, int flags) {
+
+        }
+
+        @Override
+        public boolean popBackStackImmediate(@Nullable String name, int flags) {
+            return false;
+        }
+
+        @Override
+        public void popBackStack(int id, int flags) {
+
+        }
+
+        @Override
+        public boolean popBackStackImmediate(int id, int flags) {
+            return false;
+        }
+
+        @Override
+        public int getBackStackEntryCount() {
+            return 0;
+        }
+
+        @NonNull
+        @Override
+        public BackStackEntry getBackStackEntryAt(int index) {
+            return null;
+        }
+
+        @Override
+        public void addOnBackStackChangedListener(@NonNull OnBackStackChangedListener listener) {
+
+        }
+
+        @Override
+        public void removeOnBackStackChangedListener(@NonNull OnBackStackChangedListener listener) {
+
+        }
+
+        @Override
+        public void putFragment(@NonNull Bundle bundle, @NonNull String key, @NonNull Fragment fragment) {
+
+        }
+
+        @Nullable
+        @Override
+        public Fragment getFragment(@NonNull Bundle bundle, @NonNull String key) {
+            return null;
+        }
+
+        @NonNull
+        @Override
+        public List<Fragment> getFragments() {
+            return null;
+        }
+
+        @Nullable
+        @Override
+        public Fragment.SavedState saveFragmentInstanceState(@NonNull Fragment f) {
+            return null;
+        }
+
+        @Override
+        public boolean isDestroyed() {
+            return false;
+        }
+
+        @Override
+        public void registerFragmentLifecycleCallbacks(@NonNull FragmentLifecycleCallbacks cb, boolean recursive) {
+
+        }
+
+        @Override
+        public void unregisterFragmentLifecycleCallbacks(@NonNull FragmentLifecycleCallbacks cb) {
+
+        }
+
+        @Nullable
+        @Override
+        public Fragment getPrimaryNavigationFragment() {
+            return null;
+        }
+
+        @Override
+        public void dump(@NonNull String prefix, @Nullable FileDescriptor fd, @NonNull PrintWriter writer, @Nullable String[] args) {
+
+        }
+
+        @Override
+        public boolean isStateSaved() {
+            return false;
+        }
+    };
+
 }
