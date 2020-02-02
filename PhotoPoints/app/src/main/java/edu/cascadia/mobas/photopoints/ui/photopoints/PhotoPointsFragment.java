@@ -33,7 +33,7 @@ public class PhotoPointsFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_photopoints, container, false);
 
-        PhotoPointsAdapter adapter = new PhotoPointsAdapter(plantRepo);
+        PhotoPointsAdapter adapter = new PhotoPointsAdapter(getContext(),plantRepo,getFragmentManager());
 
         RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.cardview_photopoints);
 

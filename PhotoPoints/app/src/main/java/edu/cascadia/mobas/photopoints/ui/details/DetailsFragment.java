@@ -27,17 +27,16 @@ public class DetailsFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_details, container, false);
-        Button button = root.findViewById(R.id.fab_uploadDetails);
-        Button button2 = root.findViewById(R.id.fab_takePictureDetails);
 
 
-        button.setOnClickListener(new View.OnClickListener(){
+
+        root.findViewById(R.id.fab_uploadDetails).setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
             }
         });
 
-        button2.setOnClickListener(new View.OnClickListener(){
+        root.findViewById(R.id.fab_takePictureDetails).setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
 
             }

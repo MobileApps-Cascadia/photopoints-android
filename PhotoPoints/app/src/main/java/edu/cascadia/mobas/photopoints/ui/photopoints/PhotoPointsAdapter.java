@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.content.ClipData;
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -32,12 +33,18 @@ import edu.cascadia.mobas.photopoints.ui.details.DetailsFragment;
 
 
 public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.PhotoPointsViewHolder>{
-
+    FragmentManager fragmentManager;
     private ArrayList<PhotoPoint> mPhotoPointRepo;
     private PlantRepository mPlantRepo;
+    private Context mContext;
+    private FragmentManager mFragmentManager;
+
+
 
     // constructor
-    public PhotoPointsAdapter(PlantRepository plantRepo){
+    public PhotoPointsAdapter(Context context, PlantRepository plantRepo, FragmentManager fragmentManager){
+        mContext = context;
+        mFragmentManager = fragmentManager;
         mPhotoPointRepo = new ArrayList<PhotoPoint>();
         mPlantRepo = plantRepo;
         mPhotoPointRepo.add(new PhotoPoint(1, 47.776013, -122.192043, "https://www.plantsmap.com/organizations/24477/plants/28097", PhotoPoint.PhotoPointType.Plant, 1));
@@ -66,7 +73,9 @@ public ClassLoader CL;
             //Click listener for recycler view items
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override public void onClick(View itemView){
-                fragmentManager.beginTransaction().replace(R.id.nav_host_fragment, new DetailsFragment());
+                mFragmentManager.beginTransaction()
+                        .add(R.id.nav_host_fragment, new DetailsFragment())
+                        .commit();
 
 
 
@@ -100,134 +109,6 @@ public ClassLoader CL;
         return mPhotoPointRepo.size();
     }
 
-    FragmentManager fragmentManager = new FragmentManager() {
-        @NonNull
-        @Override
-        public FragmentTransaction beginTransaction() {
-            return null;
-        }
 
-        @Override
-        public boolean executePendingTransactions() {
-            return false;
-        }
-
-        @Nullable
-        @Override
-        public Fragment findFragmentById(int id) {
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public Fragment findFragmentByTag(@Nullable String tag) {
-            return null;
-        }
-
-        @Override
-        public void popBackStack() {
-
-        }
-
-        @Override
-        public boolean popBackStackImmediate() {
-            return false;
-        }
-
-        @Override
-        public void popBackStack(@Nullable String name, int flags) {
-
-        }
-
-        @Override
-        public boolean popBackStackImmediate(@Nullable String name, int flags) {
-            return false;
-        }
-
-        @Override
-        public void popBackStack(int id, int flags) {
-
-        }
-
-        @Override
-        public boolean popBackStackImmediate(int id, int flags) {
-            return false;
-        }
-
-        @Override
-        public int getBackStackEntryCount() {
-            return 0;
-        }
-
-        @NonNull
-        @Override
-        public BackStackEntry getBackStackEntryAt(int index) {
-            return null;
-        }
-
-        @Override
-        public void addOnBackStackChangedListener(@NonNull OnBackStackChangedListener listener) {
-
-        }
-
-        @Override
-        public void removeOnBackStackChangedListener(@NonNull OnBackStackChangedListener listener) {
-
-        }
-
-        @Override
-        public void putFragment(@NonNull Bundle bundle, @NonNull String key, @NonNull Fragment fragment) {
-
-        }
-
-        @Nullable
-        @Override
-        public Fragment getFragment(@NonNull Bundle bundle, @NonNull String key) {
-            return null;
-        }
-
-        @NonNull
-        @Override
-        public List<Fragment> getFragments() {
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public Fragment.SavedState saveFragmentInstanceState(@NonNull Fragment f) {
-            return null;
-        }
-
-        @Override
-        public boolean isDestroyed() {
-            return false;
-        }
-
-        @Override
-        public void registerFragmentLifecycleCallbacks(@NonNull FragmentLifecycleCallbacks cb, boolean recursive) {
-
-        }
-
-        @Override
-        public void unregisterFragmentLifecycleCallbacks(@NonNull FragmentLifecycleCallbacks cb) {
-
-        }
-
-        @Nullable
-        @Override
-        public Fragment getPrimaryNavigationFragment() {
-            return null;
-        }
-
-        @Override
-        public void dump(@NonNull String prefix, @Nullable FileDescriptor fd, @NonNull PrintWriter writer, @Nullable String[] args) {
-
-        }
-
-        @Override
-        public boolean isStateSaved() {
-            return false;
-        }
-    };
 
 }
