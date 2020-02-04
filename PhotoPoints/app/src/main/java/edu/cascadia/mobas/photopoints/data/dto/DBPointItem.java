@@ -4,14 +4,16 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
-import edu.cascadia.mobas.photopoints.model.PointItem.ItemType;
+import edu.cascadia.mobas.photopoints.data.converters.ItemTypeConverter;
+import edu.cascadia.mobas.photopoints.model.ItemType;
 
 @Entity(tableName = "point_item")
 public class DBPointItem {
 
     @PrimaryKey (autoGenerate = true)
-    @ColumnInfo(name ="item_id")
+    @ColumnInfo(name ="id")
     private int id;
 
     @ColumnInfo(name = "qr_Code")
@@ -23,6 +25,7 @@ public class DBPointItem {
     @ColumnInfo(name ="longitude")
     private Double longitude;
 
+    @TypeConverters(ItemTypeConverter.class)
     @ColumnInfo(name = "type")
     private ItemType type;
 
@@ -78,7 +81,7 @@ public class DBPointItem {
 
     public boolean isPhotoPoint() { return !(qrCode == null || qrCode.trim().equals("")); }
 
-    public boolean getInactive() { return this.inactive; }
+    //public boolean getInactive() { return this.inactive; }
 
     public boolean isActive() { return !this.inactive; }
 
@@ -100,4 +103,9 @@ public class DBPointItem {
         new DBPointItem(8, ItemType.Plant, 47.774150, -122.192456, "https://www.plantsmap.com/organizations/24477/plants/28094", false)
         };
     }
+
+
+
+
+    public boolean isInactive() { return this.inactive; }
 }

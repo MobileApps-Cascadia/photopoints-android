@@ -1,7 +1,7 @@
 package edu.cascadia.mobas.photopoints.data.converters;
 
 import androidx.room.TypeConverter;
-import edu.cascadia.mobas.photopoints.model.PointItem.ItemType;
+import edu.cascadia.mobas.photopoints.model.ItemType;
 
 
 
@@ -12,12 +12,12 @@ import edu.cascadia.mobas.photopoints.model.PointItem.ItemType;
 public class ItemTypeConverter {
 
     @TypeConverter
-    public static String photoPointTypeToString(ItemType type) {
+    public static String itemTypeToString(ItemType type) {
         return type.name();
     }
 
     @TypeConverter
-    public static ItemType stringToPhotoPointType(String typeString) {
+    public static ItemType stringToItemType(String typeString) {
         for (ItemType type : ItemType.values()) {
             if (type.name().equals(typeString)) return type;
         }

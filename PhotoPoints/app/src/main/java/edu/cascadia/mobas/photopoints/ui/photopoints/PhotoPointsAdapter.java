@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import edu.cascadia.mobas.photopoints.R;
+import edu.cascadia.mobas.photopoints.model.GeoCoordinate;
+import edu.cascadia.mobas.photopoints.model.ItemType;
 import edu.cascadia.mobas.photopoints.model.PointItem;
 import edu.cascadia.mobas.photopoints.model.Plant;
 import edu.cascadia.mobas.photopoints.repo.PlantRepository;
@@ -25,14 +27,7 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
     public PhotoPointsAdapter(PlantRepository plantRepo){
         mPhotoPointRepo = new ArrayList<PointItem>();
         mPlantRepo = plantRepo;
-        mPhotoPointRepo.add(new PointItem(1, 47.776013, -122.192043, "https://www.plantsmap.com/organizations/24477/plants/28097", PointItem.ItemType.Plant, 1));
-        mPhotoPointRepo.add(new PointItem(2, 47.775886, -122.192635, "https://www.plantsmap.com/organizations/24477/plants/28069", PointItem.ItemType.Plant, 2));
-        mPhotoPointRepo.add(new PointItem(3, 47.776013, -122.193909, "https://www.plantsmap.com/organizations/24477/plants/28092", PointItem.ItemType.Plant,3 ));
-        mPhotoPointRepo.add(new PointItem(4, 47.775241, -122.195866, "https://www.plantsmap.com/organizations/24477/plants/28061", PointItem.ItemType.Plant,4 ));
-        mPhotoPointRepo.add(new PointItem(5, 47.774999, -122.195243, "https://www.plantsmap.com/organizations/24477/plants/28074", PointItem.ItemType.Plant,5 ));
-        mPhotoPointRepo.add(new PointItem(6, 47.774484, -122.195694, "https://www.plantsmap.com/organizations/24477/plants/28070", PointItem.ItemType.Plant,6 ));
-        mPhotoPointRepo.add(new PointItem(7, 47.773701, -122.194359, "https://www.plantsmap.com/plants/28068", PointItem.ItemType.Plant,7 ));
-        mPhotoPointRepo.add(new PointItem(8, 47.774150, -122.192456, "https://www.plantsmap.com/organizations/24477/plants/28094", PointItem.ItemType.Plant,8 ));
+        mPhotoPointRepo.add(new PointItem(1, ItemType.Plant, new GeoCoordinate(47.776013, -122.192043), "https://www.plantsmap.com/organizations/24477/plants/28097", false));
     }
 
     class PhotoPointsViewHolder extends RecyclerView.ViewHolder{

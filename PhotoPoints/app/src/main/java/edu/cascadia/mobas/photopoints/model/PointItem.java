@@ -4,14 +4,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class PointItem {
 
-    public enum ItemType {
-        Unknown,
-        Plant,
-        Creek,
-        Birdhouse,
-        Kiosk,
-        Restroom
-    }
+
 
     // TODO:  Make these final
     private int mId;

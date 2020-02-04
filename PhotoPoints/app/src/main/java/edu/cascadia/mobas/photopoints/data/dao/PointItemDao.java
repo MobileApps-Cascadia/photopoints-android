@@ -23,7 +23,7 @@ public interface PointItemDao {
     void delete(DBPointItem dbPointItem);
 
     @Update
-    void update(DBPointItem photoPoint);
+    void update(DBPointItem dbPointItem);
 
     @Insert
     void insertAll(DBPointItem... dbPointItems);
@@ -36,6 +36,6 @@ public interface PointItemDao {
     Integer getIDByQRCode(String qrCode);
 
     // TODO:  Handle empty result
-    @Query("Select * FROM point_item WHERE item_id = :id")
+    @Query("Select * FROM point_item WHERE id = :id")
     DBPointItem getById(Integer id);
 }

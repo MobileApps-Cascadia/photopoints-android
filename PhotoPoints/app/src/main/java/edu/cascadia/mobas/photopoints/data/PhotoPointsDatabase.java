@@ -38,11 +38,11 @@ public abstract class PhotoPointsDatabase extends RoomDatabase {
             return mInstance;
         }
 
-        mInstance = buildDatbase(context);
+        mInstance = buildDatabase(context);
         return mInstance;
     }
 
-    private static PhotoPointsDatabase buildDatbase(final Context context){
+    private static PhotoPointsDatabase buildDatabase(final Context context){
         return Room.databaseBuilder(context,
                 PhotoPointsDatabase.class,
                 context.getString(R.string.app_name))
@@ -58,6 +58,7 @@ public abstract class PhotoPointsDatabase extends RoomDatabase {
                             //This will run in a separate thread and add the initial data.
                             public void run() {
                                 getAppDatabase(context).pointItemDao().insertAll(DBPointItem.populateData());
+                                getAppDatabase(context).plantDao().insertAll(DBPlant.populateData());
                             }
                         });
                     }
