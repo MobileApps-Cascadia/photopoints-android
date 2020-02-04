@@ -6,7 +6,7 @@ import java.util.Map;
 
 import edu.cascadia.mobas.photopoints.model.GeoCoordinate;
 import edu.cascadia.mobas.photopoints.model.Path;
-import edu.cascadia.mobas.photopoints.model.PhotoPoint;
+import edu.cascadia.mobas.photopoints.model.PointItem;
 import edu.cascadia.mobas.photopoints.model.Plant;
 
 public final class SampleData {
@@ -21,19 +21,19 @@ public final class SampleData {
         repo.put(8, new Plant(8,"Mahonia Nervosa", "Low Oregon Grape", "The tart, purple berries of both Oregon-grapes were eaten, but generally not in quantity…"));
     }
 
-    public static void addSamplePhotoPoints(List<PhotoPoint> repo) {
-        repo.add(new PhotoPoint(1, 47.776013, -122.192043, "https://www.plantsmap.com/organizations/24477/plants/28097", PhotoPoint.PhotoPointType.Plant, 1));
-        repo.add(new PhotoPoint(2, 47.775886, -122.192635, "https://www.plantsmap.com/organizations/24477/plants/28069", PhotoPoint.PhotoPointType.Plant, 2));
-        repo.add(new PhotoPoint(3, 47.776013, -122.193909, "https://www.plantsmap.com/organizations/24477/plants/28092", PhotoPoint.PhotoPointType.Plant,3 ));
-        repo.add(new PhotoPoint(4, 47.775241, -122.195866, "https://www.plantsmap.com/organizations/24477/plants/28061", PhotoPoint.PhotoPointType.Plant,4 ));
-        repo.add(new PhotoPoint(5, 47.774999, -122.195243, "https://www.plantsmap.com/organizations/24477/plants/28074", PhotoPoint.PhotoPointType.Plant,5 ));
-        repo.add(new PhotoPoint(6, 47.774484, -122.195694, "https://www.plantsmap.com/organizations/24477/plants/28070", PhotoPoint.PhotoPointType.Plant,6 ));
-        repo.add(new PhotoPoint(7, 47.773701, -122.194359, "https://www.plantsmap.com/plants/28068", PhotoPoint.PhotoPointType.Plant,7 ));
-        repo.add(new PhotoPoint(8, 47.774150, -122.192456, "https://www.plantsmap.com/organizations/24477/plants/28094", PhotoPoint.PhotoPointType.Plant,8 ));
+
+    /*
+    public static void addSamplePhotoPoints(List<PointItem> repo) {
+        repo.add(new PointItem(1, 47.776013, -122.192043, "https://www.plantsmap.com/organizations/24477/plants/28097", PointItem.ItemType.Plant, 1));
+        repo.add(new PointItem(2, 47.775886, -122.192635, "https://www.plantsmap.com/organizations/24477/plants/28069", PointItem.ItemType.Plant, 2));
+        repo.add(new PointItem(3, 47.776013, -122.193909, "https://www.plantsmap.com/organizations/24477/plants/28092", PointItem.ItemType.Plant,3 ));
+        repo.add(new PointItem(4, 47.775241, -122.195866, "https://www.plantsmap.com/organizations/24477/plants/28061", PointItem.ItemType.Plant,4 ));
+        repo.add(new PointItem(5, 47.774999, -122.195243, "https://www.plantsmap.com/organizations/24477/plants/28074", PointItem.ItemType.Plant,5 ));
+        repo.add(new PointItem(6, 47.774484, -122.195694, "https://www.plantsmap.com/organizations/24477/plants/28070", PointItem.ItemType.Plant,6 ));
+        repo.add(new PointItem(7, 47.773701, -122.194359, "https://www.plantsmap.com/plants/28068", PointItem.ItemType.Plant,7 ));
+        repo.add(new PointItem(8, 47.774150, -122.192456, "https://www.plantsmap.com/organizations/24477/plants/28094", PointItem.ItemType.Plant,8 ));
     }
-
-
-
+*/
 
     public static void addSamplePaths(Map<String, Path> repo, String pathIDs) {
         String [] id = pathIDs.replaceAll(" ", "").split(",");

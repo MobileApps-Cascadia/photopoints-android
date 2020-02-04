@@ -28,13 +28,13 @@ import java.lang.ref.WeakReference;
 import java.util.List;
 import edu.cascadia.mobas.photopoints.R;
 import edu.cascadia.mobas.photopoints.model.Path;
-import edu.cascadia.mobas.photopoints.model.PhotoPoint;
+import edu.cascadia.mobas.photopoints.model.PointItem;
 import edu.cascadia.mobas.photopoints.repo.PathsRepository;
-import edu.cascadia.mobas.photopoints.repo.PhotoPointsRepository;
+import edu.cascadia.mobas.photopoints.repo.PointItemRepository;
 
 public class MapFragment extends Fragment {
 
-    PhotoPointsRepository repoPhotoPoints;
+    PointItemRepository repoPhotoPoints;
     PathsRepository repoPaths = new PathsRepository();
 
     private String TAG = "PHOTOPOINTS_MAP";
@@ -51,7 +51,7 @@ public class MapFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_map, container, false);
-        repoPhotoPoints = new PhotoPointsRepository(getContext());
+        repoPhotoPoints = new PointItemRepository(getContext());
 
         getLocationPermission();
 
@@ -195,34 +195,34 @@ public class MapFragment extends Fragment {
     }
 
     //Example for how the AsyncTask should be implemented.
-    public static class PhotoPointAsyncTask extends AsyncTask<PhotoPoint, Void, List<PhotoPoint>>{
+    public static class PhotoPointAsyncTask extends AsyncTask<PointItem, Void, List<PointItem>>{
 
         private WeakReference<Fragment> mFragment;
         private WeakReference<GoogleMap> mMap;
-        private PhotoPointsRepository mRepo;
+        private PointItemRepository mRepo;
 
 
         public PhotoPointAsyncTask(Fragment frag, GoogleMap map){
             mFragment = new WeakReference<>(frag);
             mMap = new WeakReference<>(map);
-            mRepo = new PhotoPointsRepository(mFragment.get().getContext());
+            mRepo = new PointItemRepository(mFragment.get().getContext());
         }
 
         @Override
-        protected void onPostExecute(List<PhotoPoint> photoPoints) {
+        protected void onPostExecute(List<PointItem> photoPoints) {
             super.onPostExecute(photoPoints);
 
             //Create options with dot icon.
             MarkerOptions options = new MarkerOptions().icon(BitmapDescriptorFactory.fromResource(R.mipmap.dot));
 
             // Place markers for all the PhotoPoints on the map
-            for(PhotoPoint point : photoPoints){
+            for(PointItem point : photoPoints){
                 mMap.get().addMarker(options.position(point.getLatLng()));
             }
         }
 
         @Override
-        protected List<PhotoPoint> doInBackground(PhotoPoint... PhotoPoint) {
+        protected List<PointItem> doInBackground(PointItem... PhotoPoint) {
             return mRepo.getAll();
         }
     }
