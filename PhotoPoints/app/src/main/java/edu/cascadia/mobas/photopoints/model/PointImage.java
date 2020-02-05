@@ -7,9 +7,10 @@ import com.google.android.gms.maps.model.LatLng;
 public class PointImage {
 
     public enum ImageOrientation {
-        landscape,
-        portrait,
-        square
+        Landscape,
+        Portrait,
+        Square,
+        Unknown
     }
 
     private int mPointImageID;
@@ -20,10 +21,6 @@ public class PointImage {
     private String mSource;
     private int mItemID; // ID of item (plant, creek) this is object references to an image of
 
-    // provided for compatibility with existing data model
-    public PointImage(int pointImageID, String URI, Double height, Double width, String source, int imageOrientation) {
-        this(pointImageID, URI, height, width, source, imageOrientation, 1);
-    }
 
     public PointImage(int pointImageID, String URI, Double height, Double width, ImageOrientation imageOrientation, int itemID) {
         this.mPointImageID = pointImageID;
@@ -34,36 +31,22 @@ public class PointImage {
         this.mItemID = itemID;
     }
 
-    public PointImage(int pointImageID, String URI, Double height, Double width, String source, int imageOrientation, int itemID) {
-        this(pointImageID, URI, height, width, source, ImageOrientation.values()[imageOrientation], itemID);
-    }
-
     public int getPointImageID() {
         return mPointImageID;
     }
-
-    public void setPointImageID(int pointImageID) {
-        this.mPointImageID = pointImageID;
-    }
-
-    public ImageOrientation getImageOrientation() {
-        return mImageOrientation;
-    }
-
-    public void setImageOrientation(PointImage.ImageOrientation imageOrientation) {
-        this.mImageOrientation = imageOrientation;
-    }
-
     public String getURI() {
         return mURI;
     }
-
-    public void setURI(String URI) {
-        this.mURI = URI;
+    public ImageOrientation getImageOrientation() {
+        return mImageOrientation;
     }
-
+    public Double getHeight() { return mHeight; }
+    public Double getWidth() { return mWidth; }
+    public String getSource() { return mSource; }
     public int getItemID() {
         return mItemID;
     }
+
+    //TODO: add setters if necessary
 
 }
