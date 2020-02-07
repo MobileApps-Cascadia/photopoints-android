@@ -4,8 +4,6 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class PointItem {
 
-
-
     // TODO:  Make these final
     private int mId;
     private ItemType mItemType;

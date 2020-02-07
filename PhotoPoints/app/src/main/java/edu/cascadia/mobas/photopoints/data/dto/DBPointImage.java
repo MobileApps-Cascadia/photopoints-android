@@ -17,22 +17,26 @@ import edu.cascadia.mobas.photopoints.model.PointItem;
 public class DBPointImage {
 
     @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "id")
-    private int id;
+    @ColumnInfo(name = "image_id")
+    private int imageID;
 
-    @ColumnInfo(name = "URI")
+    @ColumnInfo(name = "uri")
     private String URI;
 
     @TypeConverters(ImageOrientationConverter.class)
-    @ColumnInfo(name = "Orientation")
+    @ColumnInfo(name = "orientation")
     private ImageOrientation orientation;
 
-    @ColumnInfo(name = "Height")
+    @ColumnInfo(name = "height")
     private Double height;
 
-    @ColumnInfo(name = "Width")
+    @ColumnInfo(name = "width")
     private Double width;
 
-    @ColumnInfo(name = "Source")
+    @ColumnInfo(name = "source")
     private String source;
+
+    // is the entity for the foreign class?
+    @ColumnInfo(name = "id")
+    private int id;
 }
