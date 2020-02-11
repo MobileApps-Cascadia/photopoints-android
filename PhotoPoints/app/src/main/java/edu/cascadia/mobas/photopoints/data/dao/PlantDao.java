@@ -10,11 +10,14 @@ import edu.cascadia.mobas.photopoints.data.dto.DBPlant;
 
 @Dao
 public interface PlantDao {
-    @Query("SELECT PlantID, Description, Species FROM Plants")
+    @Query("SELECT plant_id, description, species, common_names FROM Plants")
     List<DBPlant> getPlants();
 
     @Insert
     void insert(DBPlant plant);
+
+    @Insert
+    void insertAll(DBPlant... plants);
 
     @Delete
     void delete(DBPlant plant);
