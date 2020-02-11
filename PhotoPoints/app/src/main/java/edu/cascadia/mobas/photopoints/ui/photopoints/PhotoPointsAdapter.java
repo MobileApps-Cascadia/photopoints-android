@@ -30,7 +30,7 @@ import edu.cascadia.mobas.photopoints.model.GeoCoordinate;
 import edu.cascadia.mobas.photopoints.model.ItemType;
 import edu.cascadia.mobas.photopoints.model.PointItem;
 import edu.cascadia.mobas.photopoints.model.Plant;
-import edu.cascadia.mobas.photopoints.repo.PhotoPointsRepository;
+import edu.cascadia.mobas.photopoints.repo.PointItemRepository;
 import edu.cascadia.mobas.photopoints.repo.PlantRepository;
 import edu.cascadia.mobas.photopoints.ui.details.DetailsFragment;
 
@@ -50,7 +50,7 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
     public PhotoPointsAdapter(Context context, PlantRepository plantRepo, FragmentManager fragmentManager){
         mContext = context;
         mFragmentManager = fragmentManager;
-        mPhotoPointRepo = new ArrayList<PhotoPoint>();
+        mPhotoPointRepo = new ArrayList<PointItem>();
         mPlantRepo = plantRepo;
         mPhotoPointRepo.add(new PointItem(1, ItemType.Plant, new GeoCoordinate(47.776013, -122.192043), "https://www.plantsmap.com/organizations/24477/plants/28097", false));
     }
