@@ -3,6 +3,8 @@ package edu.cascadia.mobas.photopoints.model;
 
 // a POJO geocoordinate class
 
+import androidx.annotation.NonNull;
+
 public class Coordinates {
     private double longitude;
     private double latitude;
@@ -18,9 +20,22 @@ public class Coordinates {
         this(lat, lng, 0);
     }
 
-    public Coordinates(GeoCoordinate geo) {
-        this(geo.getLatitude(), geo.getLongitude(), geo.getAltitude());
+    public Coordinates(@NonNull String coords) {
+        String [] coordSet = coords.trim().split(",", 4);
+        double lng = Double.parseDouble(coordSet[0]);
+        double lat = Double.parseDouble(coordSet[1]);
+        double alt = (coordSet.length < 3 ? 0 : Double.parseDouble(coordSet[2]));
 
+        // swap coordinates if order given is longitude,latitude (based on North America)
+        if (lat < 0 && lng > 0) {
+            double temp = lat;
+            lat = lng;
+            lng = temp;
+        }
+
+        this.latitude = lat;
+        this.longitude = lng;
+        this.altitude = alt;
     }
 
     public double getLongitude() {
