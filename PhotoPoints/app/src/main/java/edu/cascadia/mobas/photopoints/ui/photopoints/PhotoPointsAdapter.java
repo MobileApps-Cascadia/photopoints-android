@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 
 import edu.cascadia.mobas.photopoints.R;
+import edu.cascadia.mobas.photopoints.model.Coordinates;
 import edu.cascadia.mobas.photopoints.model.GeoCoordinate;
 import edu.cascadia.mobas.photopoints.model.ItemType;
 import edu.cascadia.mobas.photopoints.model.PointItem;
@@ -52,7 +53,7 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
         mFragmentManager = fragmentManager;
         mPhotoPointRepo = new ArrayList<PointItem>();
         mPlantRepo = plantRepo;
-        mPhotoPointRepo.add(new PointItem(1, ItemType.Plant, new GeoCoordinate(47.776013, -122.192043), "https://www.plantsmap.com/organizations/24477/plants/28097", false));
+        mPhotoPointRepo.add(new PointItem(1, ItemType.Plant, new Coordinates(47.776013, -122.192043), "https://www.plantsmap.com/organizations/24477/plants/28097", false));
     }
 
     class PhotoPointsViewHolder extends RecyclerView.ViewHolder{
