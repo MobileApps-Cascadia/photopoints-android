@@ -50,7 +50,7 @@ public class Path {
         this(geos, type);
         mLabel = label;
     }
-    
+
 
     // extends path with a single coordinate
     public void addToPath(@NonNull Coordinates geo) { mGeo.add(geo); }
