@@ -63,6 +63,15 @@ public class DBPointItem {
         this.type = (type == null ? ItemType.Unknown : type );
     }
 
+    public Coordinates getLocation() { return this.location; }
+
+    public void setLocation(double latitude, double longitude, double altitude) {
+        this.location.setLatitude(latitude);
+        this.location.setLongitude(longitude);
+        this.location.setAltitude(altitude);
+    }
+
+    public void setLocation(Coordinates location) { this.location = location; }
 
     public Double getLatitude() { return this.location.getLatitude(); }
 
