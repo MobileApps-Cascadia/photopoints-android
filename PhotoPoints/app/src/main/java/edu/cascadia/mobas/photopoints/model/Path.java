@@ -31,11 +31,14 @@ public class Path {
     // Constructor chain
     // Path(String pathId, String label, List<GeoCoordinates> geos, PathType type)
 
+
+
     public Path() { mGeo = new ArrayList<Coordinates>(); mPathType = PathType.UNKNOWN_TYPE; }
 
     public Path(PathType type) { this(); mPathType = type; }
 
     public Path(@NonNull String label) {  this(); mLabel = label; }
+
 
     public Path(@NonNull List<Coordinates> geos) { this(); mGeo.addAll(geos); }
 
@@ -47,7 +50,7 @@ public class Path {
         this(geos, type);
         mLabel = label;
     }
-
+    
 
     // extends path with a single coordinate
     public void addToPath(@NonNull Coordinates geo) { mGeo.add(geo); }
