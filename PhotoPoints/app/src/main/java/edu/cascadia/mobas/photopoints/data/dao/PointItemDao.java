@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Transaction;
 import androidx.room.Update;
 import edu.cascadia.mobas.photopoints.data.converters.ItemTypeConverter;
 
@@ -18,6 +19,7 @@ public interface PointItemDao {
     @Query("Select * FROM point_item")
     List<DBPointItem> getAll();
 
+    @Transaction
     @Query(value = "SELECT * FROM point_item"
             + " WHERE type = 'PLANT'"
             + " AND inactive = 0")
