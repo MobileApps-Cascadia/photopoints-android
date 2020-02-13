@@ -24,39 +24,37 @@ public class Path {
         MINOR_TRAIL         // 3 - path is a "hidden" trail, does not resemble a trail (required for some photopoints)
     }
 
-    private ArrayList<GeoCoordinate> mGeo;    // sequential list of coordinates
+    private ArrayList<Coordinates> mGeo;    // sequential list of coordinates
     private PathType mPathType;               // enumerated path type
     private String mLabel = "";               // label for path
 
     // Constructor chain
     // Path(String pathId, String label, List<GeoCoordinates> geos, PathType type)
 
-    public Path() { mGeo = new ArrayList<GeoCoordinate>(); mPathType = PathType.UNKNOWN_TYPE; }
+    public Path() { mGeo = new ArrayList<Coordinates>(); mPathType = PathType.UNKNOWN_TYPE; }
 
     public Path(PathType type) { this(); mPathType = type; }
 
     public Path(@NonNull String label) {  this(); mLabel = label; }
 
-    public Path(@NonNull List<GeoCoordinate> geos) { this(); mGeo.addAll(geos); }
+    public Path(@NonNull List<Coordinates> geos) { this(); mGeo.addAll(geos); }
 
     public Path(@NonNull String label, PathType type) { this(type); mLabel = label; }
 
-    public Path(@NonNull List<GeoCoordinate> geos, PathType type) { this(geos); mPathType = type; }
+    public Path(@NonNull List<Coordinates> geos, PathType type) { this(geos); mPathType = type; }
 
-    public Path(@NonNull String label, @NonNull List<GeoCoordinate> geos, PathType type) {
+    public Path(@NonNull String label, @NonNull List<Coordinates> geos, PathType type) {
         this(geos, type);
         mLabel = label;
     }
 
 
     // extends path with a single coordinate
-    public void addToPath(@NonNull GeoCoordinate geo) {
-        if (geo.isValid()) mGeo.add(geo);
-    }
+    public void addToPath(@NonNull Coordinates geo) { mGeo.add(geo); }
 
 
     // Adds a list of GeoCoordinates to the path
-    public void addToPath(@NonNull List<GeoCoordinate> geos) {
+    public void addToPath(@NonNull List<Coordinates> geos) {
         mGeo.addAll(geos);
     }
 
@@ -64,18 +62,20 @@ public class Path {
     // Return Path as ArrayList of LatLng items
     public List<LatLng> getLatLngList() {
         ArrayList<LatLng> latLngList = new ArrayList<>();
-        for (GeoCoordinate geo : mGeo) {
-            latLngList.add(new LatLng(geo.latitude(), geo.longitude()));
+        for (Coordinates geo : mGeo) {
+            latLngList.add(new LatLng(geo.getLatitude(), geo.getLongitude()));
         }
         return latLngList;
     }
 
 
-    // Returns a reference of the Geocoordinates List
-    public List<GeoCoordinate> getGeoCoordinates() {
+    // Returns a reference to the Coordinates List
+    public List<Coordinates> getCoordinates() {
         return mGeo;
     }
 
+
+    //TODO:  USE MAPS HELPER CLASS; SHOULD NOT PROVIDE CONTEXT TO MODEL CLASSES
 
     // Return integer color value for path display on map
     private int getLineColor(Context context) {
@@ -90,6 +90,7 @@ public class Path {
     }
 
 
+    // TODO:  USE MAPS HELPER CLASS
     // Return a line pattern for for path display on map
     private List<PatternItem> getLinePattern() {
         switch(this.mPathType) {
@@ -102,7 +103,7 @@ public class Path {
         }
     }
 
-
+    // TODO:  USE MAPS HELPER CLASSS
     // returns path as Google Maps polyline
     public PolylineOptions getPolylineOptions (Context context) {
         return new PolylineOptions()
