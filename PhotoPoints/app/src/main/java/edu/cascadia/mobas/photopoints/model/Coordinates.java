@@ -10,10 +10,10 @@ public class Coordinates {
     private double latitude;
     private double altitude;
 
-    Coordinates(double lat, double lng, double alt) {
-        setLongitude(lng);
-        setLatitude(lat);
-        setAltitude(alt);
+    Coordinates(double latitude, double longitude, double altitude) {
+        setLongitude(longitude);
+        setLatitude(latitude);
+        setAltitude(longitude);
     }
 
     public Coordinates(double lat, double lng) {
