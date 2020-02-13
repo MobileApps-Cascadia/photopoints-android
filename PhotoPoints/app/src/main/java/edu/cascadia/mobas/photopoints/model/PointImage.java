@@ -22,9 +22,9 @@ public class PointImage {
     private int mItemID; // ID of item (plant, creek) this is object references to an image of
 
 
-    public PointImage(int pointImageID, String URI, Double height, Double width, ImageOrientation imageOrientation, int itemID) {
+    public PointImage(int pointImageID, String uri, Double height, Double width, ImageOrientation imageOrientation, int itemID) {
         this.mPointImageID = pointImageID;
-        this.mURI = URI;
+        this.mURI = uri;
         this.mHeight = height;
         this.mWidth = width;
         this.mImageOrientation = imageOrientation;
