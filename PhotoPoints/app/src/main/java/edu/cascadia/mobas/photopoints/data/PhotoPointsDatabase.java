@@ -11,16 +11,26 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.Executors;
 import edu.cascadia.mobas.photopoints.R;
 import edu.cascadia.mobas.photopoints.data.converters.TimeStampConverter;
-import edu.cascadia.mobas.photopoints.data.dao.PhotoPointDao;
+import edu.cascadia.mobas.photopoints.data.dao.PointItemDao;
 import edu.cascadia.mobas.photopoints.data.dao.PlantDao;
 import edu.cascadia.mobas.photopoints.data.dao.UserDao;
-import edu.cascadia.mobas.photopoints.data.dto.DBPhotoPoint;
+import edu.cascadia.mobas.photopoints.data.dto.DBPointItem;
 import edu.cascadia.mobas.photopoints.data.dto.DBPlant;
 import edu.cascadia.mobas.photopoints.data.dto.DBUser;
 
+
 //Database for the photopoints.
+
+
+// This class creates a creates is a singleton instance for the AppDatabase.
+// To obtain a reference to the database, getAppDatabase(context) is called.
+// If the database does not exist, locally, it is created by room and populated
+// with initial data
+
+
+
 //For now, we can set the ExportSchema flag to false. We might want to set this to true later if we want to start using migrations.
-@Database(entities = {DBUser.class, DBPhotoPoint.class, DBPlant.class}, version = 1, exportSchema = false)
+@Database(entities = {DBUser.class, DBPointItem.class, DBPlant.class}, version = 1, exportSchema = false)
 @TypeConverters({TimeStampConverter.class})
 public abstract class PhotoPointsDatabase extends RoomDatabase {
 
@@ -28,8 +38,8 @@ public abstract class PhotoPointsDatabase extends RoomDatabase {
     private static PhotoPointsDatabase mInstance;
 
     public abstract UserDao userDao();
-    public abstract PhotoPointDao photoPointDao();
-    public abstract PlantDao plantsDao();
+    public abstract PointItemDao pointItemDao();
+    public abstract PlantDao plantDao();
 
     //Gets, or creates when not exists, an instance of the PhotoPoints database
     public static PhotoPointsDatabase getAppDatabase(Context context){
@@ -37,11 +47,11 @@ public abstract class PhotoPointsDatabase extends RoomDatabase {
             return mInstance;
         }
 
-        mInstance = buildDatbase(context);
+        mInstance = buildDatabase(context);
         return mInstance;
     }
 
-    private static PhotoPointsDatabase buildDatbase(final Context context){
+    private static PhotoPointsDatabase buildDatabase(final Context context){
         return Room.databaseBuilder(context,
                 PhotoPointsDatabase.class,
                 context.getString(R.string.app_name))
@@ -56,7 +66,8 @@ public abstract class PhotoPointsDatabase extends RoomDatabase {
                             @Override
                             //This will run in a separate thread and add the initial data.
                             public void run() {
-                                getAppDatabase(context).photoPointDao().insertAll(DBPhotoPoint.populateData());
+                                getAppDatabase(context).pointItemDao().insertAll(DBPointItem.populateData());
+                                getAppDatabase(context).plantDao().insertAll(DBPlant.populateData());
                             }
                         });
                     }

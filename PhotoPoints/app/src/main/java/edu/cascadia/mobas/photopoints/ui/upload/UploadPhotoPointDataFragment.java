@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import java.lang.ref.WeakReference;
 import edu.cascadia.mobas.photopoints.R;
-import edu.cascadia.mobas.photopoints.model.PhotoPoint;
-import edu.cascadia.mobas.photopoints.repo.PhotoPointsRepository;
+import edu.cascadia.mobas.photopoints.model.PointItem;
+import edu.cascadia.mobas.photopoints.repo.PointItemRepository;
 
 /*This fragment is used to capture the plant data and pictures.*/
 public class UploadPhotoPointDataFragment extends Fragment {
@@ -33,7 +33,7 @@ public class UploadPhotoPointDataFragment extends Fragment {
         }
 
         if(mPhotoPointID != 0){
-            //Get the PhotoPoint information
+            //Get the PointItem information
             new GetPhotoPointInfoAsync(this, (TextView)view.findViewById(R.id.text_name)).execute(mPhotoPointID);
         }
 
@@ -65,7 +65,7 @@ public class UploadPhotoPointDataFragment extends Fragment {
     }
 
     /*Gets the photopoint information asynchronously.*/
-    private static class GetPhotoPointInfoAsync extends AsyncTask<Integer, Void, PhotoPoint>{
+    private static class GetPhotoPointInfoAsync extends AsyncTask<Integer, Void, PointItem>{
 
         private WeakReference<Fragment> mFragment;
         private WeakReference<TextView> mPhotoPointName;
@@ -76,7 +76,7 @@ public class UploadPhotoPointDataFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(PhotoPoint photoPoint) {
+        protected void onPostExecute(PointItem photoPoint) {
             super.onPostExecute(photoPoint);
 
             //Should really not happen because verified the ID in the previous screen.
@@ -89,8 +89,8 @@ public class UploadPhotoPointDataFragment extends Fragment {
         }
 
         @Override
-        protected PhotoPoint doInBackground(Integer... integers) {
-            return new PhotoPointsRepository(mFragment.get().getContext()).getById(integers[0]);
+        protected PointItem doInBackground(Integer... integers) {
+            return new PointItemRepository(mFragment.get().getContext()).getById(integers[0]);
         }
     }
 }
