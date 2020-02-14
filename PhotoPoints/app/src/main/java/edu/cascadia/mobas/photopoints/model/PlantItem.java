@@ -8,7 +8,8 @@ import edu.cascadia.mobas.photopoints.data.dto.DBPointItem;
 
 public class PlantItem {
     @Embedded
-    DBPointItem mDbPointItem;
+    public DBPointItem mDbPointItem;
     @Relation(parentColumn = "id", entityColumn = "plant_id", entity = DBPlant.class)
-    DBPlant mDbPlant;
+    public DBPlant mDbPlant;
 }
+

@@ -8,7 +8,6 @@ import java.util.List;
 import edu.cascadia.mobas.photopoints.data.PhotoPointsDatabase;
 import edu.cascadia.mobas.photopoints.data.dto.DBPointItem;
 import edu.cascadia.mobas.photopoints.model.Coordinates;
-import edu.cascadia.mobas.photopoints.model.GeoCoordinate;
 import edu.cascadia.mobas.photopoints.model.PointItem;
 
 public class PointItemRepository implements IRepository<PointItem> {

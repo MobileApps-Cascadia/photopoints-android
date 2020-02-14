@@ -1,37 +1,22 @@
 package edu.cascadia.mobas.photopoints.ui.photopoints;
-import java.io.FileDescriptor;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
-import java.util.List;
-
-import android.content.ClipData;
 import android.content.Context;
-import android.os.Bundle;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.view.menu.MenuView;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 
 import edu.cascadia.mobas.photopoints.R;
 import edu.cascadia.mobas.photopoints.model.Coordinates;
-import edu.cascadia.mobas.photopoints.model.GeoCoordinate;
 import edu.cascadia.mobas.photopoints.model.ItemType;
 import edu.cascadia.mobas.photopoints.model.PointItem;
 import edu.cascadia.mobas.photopoints.model.Plant;
-import edu.cascadia.mobas.photopoints.repo.PointItemRepository;
 import edu.cascadia.mobas.photopoints.repo.PlantRepository;
 import edu.cascadia.mobas.photopoints.ui.details.DetailsFragment;
 
