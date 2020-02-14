@@ -18,7 +18,6 @@ public class PointImage {
     private ImageOrientation mImageOrientation;
     private Double mHeight;
     private Double mWidth;
-    private String mSource;
     private int mItemID; // ID of item (plant, creek) this is object references to an image of
 
 
@@ -42,7 +41,6 @@ public class PointImage {
     }
     public Double getHeight() { return mHeight; }
     public Double getWidth() { return mWidth; }
-    public String getSource() { return mSource; }
     public int getItemID() {
         return mItemID;
     }

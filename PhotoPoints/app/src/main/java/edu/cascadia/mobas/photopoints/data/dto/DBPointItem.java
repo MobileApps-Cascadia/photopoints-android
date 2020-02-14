@@ -11,7 +11,7 @@ import androidx.room.TypeConverters;
 import edu.cascadia.mobas.photopoints.data.converters.ItemTypeConverter;
 import edu.cascadia.mobas.photopoints.model.ItemType;
 
-@Entity(tableName = "point_item", indices = @Index(value = {"id"}, unique = true),  foreignKeys = @ForeignKey(entity = DBPointItem.class, parentColumns = "id", childColumns = "id"))
+@Entity(tableName = "point_item")
 public class DBPointItem {
 
     @PrimaryKey (autoGenerate = true)

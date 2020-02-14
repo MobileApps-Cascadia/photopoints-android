@@ -7,6 +7,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
@@ -14,7 +15,7 @@ import edu.cascadia.mobas.photopoints.data.converters.ImageOrientationConverter;
 import edu.cascadia.mobas.photopoints.model.PointImage;
 import edu.cascadia.mobas.photopoints.model.PointImage.ImageOrientation;
 
-@Entity(tableName = "point_image")
+@Entity(tableName = "point_image", indices = @Index(value = {"id"}, unique = true),  foreignKeys = @ForeignKey(entity = DBPointItem.class, parentColumns = "id", childColumns = "id"))
 public class DBPointImage {
 
     @PrimaryKey(autoGenerate = true)
@@ -34,10 +35,8 @@ public class DBPointImage {
     @ColumnInfo(name = "width")
     private Double width;
 
-    @ColumnInfo(name = "source")
-    private String source;
-
     // is the entity for the foreign class?
+    // yes
     @ColumnInfo(name = "id")
     private int id;
 
@@ -52,7 +51,6 @@ public class DBPointImage {
             ImageOrientation imageOrientation,
             Double height,
             Double width,
-            String source,
             int id
     ) {
         this.imageID = imageID;
@@ -60,7 +58,6 @@ public class DBPointImage {
         this.imageOrientation = imageOrientation;
         this.height = height;
         this.width = width;
-        this.source = source;
         this.id = id;
     }
 
@@ -104,14 +101,6 @@ public class DBPointImage {
         this.width = width;
     }
 
-    public String getSource() {
-        return this.source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
     public int getId() {
         return this.id;
     }
@@ -119,4 +108,18 @@ public class DBPointImage {
     public void setId(int id) {
         this.id = id;
     }
+
+    public static DBPointImage[] populateData() {
+        return new DBPointImage[] {
+                new DBPointImage(1, "plant_card_1.png", ImageOrientation.Landscape, 130.0, 250.0, 1),
+                new DBPointImage(2, "plant_card_1.png", ImageOrientation.Landscape, 130.0, 250.0, 2),
+                new DBPointImage(3, "plant_card_1.png", ImageOrientation.Landscape, 130.0, 250.0, 3),
+                new DBPointImage(4, "plant_card_1.png", ImageOrientation.Landscape, 130.0, 250.0, 4),
+                new DBPointImage(5, "plant_card_1.png", ImageOrientation.Landscape, 130.0, 250.0, 5),
+                new DBPointImage(6, "plant_card_1.png", ImageOrientation.Landscape, 130.0, 250.0, 6),
+                new DBPointImage(7, "plant_card_1.png", ImageOrientation.Landscape, 130.0, 250.0, 7),
+                new DBPointImage(8, "plant_card_1.png", ImageOrientation.Landscape, 130.0, 250.0, 8)
+        };
+    }
+
 }
