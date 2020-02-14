@@ -1,6 +1,7 @@
 package edu.cascadia.mobas.photopoints.data.dto;
 
 import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Ignore;
@@ -9,6 +10,7 @@ import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 import edu.cascadia.mobas.photopoints.data.converters.ItemTypeConverter;
+import edu.cascadia.mobas.photopoints.model.Coordinates;
 import edu.cascadia.mobas.photopoints.model.ItemType;
 
 @Entity(tableName = "point_item")
@@ -21,11 +23,8 @@ public class DBPointItem {
     @ColumnInfo(name = "qr_Code")
     private String qrCode;
 
-    @ColumnInfo(name ="latitude")
-    private Double latitude;
-
-    @ColumnInfo(name ="longitude")
-    private Double longitude;
+    @Embedded
+    private Coordinates location;
 
     @TypeConverters(ItemTypeConverter.class)
     @ColumnInfo(name = "type")
@@ -43,15 +42,13 @@ public class DBPointItem {
     public DBPointItem(
             int id,
             ItemType type,
-            Double latitude,
-            Double longitude,
+            Coordinates location,
             String qrCode,
             boolean inactive
     ) {
         this.id = id;
         this.type = type;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.location = location;
         this.qrCode = qrCode;
         this.inactive = inactive;
     }
@@ -68,14 +65,27 @@ public class DBPointItem {
         this.type = (type == null ? ItemType.Unknown : type );
     }
 
+    public Coordinates getLocation() { return this.location; }
 
-    public Double getLatitude() { return this.latitude; }
+    public void setLocation(double latitude, double longitude, double altitude) {
+        this.location.setLatitude(latitude);
+        this.location.setLongitude(longitude);
+        this.location.setAltitude(altitude);
+    }
 
-    public void setLatitude(Double latitude) { this.latitude = latitude; }
+    public void setLocation(Coordinates location) { this.location = location; }
 
-    public Double getLongitude() { return this.longitude; }
+    public Double getLatitude() { return this.location.getLatitude(); }
 
-    public void setLongitude(Double longitude) { this.longitude = longitude; }
+    public void setLatitude(Double latitude) { this.location.setLatitude(latitude); }
+
+    public Double getLongitude() { return this.location.getLongitude(); }
+
+    public void setLongitude(Double longitude) { this.location.setLongitude(longitude); }
+
+    public Double getAltitude() {  return this.location.getAltitude(); }
+
+    public void setAltitude(Double altitude) { this.location.setAltitude(altitude);}
 
     public String getQrCode() { return qrCode; }
 
@@ -95,14 +105,14 @@ public class DBPointItem {
     //Used the very first time to populate the database.
     public static DBPointItem[] populateData(){
         return new DBPointItem[]{
-        new DBPointItem(1, ItemType.Plant, 47.776013, -122.192043, "https://www.plantsmap.com/organizations/24477/plants/28097", false),
-        new DBPointItem(2, ItemType.Plant, 47.775886, -122.192635, "https://www.plantsmap.com/organizations/24477/plants/28069", false),
-        new DBPointItem(3, ItemType.Plant, 47.776013, -122.193909, "https://www.plantsmap.com/organizations/24477/plants/28092", false),
-        new DBPointItem(4, ItemType.Plant, 47.775241, -122.195866, "https://www.plantsmap.com/organizations/24477/plants/28061", false),
-        new DBPointItem(5, ItemType.Plant, 47.774999, -122.195243, "https://www.plantsmap.com/organizations/24477/plants/28074", false),
-        new DBPointItem(6, ItemType.Plant, 47.774484, -122.195694, "https://www.plantsmap.com/organizations/24477/plants/28070", false),
-        new DBPointItem(7, ItemType.Plant, 47.773701, -122.194359, "https://www.plantsmap.com/plants/28068", false),
-        new DBPointItem(8, ItemType.Plant, 47.774150, -122.192456, "https://www.plantsmap.com/organizations/24477/plants/28094", false)
+        new DBPointItem(1, ItemType.Plant, new Coordinates(-122.192043, 47.776013),"https://www.plantsmap.com/organizations/24477/plants/28097", false),
+        new DBPointItem(2, ItemType.Plant, new Coordinates(-122.192635, 47.775886), "https://www.plantsmap.com/organizations/24477/plants/28069", false),
+        new DBPointItem(3, ItemType.Plant, new Coordinates(-122.193909, 47.776013), "https://www.plantsmap.com/organizations/24477/plants/28092", false),
+        new DBPointItem(4, ItemType.Plant, new Coordinates(-122.195866, 47.775241), "https://www.plantsmap.com/organizations/24477/plants/28061", false),
+        new DBPointItem(5, ItemType.Plant, new Coordinates(-122.195243, 47.774999), "https://www.plantsmap.com/organizations/24477/plants/28074", false),
+        new DBPointItem(6, ItemType.Plant, new Coordinates(-122.195694, 47.774484), "https://www.plantsmap.com/organizations/24477/plants/28070", false),
+        new DBPointItem(7, ItemType.Plant, new Coordinates(-122.194359, 47.773701), "https://www.plantsmap.com/plants/28068", false),
+        new DBPointItem(8, ItemType.Plant, new Coordinates(-122.192456, 47.774150), "https://www.plantsmap.com/organizations/24477/plants/28094", false)
         };
     }
 
