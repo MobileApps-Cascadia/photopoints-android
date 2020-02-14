@@ -20,6 +20,15 @@ import edu.cascadia.mobas.photopoints.data.dto.DBUser;
 
 
 //Database for the photopoints.
+
+
+// This class creates a creates is a singleton instance for the AppDatabase.
+// To obtain a reference to the database, getAppDatabase(context) is called.
+// If the database does not exist, locally, it is created by room and populated
+// with initial data
+
+
+
 //For now, we can set the ExportSchema flag to false. We might want to set this to true later if we want to start using migrations.
 @Database(entities = {DBUser.class, DBPointItem.class, DBPlant.class}, version = 1, exportSchema = false)
 @TypeConverters({TimeStampConverter.class})
