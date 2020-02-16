@@ -33,7 +33,7 @@ import edu.cascadia.mobas.photopoints.model.PointImage;
 
 
 //For now, we can set the ExportSchema flag to false. We might want to set this to true later if we want to start using migrations.
-@Database(entities = {DBUser.class, DBPointItem.class, DBPointImage.class, DBPlant.class}, version = 3, exportSchema = false)
+@Database(entities = {DBUser.class, DBPointItem.class, DBPointImage.class, DBPlant.class}, version = 1, exportSchema = false)
 @TypeConverters({TimeStampConverter.class})
 public abstract class PhotoPointsDatabase extends RoomDatabase {
 
