@@ -71,7 +71,8 @@ public class PointItemRepository implements IRepository<PointItem> {
         List<PointItem> points = new ArrayList<>();
 
         for(DBPointItem point : dbPoints){
-            points.add(mapSingle(point));        }
+            points.add(mapSingle(point));
+        }
 
         return points;
     }
