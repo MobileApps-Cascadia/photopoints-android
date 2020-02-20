@@ -20,11 +20,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.view.menu.MenuView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 
+import edu.cascadia.mobas.photopoints.MainActivity;
 import edu.cascadia.mobas.photopoints.R;
 import edu.cascadia.mobas.photopoints.model.GeoCoordinate;
 import edu.cascadia.mobas.photopoints.model.ItemType;
@@ -33,6 +37,7 @@ import edu.cascadia.mobas.photopoints.model.Plant;
 import edu.cascadia.mobas.photopoints.repo.PointItemRepository;
 import edu.cascadia.mobas.photopoints.repo.PlantRepository;
 import edu.cascadia.mobas.photopoints.ui.details.DetailsFragment;
+import edu.cascadia.mobas.photopoints.ui.details.DetailsViewModel;
 
 
 public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.PhotoPointsViewHolder>{
@@ -43,7 +48,7 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
     private PlantRepository mPlantRepo;
     private Context mContext;
     private FragmentManager mFragmentManager;
-
+    private DetailsViewModel model;
 
 
     // constructor
@@ -53,6 +58,8 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
         mPhotoPointRepo = new ArrayList<PointItem>();
         mPlantRepo = plantRepo;
         mPhotoPointRepo.add(new PointItem(1, ItemType.Plant, new GeoCoordinate(47.776013, -122.192043), "https://www.plantsmap.com/organizations/24477/plants/28097", false));
+
+        //model = new ViewModelProvider().get(DetailsViewModel.class);
     }
 
     class PhotoPointsViewHolder extends RecyclerView.ViewHolder{
@@ -71,13 +78,10 @@ public ClassLoader CL;
             //Click listener for recycler view items
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override public void onClick(View itemView){
+
                 mFragmentManager.beginTransaction()
                         .add(R.id.nav_host_fragment, new DetailsFragment())
                         .commit();
-
-
-
-
                 }
             });
         }
@@ -104,4 +108,6 @@ public ClassLoader CL;
     public int getItemCount() {
         return mPhotoPointRepo.size();
     }
+
+
 }

@@ -17,11 +17,22 @@ public class DetailsViewModel extends ViewModel {
         mText.setValue("かみよ、なぜわたしをみすてられたんだ？");
     }
 
-    public LiveData<String> getDetail_sName(){
+    //Getters and setters
+    public LiveData<String> getDetails_Name(){
         if (Details_Name == null){
             Details_Name = new MutableLiveData<String>();
 
         }
+        return Details_Name;
+    }
+
+    public LiveData<String> setDetails_Name(MutableLiveData<String> set){
+        if (Details_Name == null){
+            Details_Name = new MutableLiveData<String>();
+            Details_Name = set;
+
+        }
+        Details_Name = set;
         return Details_Name;
     }
     public LiveData<String> getDetails_Sci_Name(){
@@ -30,10 +41,28 @@ public class DetailsViewModel extends ViewModel {
         }
         return Details_Sci_Name;
     }
+    public LiveData<String> setDetails_Sci_Name(MutableLiveData<String> set){
+        if (Details_Sci_Name == null){
+            Details_Sci_Name = new MutableLiveData<String>();
+            Details_Sci_Name = set;
+
+        }
+        Details_Sci_Name = set;
+        return Details_Sci_Name;
+    }
     public LiveData<String> getDetails_Desc(){
         if (Details_Desc == null){
             Details_Sci_Name = new MutableLiveData<String>();
         }
+        return Details_Desc;
+    }
+    public LiveData<String> setDetails_Desc(MutableLiveData<String> set){
+        if (Details_Desc == null){
+            Details_Desc = new MutableLiveData<String>();
+            Details_Desc = set;
+
+        }
+        Details_Desc = set;
         return Details_Desc;
     }
 }
