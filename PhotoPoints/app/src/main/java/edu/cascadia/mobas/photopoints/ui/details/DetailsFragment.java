@@ -23,9 +23,9 @@ public class DetailsFragment extends Fragment {
     private DetailsViewModel model;
 
 
-    //Plant information fragment. to do: use plant object to dynamically change text so we don't have to do that all by hand like plebs
+    //Plant information fragment.
 
-    @Override
+
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
@@ -54,5 +54,7 @@ public class DetailsFragment extends Fragment {
         return root;
 
     }
-
+    public static DetailsFragment setInstance(Bundle b) {
+        return new DetailsFragment();
+    }
 }
