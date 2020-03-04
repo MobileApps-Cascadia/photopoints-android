@@ -92,13 +92,13 @@ public ClassLoader CL;
         viewHolder.text_photopoint_subtext.setText(plant.getSpecies());
         final String st1 = plant.getCommonName();
         final String st2 = plant.getSpecies();
+        final String st3 = plant.getDescription();
         //Click listener for recycler view items
         viewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override public void onClick(View itemView){
-                Bundle bundle = getText(st1,st2);
+                Bundle bundle = getText(st1,st2,st3);
                 mFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment,DetailsFragment.setInstance(bundle))
-
                         .commit();
             }
         });
@@ -109,11 +109,13 @@ public ClassLoader CL;
         return mPhotoPointRepo.size();
     }
 
-public Bundle getText(String one, String two){
+    //Bundle for transferring
+    public Bundle getText(String one, String two, String three){
 
         Bundle textBundle = new Bundle();
-        textBundle.putString("pos1", one);
-        textBundle.putString("pos2", two);
+        textBundle.putString("common", one);
+        textBundle.putString("species", two);
+        textBundle.putString("desc", three);
         return textBundle;
 
 }
