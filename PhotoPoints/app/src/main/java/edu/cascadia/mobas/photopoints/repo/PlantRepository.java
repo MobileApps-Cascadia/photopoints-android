@@ -11,12 +11,14 @@ public class PlantRepository implements IRepository<Plant> {
 
     private static Map<Integer,Plant> mPlants = new HashMap<>();
 
+
     // Add static data upon first instantiation
     public PlantRepository() {
 
         // initialize using sample data
         if (mPlants.size() == 0) {
             SampleData.addSamplePlants(mPlants);
+
         }
     }
 
