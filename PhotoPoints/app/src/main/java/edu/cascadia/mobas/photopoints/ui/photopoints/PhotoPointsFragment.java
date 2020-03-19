@@ -22,7 +22,6 @@ public class PhotoPointsFragment extends Fragment {
 
     Repository repo;
 
-    // private DetailsViewModel viewModel;
     FragmentManager fragmentManager;
     private Context context;
 
@@ -44,10 +43,6 @@ public class PhotoPointsFragment extends Fragment {
 
         return root;
     }
-
-    //fragmentManager = new FragmentManager() {
-
-//    };
 
 
     public void onClick(View v){
