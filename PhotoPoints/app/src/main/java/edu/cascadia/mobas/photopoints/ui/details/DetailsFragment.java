@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.fragment.app.FragmentManager;
@@ -20,10 +21,12 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import edu.cascadia.mobas.photopoints.R;
 import edu.cascadia.mobas.photopoints.model.Plant;
+import edu.cascadia.mobas.photopoints.repo.Repository;
 
 public class DetailsFragment extends Fragment {
 
     private DetailsViewModel model;
+    private static int id;
     private static String desc;
     private static String common;
     private static String species;
@@ -38,6 +41,7 @@ public class DetailsFragment extends Fragment {
 
         model = new ViewModelProvider(this).get(DetailsViewModel.class);
 
+        model.getDetails_Id().setValue(id);
         model.getDetails_Desc().setValue(desc);
         model.getDetails_Name().setValue(common);
         model.getDetails_Sci_Name().setValue(species);
@@ -45,6 +49,11 @@ public class DetailsFragment extends Fragment {
         final TextView textView1 = root.findViewById(R.id.text_plantDescription);
         final TextView textView2 = root.findViewById(R.id.text_plantName);
         final TextView textView3 = root.findViewById(R.id.text_scientificName);
+        final ImageView image = root.findViewById(R.id.image_photoPoint);
+
+
+
+
         final Observer<String> detailsObserver = new Observer<String>() {
         @Override
         public void onChanged(String s) {
@@ -64,10 +73,17 @@ public class DetailsFragment extends Fragment {
             }
         };
 
+
+        final Observer<Integer> idObserver = new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer id) {
+                image.setImageBitmap(Repository.getInstance(getContext()).getImage(id));
+            }
+        };
         model.getDetails_Desc().observe(getViewLifecycleOwner(),detailsObserver);
         model.getDetails_Name().observe(getViewLifecycleOwner(), nameObserver);
         model.getDetails_Sci_Name().observe(getViewLifecycleOwner(), sciObserver);
-
+        model.getDetails_Id().observe(getViewLifecycleOwner(), idObserver);
 
 
 
@@ -90,6 +106,7 @@ public class DetailsFragment extends Fragment {
 
     }
     public static DetailsFragment setInstance(Bundle bundle) {
+        id = bundle.getInt("id");
         desc = bundle.getString("desc");
         common = bundle.getString("common");
         species = bundle.getString("species");
