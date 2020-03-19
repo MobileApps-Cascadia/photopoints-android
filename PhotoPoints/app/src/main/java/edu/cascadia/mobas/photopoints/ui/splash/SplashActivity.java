@@ -7,7 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import java.lang.ref.WeakReference;
-import edu.cascadia.mobas.photopoints.MainActivity;
+import edu.cascadia.mobas.photopoints.ui.MainActivity;
 import edu.cascadia.mobas.photopoints.R;
 import edu.cascadia.mobas.photopoints.data.PhotoPointsDatabase;
 

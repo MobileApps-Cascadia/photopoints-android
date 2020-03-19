@@ -1,4 +1,4 @@
-package edu.cascadia.mobas.photopoints;
+package edu.cascadia.mobas.photopoints.ui;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -22,20 +22,24 @@ import java.io.FileDescriptor;
 import java.io.PrintWriter;
 import java.util.List;
 
-import edu.cascadia.mobas.photopoints.ui.details.DetailsViewModel;
+import edu.cascadia.mobas.photopoints.R;
+import edu.cascadia.mobas.photopoints.repo.Repository;
+import edu.cascadia.mobas.photopoints.ui.SharedViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView mBottomNavView;
+    private Repository repo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportFragmentManager().setFragmentFactory(fFactory);
+        repo = Repository.getInstance(getApplicationContext());
 
         //ViewModel set
-        final DetailsViewModel model = new ViewModelProvider(this).get(DetailsViewModel.class);
+        final SharedViewModel model = new ViewModelProvider(this).get(SharedViewModel.class);
 
 
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
