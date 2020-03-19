@@ -22,14 +22,14 @@ public class PhotoPointsFragment extends Fragment {
 
     Repository repo;
 
-    private DetailsViewModel viewModel;
-
+    FragmentManager fragmentManager;
+    private Context context;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         //ViewModel set
-        viewModel = new ViewModelProvider(this).get(DetailsViewModel.class);
+        //viewModel = new ViewModelProvider(this).get(DetailsViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_photopoints, container, false);
 
@@ -44,11 +44,6 @@ public class PhotoPointsFragment extends Fragment {
         return root;
     }
 
-    FragmentManager fragmentManager = new FragmentManager() {
-
-    };
-
-    private Context context;
 
     public void onClick(View v){
         fragmentManager = ((AppCompatActivity)context).getSupportFragmentManager();
