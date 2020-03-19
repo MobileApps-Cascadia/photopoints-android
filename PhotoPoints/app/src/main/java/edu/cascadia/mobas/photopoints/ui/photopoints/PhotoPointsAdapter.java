@@ -79,6 +79,7 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
                     Bundle bundle = getText(id, st1,st2,st3);
                     mFragmentManager.beginTransaction()
                             .replace(R.id.nav_host_fragment,DetailsFragment.setInstance(bundle))
+                            .addToBackStack(null)
                             .commit();
                 }
             });
