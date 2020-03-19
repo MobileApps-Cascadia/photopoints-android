@@ -4,16 +4,20 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.List;
+
+import edu.cascadia.mobas.photopoints.model.PlantItem;
+import edu.cascadia.mobas.photopoints.repo.Repository;
+
 public class PhotoPointsViewModel extends ViewModel {
 
-    private MutableLiveData<String> mText;
-
+    private MutableLiveData<List<PlantItem>> mPlantItems;
+    private Repository repo;
     public PhotoPointsViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is a PhotoPoints fragment");
+        mPlantItems = repo.getPlants();
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public LiveData<List<PlantItem>> getPlants() {
+        return mPlantItems;
     }
 }
