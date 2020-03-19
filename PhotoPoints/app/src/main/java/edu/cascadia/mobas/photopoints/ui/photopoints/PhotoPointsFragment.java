@@ -28,7 +28,7 @@ import edu.cascadia.mobas.photopoints.ui.details.DetailsViewModel;
 public class PhotoPointsFragment extends Fragment {
 
     PointItemRepository photoPointsRepo = new PointItemRepository(getContext());
-    PlantRepository plantRepo = new PlantRepository();
+    PlantRepository plantRepo;
 
     private DetailsViewModel model;
 
@@ -36,6 +36,7 @@ public class PhotoPointsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+        plantRepo = new PlantRepository();
         //ViewModel set
         model = new ViewModelProvider(this).get(DetailsViewModel.class);
 
@@ -52,135 +53,7 @@ public class PhotoPointsFragment extends Fragment {
         return root;
     }
 
-    FragmentManager fragmentManager = new FragmentManager() {
-        @NonNull
-        @Override
-        public FragmentTransaction beginTransaction() {
-            return null;
-        }
-
-        @Override
-        public boolean executePendingTransactions() {
-            return false;
-        }
-
-        @Nullable
-        @Override
-        public Fragment findFragmentById(int id) {
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public Fragment findFragmentByTag(@Nullable String tag) {
-            return null;
-        }
-
-        @Override
-        public void popBackStack() {
-
-        }
-
-        @Override
-        public boolean popBackStackImmediate() {
-            return false;
-        }
-
-        @Override
-        public void popBackStack(@Nullable String name, int flags) {
-
-        }
-
-        @Override
-        public boolean popBackStackImmediate(@Nullable String name, int flags) {
-            return false;
-        }
-
-        @Override
-        public void popBackStack(int id, int flags) {
-
-        }
-
-        @Override
-        public boolean popBackStackImmediate(int id, int flags) {
-            return false;
-        }
-
-        @Override
-        public int getBackStackEntryCount() {
-            return 0;
-        }
-
-        @NonNull
-        @Override
-        public BackStackEntry getBackStackEntryAt(int index) {
-            return null;
-        }
-
-        @Override
-        public void addOnBackStackChangedListener(@NonNull OnBackStackChangedListener listener) {
-
-        }
-
-        @Override
-        public void removeOnBackStackChangedListener(@NonNull OnBackStackChangedListener listener) {
-
-        }
-
-        @Override
-        public void putFragment(@NonNull Bundle bundle, @NonNull String key, @NonNull Fragment fragment) {
-
-        }
-
-        @Nullable
-        @Override
-        public Fragment getFragment(@NonNull Bundle bundle, @NonNull String key) {
-            return null;
-        }
-
-        @NonNull
-        @Override
-        public List<Fragment> getFragments() {
-            return null;
-        }
-
-        @Nullable
-        @Override
-        public Fragment.SavedState saveFragmentInstanceState(@NonNull Fragment f) {
-            return null;
-        }
-
-        @Override
-        public boolean isDestroyed() {
-            return false;
-        }
-
-        @Override
-        public void registerFragmentLifecycleCallbacks(@NonNull FragmentLifecycleCallbacks cb, boolean recursive) {
-
-        }
-
-        @Override
-        public void unregisterFragmentLifecycleCallbacks(@NonNull FragmentLifecycleCallbacks cb) {
-
-        }
-
-        @Nullable
-        @Override
-        public Fragment getPrimaryNavigationFragment() {
-            return null;
-        }
-
-        @Override
-        public void dump(@NonNull String prefix, @Nullable FileDescriptor fd, @NonNull PrintWriter writer, @Nullable String[] args) {
-
-        }
-
-        @Override
-        public boolean isStateSaved() {
-            return false;
-        }
-    };
+    private FragmentManager fragmentManager;
 
     private Context context;
 

@@ -43,9 +43,9 @@ public class Repository {
     private MutableLiveData<List<PlantItem>> getPlantsFromDatabase() {
 
         if (mPlantItems != null) { return mPlantItems; }
-        // TODO: get livedata from room
-        //    store in mPlantItems
-        //mPlantItems = db.pointItemDao().getAllPlants();
+        //get livedata from room
+        //store in mPlantItems
+        mPlantItems = new MutableLiveData<>(db.pointItemDao().getAllPlants());
         return mPlantItems;
     }
 }

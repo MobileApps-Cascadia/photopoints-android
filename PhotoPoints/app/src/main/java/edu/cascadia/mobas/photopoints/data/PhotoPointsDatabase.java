@@ -77,6 +77,8 @@ public abstract class PhotoPointsDatabase extends RoomDatabase {
                         });
                     }
                 })
+                // TODO: clean this up later
+                .allowMainThreadQueries()
                 .fallbackToDestructiveMigration()
                 .build();
     }

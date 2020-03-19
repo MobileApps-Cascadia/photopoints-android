@@ -1,6 +1,7 @@
 package edu.cascadia.mobas.photopoints.ui.photopoints;
 import java.util.ArrayList;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 import android.telecom.Call;
@@ -32,6 +33,7 @@ import edu.cascadia.mobas.photopoints.model.ItemType;
 import edu.cascadia.mobas.photopoints.model.PointItem;
 import edu.cascadia.mobas.photopoints.model.Plant;
 import edu.cascadia.mobas.photopoints.repo.PlantRepository;
+import edu.cascadia.mobas.photopoints.repo.PointItemRepository;
 import edu.cascadia.mobas.photopoints.ui.details.DetailsFragment;
 import edu.cascadia.mobas.photopoints.ui.details.DetailsViewModel;
 
@@ -50,9 +52,8 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
     public PhotoPointsAdapter(Context context, PlantRepository plantRepo, FragmentManager fragmentManager){
         mContext = context;
         mFragmentManager = fragmentManager;
-        mPhotoPointRepo = new ArrayList<PointItem>();
+        //mPhotoPointRepo = new PointItemRepository(this.mContext).getAll();
         mPlantRepo = plantRepo;
-        mPhotoPointRepo.add(new PointItem(1, ItemType.Plant, new Coordinates(47.776013, -122.192043), "https://www.plantsmap.com/organizations/24477/plants/28097", false));
     }
 
     class PhotoPointsViewHolder extends RecyclerView.ViewHolder{
@@ -99,6 +100,7 @@ public ClassLoader CL;
                 Bundle bundle = getText(st1,st2,st3);
                 mFragmentManager.beginTransaction()
                         .replace(R.id.nav_host_fragment,DetailsFragment.setInstance(bundle))
+                        .addToBackStack(null)
                         .commit();
             }
         });
