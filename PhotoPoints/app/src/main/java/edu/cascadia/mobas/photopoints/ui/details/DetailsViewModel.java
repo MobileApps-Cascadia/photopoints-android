@@ -10,12 +10,15 @@ public class DetailsViewModel extends ViewModel {
     private MutableLiveData<String> Details_Name;
     private MutableLiveData<String> Details_Sci_Name;
     private MutableLiveData<String> Details_Desc;
+    private MutableLiveData<Integer> Details_Id;
 
 
     public DetailsViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("かみよ、なぜわたしをみすてられたんだ？");
     }
+
+
 
     //Setting methods
     public MutableLiveData<String> getDetails_Name(){
@@ -39,6 +42,13 @@ public class DetailsViewModel extends ViewModel {
             Details_Desc = new MutableLiveData<String>();
         }
         return Details_Desc;
+    }
+
+    public MutableLiveData<Integer> getDetails_Id(){
+        if (Details_Id == null) {
+            Details_Id = new MutableLiveData<Integer>();
+        }
+        return Details_Id;
     }
 
 }
