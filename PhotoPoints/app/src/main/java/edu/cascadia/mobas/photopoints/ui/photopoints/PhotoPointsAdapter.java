@@ -78,6 +78,7 @@ public class PhotoPointsAdapter extends RecyclerView.Adapter<PhotoPointsAdapter.
                 @Override public void onClick(View itemView){
                     Bundle bundle = getText(id, st1,st2,st3);
                     mFragmentManager.beginTransaction()
+                            .addToBackStack(null)
                             .replace(R.id.nav_host_fragment,DetailsFragment.setInstance(bundle))
                             .commit();
                 }
