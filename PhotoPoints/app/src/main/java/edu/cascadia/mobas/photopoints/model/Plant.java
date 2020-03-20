@@ -3,6 +3,7 @@ package edu.cascadia.mobas.photopoints.model;
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 // Information class for a species of plant
@@ -30,7 +31,7 @@ public class Plant {
 
     public Plant(@NonNull int plantId, @NonNull String species, String commonName) {
         this(plantId, species);
-        mCommonNames.add(commonName);
+        this.addCommonName(commonName);
     }
 
     public Plant(@NonNull int plantId, @NonNull String species, String commonName, String description) {
@@ -78,9 +79,14 @@ public class Plant {
     }
 
     // Add a name to the list of common names, if it doesn't already exist
-    public void addCommonName(@NonNull String name) {
-        if (!name.equals("") && !mCommonNames.contains(name)) {
-            mCommonNames.add(name);
+    public void addCommonName(@NonNull String nameString) {
+        if (nameString.trim().equals("")) return;
+        List<String> names = new ArrayList<>(Arrays.asList(nameString.split(";")));
+        for (String name: names){
+            name = name.trim();
+            if (!(name.equals("") || mCommonNames.contains(nameString))){
+                mCommonNames.add(name);
+            }
         }
     }
 

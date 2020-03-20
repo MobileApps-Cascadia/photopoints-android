@@ -7,16 +7,18 @@ import java.util.Map;
 
 import edu.cascadia.mobas.photopoints.model.Plant;
 
-public class PlantRepository implements Repository<Plant> {
+public class PlantRepository implements IRepository<Plant> {
 
     private static Map<Integer,Plant> mPlants = new HashMap<>();
 
-    // Add static data upon instantiation
+
+    // Add static data upon first instantiation
     public PlantRepository() {
 
         // initialize using sample data
         if (mPlants.size() == 0) {
             SampleData.addSamplePlants(mPlants);
+
         }
     }
 
@@ -26,7 +28,7 @@ public class PlantRepository implements Repository<Plant> {
     }
 
     // @Override after adding method to Interface
-    public Plant getById(String id) {
+    public Plant getById(int id) {
         return mPlants.get(id);
     }
 

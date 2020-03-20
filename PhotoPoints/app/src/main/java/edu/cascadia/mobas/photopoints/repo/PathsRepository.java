@@ -5,10 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import edu.cascadia.mobas.photopoints.model.GeoCoordinate;
 import edu.cascadia.mobas.photopoints.model.Path;
 
-public class PathsRepository implements Repository<Path> {
+public class PathsRepository implements IRepository<Path> {
 
     static String [] samplePathIDs = {};
     private static Map<String,Path> mPaths = new HashMap<>();

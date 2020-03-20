@@ -17,8 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+
 import com.google.android.gms.vision.CameraSource;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.barcode.Barcode;
@@ -26,7 +25,7 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 import java.lang.ref.WeakReference;
 import edu.cascadia.mobas.photopoints.R;
 import edu.cascadia.mobas.photopoints.helpers.PermissionManager;
-import edu.cascadia.mobas.photopoints.repo.PhotoPointsRepository;
+import edu.cascadia.mobas.photopoints.repo.PointItemRepository;
 import edu.cascadia.mobas.photopoints.ui.upload.UploadPhotoPointDataFragment;
 
 public class ScanFragment extends Fragment {
@@ -194,7 +193,7 @@ public class ScanFragment extends Fragment {
 
         @Override
         protected Integer doInBackground(String... strings) {
-            return new PhotoPointsRepository(mFragment.get().getContext()).getIDByQRCode(strings[0]);
+            return new PointItemRepository(mFragment.get().getContext()).getIDByQRCode(strings[0]);
         }
     }
 }
