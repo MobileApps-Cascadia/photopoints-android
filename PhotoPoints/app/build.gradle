@@ -4,7 +4,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "edu.cascadia.mobas.photopoints"
+        applicationId "edu.cascadia.mobas.northcreekforest"
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 3
