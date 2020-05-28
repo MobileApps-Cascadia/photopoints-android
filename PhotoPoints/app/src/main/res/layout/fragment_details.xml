@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
+<!--TODO: BREAK OUT COLOR/STYLE -->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -36,7 +38,9 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:contentDescription="TODO" />
+
 
     <View
         android:id="@+id/divider"
@@ -60,7 +64,7 @@
         android:layout_marginTop="4dp"
         android:ems="10"
         android:text="name_placeholder"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
@@ -82,7 +86,7 @@
         android:layout_marginStart="20dp"
         android:ems="10"
         android:text="scientific_placeholder"
-        android:textSize="10dp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_plantName" />
 
@@ -93,6 +97,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@mipmap/cloud_upload" />
