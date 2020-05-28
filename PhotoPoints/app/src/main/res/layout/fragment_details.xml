@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_photoPoint" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_plantName"
         style="@android:style/Widget.DeviceDefault.TextView"
         android:layout_width="wrap_content"
@@ -64,7 +64,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_plantDescription"
         style="@android:style/Widget.DeviceDefault.TextView"
         android:layout_width="wrap_content"
@@ -74,7 +74,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_scientificName" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/text_scientificName"
         style="@android:style/Widget.DeviceDefault.TextView"
         android:layout_width="wrap_content"
