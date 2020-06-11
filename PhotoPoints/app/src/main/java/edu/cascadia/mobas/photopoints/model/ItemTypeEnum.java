@@ -1,6 +1,6 @@
 package edu.cascadia.mobas.photopoints.model;
 
-public enum ItemType {
+public enum ItemTypeEnum {
     Unknown,
     Plant,
     Creek,
