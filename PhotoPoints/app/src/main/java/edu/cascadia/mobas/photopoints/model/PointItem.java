@@ -6,14 +6,14 @@ public class PointItem {
 
     // TODO:  Make these final
     private int mId;
-    private ItemType mItemType;
+    private ItemTypeEnum mItemTypeEnum;
     private Coordinates mLocation;
     private String mQRCode;
     private boolean mInactive;
 
-    public PointItem(int id, ItemType type, Coordinates location, String qrCode, boolean inactive) {
+    public PointItem(int id, ItemTypeEnum type, Coordinates location, String qrCode, boolean inactive) {
         this.mId = id;
-        this.mItemType = type;
+        this.mItemTypeEnum = type;
         this.mLocation = location;
         this.mQRCode = (qrCode.trim().equals("") ? null : qrCode.trim());
         this.mInactive = inactive;
@@ -22,7 +22,7 @@ public class PointItem {
     public int getId() { return mId; }
     public String getQRCode() { return mQRCode; }
     public Coordinates getLocation() { return this.mLocation; }
-    public ItemType getItemType() { return mItemType; }
+    public ItemTypeEnum getItemType() { return mItemTypeEnum; }
     public double getLatitude() { return mLocation.getLatitude(); }
     public double getLongitude() { return mLocation.getLongitude(); }
     public double getAltitude() { return mLocation.getAltitude(); }

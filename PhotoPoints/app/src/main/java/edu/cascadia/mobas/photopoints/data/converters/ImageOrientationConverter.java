@@ -1,11 +1,7 @@
 package edu.cascadia.mobas.photopoints.data.converters;
 
-import android.media.Image;
-import android.provider.ContactsContract;
-
 import androidx.room.TypeConverter;
 
-import edu.cascadia.mobas.photopoints.model.ItemType;
 import edu.cascadia.mobas.photopoints.model.PointImage.ImageOrientation;
 
 
