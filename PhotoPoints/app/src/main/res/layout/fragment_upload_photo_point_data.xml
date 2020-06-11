@@ -22,14 +22,14 @@
                     android:layout_marginBottom="25dp"
                     android:orientation="vertical">
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/text_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="placeholder_PhotoPointName"
                         android:textSize="22sp" />
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/text_surveyData"
                         style="@style/TextViewNormal"
                         android:text="@string/survey_data" />
@@ -42,14 +42,14 @@
                         android:layout_marginTop="10dp"
                         android:orientation="vertical">
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="placeholder_sampleData" />
 
                     </LinearLayout>
 
-                    <TextView
+                    <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/text_focusOn"
                         style="@style/TextViewNormal"
                         android:text="@string/picture_focus" />
@@ -62,7 +62,7 @@
                         android:layout_marginTop="10dp"
                         android:orientation="vertical">
 
-                        <TextView
+                        <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="placeholder_sampleData" />
