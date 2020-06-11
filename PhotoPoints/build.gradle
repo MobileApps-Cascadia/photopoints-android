@@ -7,8 +7,8 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
-        
+        classpath 'com.android.tools.build:gradle:3.6.3'
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -16,8 +16,8 @@ buildscript {
         //Version source
         //https://developers.google.com/android/guides/setup
         playServicesVersion = '17.0.0'
-        googleVisionVersion = '19.0.0'
-        roomVersion = '2.2.2'
+        googleVisionVersion = '20.1.0'
+        roomVersion = '2.2.5'
     }
 }
 
