@@ -8,6 +8,8 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import edu.cascadia.mobas.photopoints.model.Coordinates;
+
 import static androidx.room.ForeignKey.CASCADE;
 
 
@@ -50,6 +52,14 @@ public class LookupEntity {
     }
 
 
+    //Used the very first time to populate the database.
+    public static edu.cascadia.mobas.photopoints.data.dto.LookupEntity[] populateData() {
+        return new edu.cascadia.mobas.photopoints.data.dto.LookupEntity[]{
+                new edu.cascadia.mobas.photopoints.data.dto.LookupEntity("https://www.plantsmap.com/organizations/24477/plants/28097", "28097"),
+                new edu.cascadia.mobas.photopoints.data.dto.LookupEntity("https://www.plantsmap.com/organizations/24477/plants/28069", "28097"),
+                new edu.cascadia.mobas.photopoints.data.dto.LookupEntity("https://www.plantsmap.com/organizations/24477/plants/28092", "28092"),
+                new edu.cascadia.mobas.photopoints.data.dto.LookupEntity("https://www.plantsmap.com/organizations/24477/plants/28061", "28061")
+        };
+    }
 }
-
 
