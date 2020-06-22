@@ -28,9 +28,6 @@ public class ItemEntity {
     @ColumnInfo(name = "inactive")
     private boolean inactive;
 
-    @ColumnInfo(name = "qrCode") // TODO:  lookups to get their own table
-    private String qrCode;
-
     @Ignore
     public ItemEntity(){ }
 
@@ -39,14 +36,12 @@ public class ItemEntity {
             @NonNull String type,
             @NonNull String label,
             @NonNull Coordinates location,
-            String qrCode,       // TODO:  lookups to get their own table
             boolean inactive
     ) {
         this.id = id;
         this.type = type;
         this.label = label;
         this.location = location;
-        this.qrCode = qrCode;
         this.inactive = inactive;
     }
 
@@ -78,21 +73,18 @@ public class ItemEntity {
         this.location.setAltitude(altitude);
     }
 
-    // TODO:  Lookups will be moved to own table
-    public String getQrCode() { return qrCode; }
-    public void setQrCode(String qrCode) { this.qrCode = qrCode; }
-
 
 
     //Used the very first time to populate the database.
     public static edu.cascadia.mobas.photopoints.data.dto.ItemEntity[] populateData(){
         return new edu.cascadia.mobas.photopoints.data.dto.ItemEntity[]{
-                new edu.cascadia.mobas.photopoints.data.dto.ItemEntity("1", "plant", "Item 1", new Coordinates(-122.192043, 47.776013),"https://www.plantsmap.com/organizations/24477/plants/28097", false),
-                new edu.cascadia.mobas.photopoints.data.dto.ItemEntity("2", "plant", "Item 2", new Coordinates(-122.192635, 47.775886),"https://www.plantsmap.com/organizations/24477/plants/28069", false),
-                new edu.cascadia.mobas.photopoints.data.dto.ItemEntity("3", "plant", "Item 3", new Coordinates(-122.193909, 47.776013),"https://www.plantsmap.com/organizations/24477/plants/28092", false),
-                new edu.cascadia.mobas.photopoints.data.dto.ItemEntity("4", "plant", "Item 4", new Coordinates(-122.195866, 47.775241),"https://www.plantsmap.com/organizations/24477/plants/28061", false)
+                new edu.cascadia.mobas.photopoints.data.dto.ItemEntity("28097", "plant", "Item 1", new Coordinates(-122.192043, 47.776013), false),
+                new edu.cascadia.mobas.photopoints.data.dto.ItemEntity("28069", "plant", "Item 2", new Coordinates(-122.192635, 47.775886), false),
+                new edu.cascadia.mobas.photopoints.data.dto.ItemEntity("28092", "plant", "Item 3", new Coordinates(-122.193909, 47.776013), false),
+                new edu.cascadia.mobas.photopoints.data.dto.ItemEntity("28061", "plant", "Item 4", new Coordinates(-122.195866, 47.775241), false)
         };
     }
-
 }
+
+
 
