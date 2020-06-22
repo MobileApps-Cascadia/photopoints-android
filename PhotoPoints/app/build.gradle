@@ -47,6 +47,10 @@ dependencies {
     //Google vision. Used for barcode scanner.
     implementation "com.google.android.gms:play-services-vision:$rootProject.ext.googleVisionVersion"
 
+    def paging_version = "2.1.2"
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
 
 
 }
